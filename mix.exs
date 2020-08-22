@@ -44,7 +44,9 @@ defmodule BankingApi.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:ex_doc, "~> 0.19"},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 
