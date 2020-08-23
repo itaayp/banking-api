@@ -16,9 +16,10 @@ defmodule BankingApi.User do
         field :password, :string
         field :password_confirmation, :string, virtual: true
         field :role, :string, default: "user"
-
         timestamps()
-    end
+
+        has_one :accounts, BankingApi.Account
+      end
 
     @doc """
     Essa função converte a informação para o formato do Elixir e às valida.
@@ -42,9 +43,9 @@ defmodule BankingApi.User do
         :password_confirmation,
         :role
       ])
-    |> update_change(:email, &String.downcase(&1))
-    |> validate_format(:email, ~r/^[A-Za-z0-9._%+-+']+@[A-Za-z0-9.-]+\.[A-Za-z]+$/, message: "Email em formato invalido.")
-    |> validate_confirmation(:password, message: "A confirmacao de senha nao esta igual a senha digitada.")
-    |> unique_constraint(:email, message: "Este email ja foi usado em outro cadastro.")
+      |> update_change(:email, &String.downcase(&1))
+      |> validate_format(:email, ~r/^[A-Za-z0-9._%+-+']+@[A-Za-z0-9.-]+\.[A-Za-z]+$/, message: "Email em formato invalido.")
+      |> validate_confirmation(:password, message: "A confirmacao de senha nao esta igual a senha digitada.")
+      |> unique_constraint(:email, message: "Este email ja foi usado em outro cadastro.")
     end
 end
