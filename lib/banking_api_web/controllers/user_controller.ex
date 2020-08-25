@@ -24,7 +24,8 @@ defmodule BankingApiWeb.UserController do
   end
 
   @doc """
-
+  Esta função é responsável por buscar um usuário pelo `id` e renderizar as informações deste usuário obtido.
+  Os argumentos da função são as informações de conexão `conn` e o `id` do usuário que será resgatado
   """
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
