@@ -11,7 +11,8 @@ defmodule BankingApiWeb.UserController do
   @doc """
   A função `signup` é responsável por cadastrar um novo usuário no sistema e criar uma nova conta bancária para este usuário.
   O argumento `user` da função são os dados do novo usuário que será inserido no sistema.
-  O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o insert tenha dado certo, ou uma mensagem de erro, caso por algum motivo não tenha sido feito o insert.
+  O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o retorno de `create_user` tenha retornado `{:ok, user, account}`, ou uma mensagem de erro, caso o retorno de `create_user` tenha sido outro.
+  Neste segundo caso, o Plug `BankingApiWeb.FallbackController.call()` é invocado, e lá e construida o feedback de erro para o usuário.
   """
   def signup(conn, %{"user" => user}) do
     with {:ok, user, account} <- Accounts.create_user(user) do
