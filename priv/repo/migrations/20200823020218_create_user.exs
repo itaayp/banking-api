@@ -3,12 +3,12 @@ defmodule BankingApi.Repo.Migrations.CreateUser do
 
   def change do
     create table(:users) do
-        add :email, :string
-        add :first_name, :string
-        add :last_name, :string
-        add :password, :string
-        add :role, :string
-        timestamps()
+      add :email, :string
+      add :first_name, :string
+      add :last_name, :string
+      add :password, :string
+      add :role, :string
+      timestamps()
     end
 
     # Grants that there will not be any duplicated email on the database
