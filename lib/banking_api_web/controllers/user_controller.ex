@@ -18,7 +18,18 @@ defmodule BankingApiWeb.UserController do
     with {:ok, user, account} <- Accounts.create_user(user) do
       conn
       |> put_status(:created)
+      |> put_resp_header("location", Routes.user_path(conn, :show, id: user.id)) #Adiciona no `header` da response o atributo `location` com o path para `BankingApiWeb.UserController.show()`, da rout `GET /api/user`
       |> render("account.json", %{user: user, account: account})
     end
+  end
+
+  @doc """
+
+  """
+  def show(conn, %{"id" => id}) do
+    user = Accounts.get_user!(id)
+
+    conn
+    |> render("show.json", user: user)
   end
 end

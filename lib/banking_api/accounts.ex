@@ -38,4 +38,11 @@ defmodule BankingApi.Accounts do
     %User{}
     |> User.changeset(params)
   end
+
+  @doc """
+  Esta função busca o `user` pelo `id`, vincula o resultado com a informação da conta bancária `account`.
+  O argumento da função é o `user id`.
+  O retorno da função é um map do usuário vinculado com a respectiva conta bancária.
+  """
+  def get_user!(id), do: Repo.get(User, id) |> Repo.preload(:accounts)
 end
