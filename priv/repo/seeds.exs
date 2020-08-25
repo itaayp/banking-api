@@ -10,4 +10,10 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-# BankingApi.Repo.insert! BankingApi.User.changeset %BankingApi.User{}, %{first_name: "itay", last_name: "pece", password: "123", password_confirmation: "123", email: "ItYAYa@ai.com"}
+BankingApi.Accounts.create_user(%{
+  first_name: "itay",
+  last_name: "pece",
+  password: "123",
+  password_confirmation: "123",
+  email: "ItYAYa@ai.com"
+})
