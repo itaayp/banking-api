@@ -1,8 +1,9 @@
 defmodule BankingApiWeb.FallbackController do
-  use BankingApiWeb, :controller
   @moduledoc """
   O objetivo deste módulo é centralizar a manipulação de erros relacionadas ao `BankingApiWeb.UserController`.
   """
+
+  use BankingApiWeb, :controller
 
   @doc """
   A função `call` é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema na criação de `user` ou `account`.

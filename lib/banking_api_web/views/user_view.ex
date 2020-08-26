@@ -17,7 +17,7 @@ defmodule BankingApiWeb.UserView do
       },
       "Informações do usuário": %{
         "Nome completo": "#{user.first_name} #{user.last_name}",
-        "Email": user.email,
+        Email: user.email,
         "senha cadastrada": user.password,
         "Tipo de acesso ao sistema": user.role
       }
@@ -40,7 +40,7 @@ defmodule BankingApiWeb.UserView do
     %{
       "Informações do usuário": %{
         "Nome completo": "#{user.first_name} #{user.last_name}",
-        "Email": user.email,
+        Email: user.email,
         "senha cadastrada": user.password,
         "Tipo de acesso ao sistema": user.role
       },

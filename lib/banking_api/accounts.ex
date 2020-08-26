@@ -19,8 +19,10 @@ defmodule BankingApi.Accounts do
       |> Ecto.Multi.insert(:user, insert_user(params))
       |> Ecto.Multi.insert(:account, fn %{user: user} ->
         user
-        |> Ecto.build_assoc(:accounts) # Faz a associação entre o usuário e a tabela `accounts`
-        |> Account.changeset() # Valida e converte os dados para serem inseridos no Banco de dados
+        # Faz a associação entre o usuário e a tabela `accounts`
+        |> Ecto.build_assoc(:accounts)
+        # Valida e converte os dados para serem inseridos no Banco de dados
+        |> Account.changeset()
       end)
       |> Repo.transaction()
 
