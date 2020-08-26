@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.2">
     <meta name="project" content="banking_api v0.1.0">
-    <title>BankingApiWeb.Telemetry — banking_api v0.1.0</title>
+    <title>BankingApiWeb.ChangesetView — banking_api v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
     <script src="dist/sidebar_items-0e6ac22d55.js"></script>
       <script src="docs_config.js"></script>
@@ -64,9 +64,12 @@ banking_api      </a>
 
       <h1>
         <small class="app-vsn">banking_api v0.1.0</small>
-BankingApiWeb.Telemetry      </h1>
+BankingApiWeb.ChangesetView      </h1>
 
 
+        <section id="moduledoc">
+<p>Este módulo é responsável por tratar mensagens de erro e exibir para o usuário final.
+Os erros tratados são relacionados a criação de <code class="inline">user</code> e <code class="inline">account</code>.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -82,19 +85,29 @@ BankingApiWeb.Telemetry      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#child_spec/1">child_spec(init_arg)</a>
+    <a href="#__resource__/0">__resource__()</a>
   </div>
-    <div class="summary-synopsis"><p>Returns a specification to start this module under a supervisor.</p></div>
+    <div class="summary-synopsis"><p>The resource name, as an atom, for this view</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#metrics/0">metrics()</a>
+    <a href="#render/2">render(template, assigns \\ %{})</a>
   </div>
+    <div class="summary-synopsis"><p>A função <code class="inline">render</code> é responsável por exibir para o usuário final a mensagem de erro relacionada a criação de <code class="inline">user</code> e de <code class="inline">account</code></p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#start_link/1">start_link(arg)</a>
+    <a href="#template_not_found/2">template_not_found(template, assigns)</a>
   </div>
+    <div class="summary-synopsis"><p>Callback invoked when no template is found.
+By default it raises but can be customized
+to render a particular template.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#translate_errors/1">translate_errors(changeset)</a>
+  </div>
+    <div class="summary-synopsis"><p>Esta função é responsável por resgatar e tratar mensagens de erro passadas através do argumento <code class="inline">changeset</code></p></div>
 </div>
   </div>
         </section>
@@ -107,44 +120,64 @@ BankingApiWeb.Telemetry      </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="child_spec/1">
+<section class="detail" id="__resource__/0">
   <div class="detail-header">
-    <a href="#child_spec/1" class="detail-link" title="Link to this function">
+    <a href="#__resource__/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">child_spec(init_arg)</h1>
+    <h1 class="signature">__resource__()</h1>
   </div>
 
   <section class="docstring">
 
-<p>Returns a specification to start this module under a supervisor.</p><p>See <a href="https://hexdocs.pm/elixir/Supervisor.html"><code class="inline">Supervisor</code></a>.</p>  </section>
+<p>The resource name, as an atom, for this view</p>  </section>
 </section>
-<section class="detail" id="metrics/0">
+<section class="detail" id="render/2">
+    <span id="render/1"></span>
   <div class="detail-header">
-    <a href="#metrics/0" class="detail-link" title="Link to this function">
+    <a href="#render/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">metrics()</h1>
+    <h1 class="signature">render(template, assigns \\ %{})</h1>
   </div>
 
   <section class="docstring">
 
-  </section>
+<p>A função <code class="inline">render</code> é responsável por exibir para o usuário final a mensagem de erro relacionada a criação de <code class="inline">user</code> e de <code class="inline">account</code></p>  </section>
 </section>
-<section class="detail" id="start_link/1">
+<section class="detail" id="template_not_found/2">
   <div class="detail-header">
-    <a href="#start_link/1" class="detail-link" title="Link to this function">
+    <a href="#template_not_found/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">start_link(arg)</h1>
+    <h1 class="signature">template_not_found(template, assigns)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>template_not_found(<a href="https://hexdocs.pm/phoenix/Phoenix.Template.html#t:name/0">Phoenix.Template.name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+      </div>
+
+<p>Callback invoked when no template is found.
+By default it raises but can be customized
+to render a particular template.</p>  </section>
+</section>
+<section class="detail" id="translate_errors/1">
+  <div class="detail-header">
+    <a href="#translate_errors/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">translate_errors(changeset)</h1>
   </div>
 
   <section class="docstring">
 
-  </section>
+<p>Esta função é responsável por resgatar e tratar mensagens de erro passadas através do argumento <code class="inline">changeset</code></p>  </section>
 </section>
           </div>
         </section>

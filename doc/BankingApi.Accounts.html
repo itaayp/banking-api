@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.2">
     <meta name="project" content="banking_api v0.1.0">
-    <title>BankingApiWeb.Telemetry — banking_api v0.1.0</title>
+    <title>BankingApi.Accounts — banking_api v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
     <script src="dist/sidebar_items-0e6ac22d55.js"></script>
       <script src="docs_config.js"></script>
@@ -64,9 +64,13 @@ banking_api      </a>
 
       <h1>
         <small class="app-vsn">banking_api v0.1.0</small>
-BankingApiWeb.Telemetry      </h1>
+BankingApi.Accounts      </h1>
 
 
+        <section id="moduledoc">
+<p>Este módulo representa a Accounts Context.
+Este módulo é responsável por expor as funcionalidades relacionadas à <code class="inline">acounts</code> e <code class="inline">users</code>.
+Resumidamente, o objetivo do context é desacoplar a responsabilidade de models e controllers.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -82,19 +86,27 @@ BankingApiWeb.Telemetry      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#child_spec/1">child_spec(init_arg)</a>
+    <a href="#create_user/1">create_user(params)</a>
   </div>
-    <div class="summary-synopsis"><p>Returns a specification to start this module under a supervisor.</p></div>
+    <div class="summary-synopsis"><p>  Função responsável por criar um <code class="inline">user</code>(usuário) e uma <code class="inline">account</code>(conta bancária) e a associação entre eles no banco de dados
+  O argumento <code class="inline">params</code> são os dados do <code class="inline">user</code> a serem inseridos.
+  O retorno da função é uma tupla de <code class="inline">{:ok, user, account}</code> ou <code class="inline">{:error, changeset}</code></p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#metrics/0">metrics()</a>
+    <a href="#get!/1">get!(id)</a>
   </div>
+    <div class="summary-synopsis"><p>Esta função buscar uma <code class="inline">account</code> baseada em um <code class="inline">id</code> passado por parâmetro.
+O único parâmetro desta função é o <code class="inline">account id</code>.
+O retorno desta função é uma struct de <code class="inline">account</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#start_link/1">start_link(arg)</a>
+    <a href="#get_user!/1">get_user!(id)</a>
   </div>
+    <div class="summary-synopsis"><p>Esta função busca o <code class="inline">user</code> pelo <code class="inline">id</code>, vincula o resultado com a informação da conta bancária <code class="inline">account</code>.
+O argumento da função é o <code class="inline">user id</code>.
+O retorno da função é um map do usuário vinculado com a respectiva conta bancária.</p></div>
 </div>
   </div>
         </section>
@@ -107,44 +119,50 @@ BankingApiWeb.Telemetry      </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="child_spec/1">
+<section class="detail" id="create_user/1">
   <div class="detail-header">
-    <a href="#child_spec/1" class="detail-link" title="Link to this function">
+    <a href="#create_user/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">child_spec(init_arg)</h1>
+    <h1 class="signature">create_user(params)</h1>
   </div>
 
   <section class="docstring">
 
-<p>Returns a specification to start this module under a supervisor.</p><p>See <a href="https://hexdocs.pm/elixir/Supervisor.html"><code class="inline">Supervisor</code></a>.</p>  </section>
+<p>  Função responsável por criar um <code class="inline">user</code>(usuário) e uma <code class="inline">account</code>(conta bancária) e a associação entre eles no banco de dados
+  O argumento <code class="inline">params</code> são os dados do <code class="inline">user</code> a serem inseridos.
+  O retorno da função é uma tupla de <code class="inline">{:ok, user, account}</code> ou <code class="inline">{:error, changeset}</code></p>  </section>
 </section>
-<section class="detail" id="metrics/0">
+<section class="detail" id="get!/1">
   <div class="detail-header">
-    <a href="#metrics/0" class="detail-link" title="Link to this function">
+    <a href="#get!/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">metrics()</h1>
+    <h1 class="signature">get!(id)</h1>
   </div>
 
   <section class="docstring">
 
-  </section>
+<p>Esta função buscar uma <code class="inline">account</code> baseada em um <code class="inline">id</code> passado por parâmetro.
+O único parâmetro desta função é o <code class="inline">account id</code>.
+O retorno desta função é uma struct de <code class="inline">account</code>.</p>  </section>
 </section>
-<section class="detail" id="start_link/1">
+<section class="detail" id="get_user!/1">
   <div class="detail-header">
-    <a href="#start_link/1" class="detail-link" title="Link to this function">
+    <a href="#get_user!/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">start_link(arg)</h1>
+    <h1 class="signature">get_user!(id)</h1>
   </div>
 
   <section class="docstring">
 
-  </section>
+<p>Esta função busca o <code class="inline">user</code> pelo <code class="inline">id</code>, vincula o resultado com a informação da conta bancária <code class="inline">account</code>.
+O argumento da função é o <code class="inline">user id</code>.
+O retorno da função é um map do usuário vinculado com a respectiva conta bancária.</p>  </section>
 </section>
           </div>
         </section>
