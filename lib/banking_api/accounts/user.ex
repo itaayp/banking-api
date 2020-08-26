@@ -1,4 +1,4 @@
-defmodule BankingApi.User do
+defmodule BankingApi.Accounts.User do
   @moduledoc """
   Esse é o User Model. Este módulo é responsável por mapear os valores do banco de dados com o Elixir e validá-los.
   """
@@ -18,7 +18,7 @@ defmodule BankingApi.User do
     field :role, :string, default: "user"
     timestamps()
 
-    has_one :accounts, BankingApi.Account
+    has_one :accounts, BankingApi.Accounts.Account
   end
 
   @doc """

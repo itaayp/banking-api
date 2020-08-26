@@ -1,4 +1,4 @@
-defmodule BankingApi.Account do
+defmodule BankingApi.Accounts.Account do
   @moduledoc """
   Essa é a Account Model. Este módulo é responsável por mapear os valores do banco de dados com o Elixir e validá-los.
   """
@@ -11,7 +11,7 @@ defmodule BankingApi.Account do
   """
   schema "accounts" do
     field :balance, :decimal, precision: 15, scale: 2, default: 1000
-    belongs_to :user, BankingApi.User
+    belongs_to :user, BankingApi.Accounts.User
     timestamps()
   end
 
