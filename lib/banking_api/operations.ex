@@ -9,10 +9,16 @@ defmodule BankingApi.Operations do
   alias BankingApi.Repo
 
   @doc """
-  Esta função é responsável por operar a transferência bancária entre duas contas
-  Os argumentos desta função são o id da conta pagadora: `from_id`, o id da conta recebedora: `to_id`, e a quantidade a ser transferida: `amount`
-  O retorno da função é um map contendo o atom `:error` ou `:ok`. Representando se o status da operação foi ou não realizada.
-  Um dos possíveis motivos da operação não ser realizada, e portando retornar um atom `:error` é se o valor `amount` a ser transferido é maior do que `from.balance`
+  Esta função é responsável por operar a transferência bancária entre duas contas.
+
+  Os argumentos desta função são:
+    1. `from_id`: O número da conta pagadora (id da conta).
+    2. `to_id`: O número da conta recebedora (id da conta).
+    3. `amount`: Quantidade a ser transferida.
+
+  O retorno da função é um map contendo o atom `:error` ou `:ok`. Representando o status da operação.
+
+  Um dos possíveis motivos da operação não ser realizada (e retornar um  `error`), é se o valor `amount` a ser transferido é maior do que `from.balance`.
   """
   def transfer(from_id, to_id, amount) do
     from = Accounts.get!(from_id)
@@ -24,20 +30,59 @@ defmodule BankingApi.Operations do
     end
   end
 
+  @doc """
+  Esta função é responsável por operar a operação de saque.
+
+  Os argumentos desta função são:
+    1. `from_id`: Número da conta (id da conta) que realizará o saque.
+    2. `amount`: Quantidade a ser transferida.
+
+  O retorno da função é um map contendo o atom `:error` ou `:ok`. Representando o status da operação.
+
+  Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.
+  """
+  def withdraw(from_id, amount) do
+    from = Accounts.get!(from_id)
+    amount = Decimal.new(amount)
+
+    case is_negative?(from.balance, amount) do
+      true -> {:error, "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{from.balance},00"}
+      false ->
+        {:ok, from} =
+          perform_operation(from, amount, :sub)
+          |> Repo.update()
+
+        {:ok, "Saque realizado! Saque realizado na conta #{from.id} no valor de #{amount}"}
+    end
+  end
+
   defp is_negative?(balance, amount) do
     Decimal.sub(balance, amount)
     |> Decimal.negative?()
   end
 
   @doc """
-  Esta função é responsável validar se a operação de subtração da conta pagadora (`from`) foi concluida, e se for realizar a operação de soma na conta recebedora (`to_id`)
-  Os argumentos da função são uma struct de `account` que representa a conta pagadora (`from`), o id da conta recebedora (`to_id`) e a quantidade a ser transferida (`amount`)
+  Esta função é responsável validar se a operação de subtração da conta pagadora (`from`) foi concluida, e se for, realizar a operação de soma na conta recebedora (`to_id`)
+
+  Os argumentos da função são:
+    1. `from`: É uma struct de `account` e representa a conta pagadora.
+    2. `to_id`: É o id da conta recebedora.
+    3. `amount`: Quantidade a ser transferida
   """
   def perform_update(from, to_id, amount) do
-    {:ok, from} = perform_operation(from, amount, :sub)
-    {:ok, to} = Accounts.get!(to_id)
-    |> perform_operation(amount, :sum)
-    {:ok, "Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{amount}"}
+    to = Accounts.get!(to_id)
+
+    transaction = Ecto.Multi.new()
+    |> Ecto.Multi.update(:from, perform_operation(from, amount, :sub))
+    |> Ecto.Multi.update(:to, perform_operation(to, amount, :sum))
+    |> Repo.transaction()
+
+    case transaction do
+      {:ok, _tail} ->
+        {:ok, "Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{amount}"}
+      {:error, :from, changeset, _tail} -> {:error, changeset}
+      {:error, :to, changeset, _tail} -> {:error, changeset}
+    end
   end
 
   @doc """
@@ -61,12 +106,13 @@ defmodule BankingApi.Operations do
   end
 
   @doc """
-  Esta função é responsável por realizar a operação de update de uma `account` no banco de dados.
-  Os argumentos da função são a struc da `account` que será atualizada, e o map `params` que contém os valores a serem atualizados.
-  O retorno da função é uma tupla contendo o status da operação de update no banco de dados.
+  Esta função é responsável por validar os dados de `account` antes que eles sejam inseridos no banco de dados.
+
+  Os argumentos da função são:
+    1. `account`: É uma struc de account, e representa a conta que será atualizada.
+    2. `params`: É um map, e contém os valores a serem atualizados.
   """
   def update_account(%Account{} = account, params) do
     Account.changeset(account, params)
-    |> Repo.update()
   end
 end

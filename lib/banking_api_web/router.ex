@@ -13,11 +13,11 @@ defmodule BankingApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", BankingApiWeb do
-    pipe_through :browser
+  # scope "/", BankingApiWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :index
-  end
+  #   get "/", PageController, :index
+  # end
 
   # Other scopes may use custom stacks.
   scope "/api", BankingApiWeb do
@@ -26,6 +26,7 @@ defmodule BankingApiWeb.Router do
     post "/auth/signup", UserController, :signup
     get "/user", UserController, :show
     put "/operations/transfer", OperationController, :transfer
+    put "/operations/withdraw", OperationController, :withdraw
   end
 
   # Enables LiveDashboard only for development
