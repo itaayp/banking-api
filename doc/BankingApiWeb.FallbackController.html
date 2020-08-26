@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.2">
     <meta name="project" content="banking_api v0.1.0">
-    <title>BankingApi — banking_api v0.1.0</title>
+    <title>BankingApiWeb.FallbackController — banking_api v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
     <script src="dist/sidebar_items-0e6ac22d55.js"></script>
       <script src="docs_config.js"></script>
@@ -64,15 +64,58 @@ banking_api      </a>
 
       <h1>
         <small class="app-vsn">banking_api v0.1.0</small>
-BankingApi      </h1>
+BankingApiWeb.FallbackController      </h1>
 
 
         <section id="moduledoc">
-<p>BankingApi keeps the contexts that define your domain
-and business logic.</p><p>Contexts are also responsible for managing your data, regardless
-if it comes from the database, an external API or others.</p>        </section>
+<p>O objetivo deste módulo é centralizar a manipulação de erros relacionadas ao <a href="BankingApiWeb.UserController.html"><code class="inline">BankingApiWeb.UserController</code></a>.</p>        </section>
 
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#call/2">call(conn, action)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função <code class="inline">call</code> é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema durante alguma operation, seja ela de <code class="inline">transfer</code> ou de <code class="inline">withdraw</code>.
+Os argumentos da função são as informações de connection <code class="inline">conn</code> e a mensagem de erro: <code class="inline">message</code>.</p></div>
+</div>
+  </div>
+        </section>
 
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="call/2">
+  <div class="detail-header">
+    <a href="#call/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">call(conn, action)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função <code class="inline">call</code> é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema durante alguma operation, seja ela de <code class="inline">transfer</code> ou de <code class="inline">withdraw</code>.
+Os argumentos da função são as informações de connection <code class="inline">conn</code> e a mensagem de erro: <code class="inline">message</code>.</p>  </section>
+</section>
+          </div>
+        </section>
       <footer class="footer">
         <p>
           <span class="line">

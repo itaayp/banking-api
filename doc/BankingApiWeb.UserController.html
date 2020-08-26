@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.2">
     <meta name="project" content="banking_api v0.1.0">
-    <title>BankingApiWeb.PageView — banking_api v0.1.0</title>
+    <title>BankingApiWeb.UserController — banking_api v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
-    <script src="dist/sidebar_items-571dfc63e0.js"></script>
+    <script src="dist/sidebar_items-0e6ac22d55.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-0103364119015b97e56c.js"></script>
   </head>
@@ -64,9 +64,11 @@ banking_api      </a>
 
       <h1>
         <small class="app-vsn">banking_api v0.1.0</small>
-BankingApiWeb.PageView      </h1>
+BankingApiWeb.UserController      </h1>
 
 
+        <section id="moduledoc">
+<p>Esse é o User Controller. Este módulo é o primeiro contato entre as requisições e o back-end</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -82,23 +84,19 @@ BankingApiWeb.PageView      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__resource__/0">__resource__()</a>
+    <a href="#show/2">show(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>The resource name, as an atom, for this view</p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por buscar um usuário pelo <code class="inline">id</code> e renderizar as informações deste usuário obtido.
+Os argumentos da função são as informações de conexão <code class="inline">conn</code> e o <code class="inline">id</code> do usuário que será resgatado</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#render/2">render(template, assigns \\ %{})</a>
+    <a href="#signup/2">signup(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>Renders the given template locally.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#template_not_found/2">template_not_found(template, assigns)</a>
-  </div>
-    <div class="summary-synopsis"><p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template.</p></div>
+    <div class="summary-synopsis"><p>A função <code class="inline">signup</code> é responsável por cadastrar um novo usuário no sistema e criar uma nova conta bancária para este usuário.
+O argumento <code class="inline">user</code> da função são os dados do novo usuário que será inserido no sistema.
+O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o retorno de <code class="inline">create_user</code> tenha retornado <code class="inline">{:ok, user, account}</code>, ou uma mensagem de erro, caso o retorno de <code class="inline">create_user</code> tenha sido outro.
+Neste segundo caso, o Plug <code class="inline">BankingApiWeb.FallbackController.call()</code> é invocado, e lá e construida o feedback de erro para o usuário.</p></div>
 </div>
   </div>
         </section>
@@ -111,51 +109,35 @@ to render a particular template.</p></div>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="__resource__/0">
+<section class="detail" id="show/2">
   <div class="detail-header">
-    <a href="#__resource__/0" class="detail-link" title="Link to this function">
+    <a href="#show/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">__resource__()</h1>
+    <h1 class="signature">show(conn, map)</h1>
   </div>
 
   <section class="docstring">
 
-<p>The resource name, as an atom, for this view</p>  </section>
+<p>Esta função é responsável por buscar um usuário pelo <code class="inline">id</code> e renderizar as informações deste usuário obtido.
+Os argumentos da função são as informações de conexão <code class="inline">conn</code> e o <code class="inline">id</code> do usuário que será resgatado</p>  </section>
 </section>
-<section class="detail" id="render/2">
-    <span id="render/1"></span>
+<section class="detail" id="signup/2">
   <div class="detail-header">
-    <a href="#render/2" class="detail-link" title="Link to this function">
+    <a href="#signup/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">render(template, assigns \\ %{})</h1>
+    <h1 class="signature">signup(conn, map)</h1>
   </div>
 
   <section class="docstring">
 
-<p>Renders the given template locally.</p>  </section>
-</section>
-<section class="detail" id="template_not_found/2">
-  <div class="detail-header">
-    <a href="#template_not_found/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">template_not_found(template, assigns)</h1>
-  </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>template_not_found(<a href="https://hexdocs.pm/phoenix/Phoenix.Template.html#t:name/0">Phoenix.Template.name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
-      </div>
-
-<p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template.</p>  </section>
+<p>A função <code class="inline">signup</code> é responsável por cadastrar um novo usuário no sistema e criar uma nova conta bancária para este usuário.
+O argumento <code class="inline">user</code> da função são os dados do novo usuário que será inserido no sistema.
+O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o retorno de <code class="inline">create_user</code> tenha retornado <code class="inline">{:ok, user, account}</code>, ou uma mensagem de erro, caso o retorno de <code class="inline">create_user</code> tenha sido outro.
+Neste segundo caso, o Plug <code class="inline">BankingApiWeb.FallbackController.call()</code> é invocado, e lá e construida o feedback de erro para o usuário.</p>  </section>
 </section>
           </div>
         </section>

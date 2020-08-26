@@ -8,7 +8,7 @@
     <meta name="project" content="banking_api v0.1.0">
     <title>API Reference — banking_api v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
-    <script src="dist/sidebar_items-571dfc63e0.js"></script>
+    <script src="dist/sidebar_items-0e6ac22d55.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-0103364119015b97e56c.js"></script>
   </head>
@@ -83,6 +83,34 @@ and business logic.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="BankingApi.Accounts.html">BankingApi.Accounts</a>
+  </div>
+    <div class="summary-synopsis"><p>Este módulo representa a Accounts Context.
+Este módulo é responsável por expor as funcionalidades relacionadas à <code class="inline">acounts</code> e <code class="inline">users</code>.
+Resumidamente, o objetivo do context é desacoplar a responsabilidade de models e controllers.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="BankingApi.Accounts.Account.html">BankingApi.Accounts.Account</a>
+  </div>
+    <div class="summary-synopsis"><p>Essa é a Account Model. Este módulo é responsável por mapear os valores do banco de dados com o Elixir e validá-los.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="BankingApi.Accounts.User.html">BankingApi.Accounts.User</a>
+  </div>
+    <div class="summary-synopsis"><p>Esse é o User Model. Este módulo é responsável por mapear os valores do banco de dados com o Elixir e validá-los.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="BankingApi.Operations.html">BankingApi.Operations</a>
+  </div>
+    <div class="summary-synopsis"><p>Este é o Operations Context.
+Este módulo é responsável por expor as funcionalidades relacionadas às operações de <code class="inline">transfer</code> e <code class="inline">withdraw</code>.
+Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="BankingApi.Repo.html">BankingApi.Repo</a>
   </div>
 </div>
@@ -92,6 +120,13 @@ and business logic.</p></div>
   </div>
     <div class="summary-synopsis"><p>The entrypoint for defining your web interface, such
 as controllers, views, channels and so on.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="BankingApiWeb.ChangesetView.html">BankingApiWeb.ChangesetView</a>
+  </div>
+    <div class="summary-synopsis"><p>Este módulo é responsável por tratar mensagens de erro e exibir para o usuário final.
+Os erros tratados são relacionados a criação de <code class="inline">user</code> e <code class="inline">account</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -111,6 +146,12 @@ as controllers, views, channels and so on.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="BankingApiWeb.FallbackController.html">BankingApiWeb.FallbackController</a>
+  </div>
+    <div class="summary-synopsis"><p>O objetivo deste módulo é centralizar a manipulação de erros relacionadas ao <a href="BankingApiWeb.UserController.html"><code class="inline">BankingApiWeb.UserController</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="BankingApiWeb.Gettext.html">BankingApiWeb.Gettext</a>
   </div>
     <div class="summary-synopsis"><p>A module providing Internationalization with a gettext-based API.</p></div>
@@ -122,13 +163,15 @@ as controllers, views, channels and so on.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="BankingApiWeb.PageController.html">BankingApiWeb.PageController</a>
+    <a href="BankingApiWeb.OperationController.html">BankingApiWeb.OperationController</a>
   </div>
+    <div class="summary-synopsis"><p>  Esse é o Controller responsável por todas as operações bancárias (transferência e saque).</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="BankingApiWeb.PageView.html">BankingApiWeb.PageView</a>
+    <a href="BankingApiWeb.OperationView.html">BankingApiWeb.OperationView</a>
   </div>
+    <div class="summary-synopsis"><p>Essa é a Operation View. Este módulo é responsável pelo layout que é apresentado ao usuário após chamar requisições relacionadas às operações, como transferência e saque</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -148,8 +191,20 @@ as controllers, views, channels and so on.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="BankingApiWeb.UserController.html">BankingApiWeb.UserController</a>
+  </div>
+    <div class="summary-synopsis"><p>Esse é o User Controller. Este módulo é o primeiro contato entre as requisições e o back-end</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="BankingApiWeb.UserSocket.html">BankingApiWeb.UserSocket</a>
   </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="BankingApiWeb.UserView.html">BankingApiWeb.UserView</a>
+  </div>
+    <div class="summary-synopsis"><p>Essa é a User View. Esse módulo é responsável pelo layout que é apresentado ao usuário após chamar requisições relacionadas ao <code class="inline">user</code></p></div>
 </div>
     </div>
   </section>
