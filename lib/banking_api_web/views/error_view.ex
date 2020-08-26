@@ -13,4 +13,13 @@ defmodule BankingApiWeb.ErrorView do
   def template_not_found(template, _assigns) do
     Phoenix.Controller.status_message_from_template(template)
   end
+
+  @doc """
+  Esta função é responsável por retornar ao usuário final uma mensagem de erro.
+  Os argumentos da função são a string `error_message.json` e um map contendo uma `message`
+  O retorno da função é um map contendo a mesma `message` passada como parâmetro
+  """
+  def render("error_message.json", %{message: message}) do
+    %{erro: message}
+  end
 end
