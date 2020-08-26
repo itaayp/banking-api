@@ -1,6 +1,6 @@
 defmodule BankingApiWeb.UserView do
   @moduledoc """
-  Essa é a User View. Esse módulo é responsável pelo layout que é apresentado ao usuário após chamar funções referentes ao User Controller
+  Essa é a User View. Esse módulo é responsável pelo layout que é apresentado ao usuário após chamar requisições relacionadas ao `user`
   """
 
   use BankingApiWeb, :view
