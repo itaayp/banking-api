@@ -6,7 +6,7 @@ defmodule BankingApi.Accounts do
   """
 
   alias BankingApi.Repo
-  alias BankingApi.{User, Account}
+  alias BankingApi.Accounts.{User, Account}
 
   @doc """
     Função responsável por criar um `user`(usuário) e uma `account`(conta bancária) e a associação entre eles no banco de dados
@@ -45,4 +45,11 @@ defmodule BankingApi.Accounts do
   O retorno da função é um map do usuário vinculado com a respectiva conta bancária.
   """
   def get_user!(id), do: Repo.get(User, id) |> Repo.preload(:accounts)
+
+  @doc """
+  Esta função buscar uma `account` baseada em um `id` passado por parâmetro.
+  O único parâmetro desta função é o `account id`.
+  O retorno desta função é uma struct de `account`.
+  """
+  def get!(id), do: Repo.get(Account, id)
 end
