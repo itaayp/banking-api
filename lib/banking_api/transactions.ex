@@ -23,7 +23,7 @@ defmodule BankingApi.Transactions do
   """
   def all do
     Helper.list_transactions()
-    |> create_payload()
+    |> Helper.create_report()
   end
 
   @doc """
@@ -39,8 +39,7 @@ defmodule BankingApi.Transactions do
       %{total: 1000, transactions: [%Transactions{}, ...]}
   """
   def year(year) do
-    Helper.query_by_year(year)
-    |> create_payload()
+    Helper.query_by_year(String.to_integer(year))
   end
 
   @doc """
@@ -57,8 +56,10 @@ defmodule BankingApi.Transactions do
     %{total: 1000, transactions: [%Transactions{}, ...]}
   """
   def month(year, month) do
-    Helper.query_by_month(year, month)
-    |> create_payload()
+    Helper.query_by_month(
+      String.to_integer(year),
+      String.to_integer(month)
+    )
   end
 
   @doc """
@@ -71,20 +72,7 @@ defmodule BankingApi.Transactions do
   """
   def day(date) do
     Helper.query_by_day(date)
-    |> create_payload()
-  end
-
-  defp create_payload(transactions) do
-    # Prepara o report de transações: soma o total operacionado e adiciona a lista de `transactions` em um map
-    %{total: sum_amount(transactions), transactions: transactions}
-  end
-
-  defp sum_amount(trasactions) do
-    # Foi preciso fazer a soma das quantias dessa forma para evitar um resultado do tipo: `1.3e3`
-    # `Enum.reduce` soma cada valor de `transaction.value`. E o primeiro valor a ser somado é o segundo argumento da função (`0`)
-    Enum.reduce(trasactions, Decimal.new("0"), fn transaction, acc ->
-      Decimal.add(acc, transaction.value)
-    end)
+    |> Helper.create_report()
   end
 
   @doc """
