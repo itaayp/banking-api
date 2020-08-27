@@ -32,10 +32,6 @@ defmodule BankingApi.Accounts do
     end
   end
 
-  @doc """
-    Função responsável por preparar um usuário para a inserção no banco de dados.
-    O argumento `params` são os dados do `user` a serem preparados.
-  """
   defp insert_user(params) do
     %User{}
     |> User.changeset(params)
