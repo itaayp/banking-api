@@ -96,25 +96,19 @@ O retorno da função é uma tupla contendo o status da operação de update no 
   <div class="summary-signature">
     <a href="#perform_update/3">perform_update(from, to_id, amount)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável validar se a operação de subtração da conta pagadora (<code class="inline">from</code>) foi concluida, e se for realizar a operação de soma na conta recebedora (<code class="inline">to_id</code>)
-Os argumentos da função são uma struct de <code class="inline">account</code> que representa a conta pagadora (<code class="inline">from</code>), o id da conta recebedora (<code class="inline">to_id</code>) e a quantidade a ser transferida (<code class="inline">amount</code>)</p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável validar se a operação de subtração da conta pagadora (<code class="inline">from</code>) foi concluida, e se for, realizar a operação de soma na conta recebedora (<code class="inline">to_id</code>)</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#transfer/3">transfer(from_id, to_id, amount)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável por operar a transferência bancária entre duas contas.
-Os argumentos desta função são o id da conta pagadora: <code class="inline">from_id</code>, o id da conta recebedora: <code class="inline">to_id</code>, e a quantidade a ser transferida: <code class="inline">amount</code>.
-O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando se o status da operação foi ou não realizada.
-Um dos possíveis motivos da operação não ser realizada, é se o valor <code class="inline">amount</code> a ser transferido é maior do que <code class="inline">from.balance</code>.</p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por operar a transferência bancária entre duas contas.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#update_account/2">update_account(account, params)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável por realizar a operação de update de uma <code class="inline">account</code> no banco de dados.
-Os argumentos da função são a struc da <code class="inline">account</code> que será atualizada, e o map <code class="inline">params</code> que contém os valores a serem atualizados.
-O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por validar os dados de <code class="inline">account</code> antes que eles sejam inseridos no banco de dados.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -159,8 +153,7 @@ O retorno da função é uma tupla contendo o status da operação de update no 
 
   <section class="docstring">
 
-<p>Esta função é responsável validar se a operação de subtração da conta pagadora (<code class="inline">from</code>) foi concluida, e se for realizar a operação de soma na conta recebedora (<code class="inline">to_id</code>)
-Os argumentos da função são uma struct de <code class="inline">account</code> que representa a conta pagadora (<code class="inline">from</code>), o id da conta recebedora (<code class="inline">to_id</code>) e a quantidade a ser transferida (<code class="inline">amount</code>)</p>  </section>
+<p>Esta função é responsável validar se a operação de subtração da conta pagadora (<code class="inline">from</code>) foi concluida, e se for, realizar a operação de soma na conta recebedora (<code class="inline">to_id</code>)</p><p>Os argumentos da função são:</p><ol><li><code class="inline">from</code>: É uma struct de <code class="inline">account</code> e representa a conta pagadora.</li><li><code class="inline">to_id</code>: É o id da conta recebedora.</li><li><code class="inline">amount</code>: Quantidade a ser transferida</li></ol>  </section>
 </section>
 <section class="detail" id="transfer/3">
   <div class="detail-header">
@@ -173,10 +166,7 @@ Os argumentos da função são uma struct de <code class="inline">account</code>
 
   <section class="docstring">
 
-<p>Esta função é responsável por operar a transferência bancária entre duas contas.
-Os argumentos desta função são o id da conta pagadora: <code class="inline">from_id</code>, o id da conta recebedora: <code class="inline">to_id</code>, e a quantidade a ser transferida: <code class="inline">amount</code>.
-O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando se o status da operação foi ou não realizada.
-Um dos possíveis motivos da operação não ser realizada, é se o valor <code class="inline">amount</code> a ser transferido é maior do que <code class="inline">from.balance</code>.</p>  </section>
+<p>Esta função é responsável por operar a transferência bancária entre duas contas.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from_id</code>: O número da conta pagadora (id da conta).</li><li><code class="inline">to_id</code>: O número da conta recebedora (id da conta).</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando o status da operação.</p><p>Um dos possíveis motivos da operação não ser realizada (e retornar um  <code class="inline">error</code>), é se o valor <code class="inline">amount</code> a ser transferido é maior do que <code class="inline">from.balance</code>.</p>  </section>
 </section>
 <section class="detail" id="update_account/2">
   <div class="detail-header">
@@ -189,9 +179,7 @@ Um dos possíveis motivos da operação não ser realizada, é se o valor <code 
 
   <section class="docstring">
 
-<p>Esta função é responsável por realizar a operação de update de uma <code class="inline">account</code> no banco de dados.
-Os argumentos da função são a struc da <code class="inline">account</code> que será atualizada, e o map <code class="inline">params</code> que contém os valores a serem atualizados.
-O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</p>  </section>
+<p>Esta função é responsável por validar os dados de <code class="inline">account</code> antes que eles sejam inseridos no banco de dados.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">account</code>: É uma struc de account, e representa a conta que será atualizada.</li><li><code class="inline">params</code>: É um map, e contém os valores a serem atualizados.</li></ol>  </section>
 </section>
 <section class="detail" id="withdraw/2">
   <div class="detail-header">
@@ -204,7 +192,7 @@ O retorno da função é uma tupla contendo o status da operação de update no 
 
   <section class="docstring">
 
-<p>Esta função é responsável por operar a operação de saque.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from_id</code>: Número da conta (id da conta) que realizará o saque.</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando se o status da operação foi ou não realizada.</p><p>Um dos possíveis motivos da operação não ser realizada, é se o valor <code class="inline">amount</code> é maior do que <code class="inline">from.balance</code>.</p>  </section>
+<p>Esta função é responsável por operar a operação de saque.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from_id</code>: Número da conta (id da conta) que realizará o saque.</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando o status da operação.</p><p>Um dos possíveis motivos da operação não ser realizada, é se o valor <code class="inline">amount</code> é maior do que <code class="inline">from.balance</code>.</p>  </section>
 </section>
           </div>
         </section>

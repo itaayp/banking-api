@@ -1,11 +1,11 @@
-dist/search_items-0ab5a3a0c2.js
+dist/search_items-ba23543751.js
 dist/app-0103364119015b97e56c.js
 dist/elixir-d678dad126d82ddc061f.css
 dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/sidebar_items-0e6ac22d55.js
+dist/sidebar_items-19b896a648.js
 api-reference.html
 search.html
 404.html
@@ -15,6 +15,8 @@ BankingApi.Accounts.Account.html
 BankingApi.Accounts.User.html
 BankingApi.Operations.html
 BankingApi.Repo.html
+BankingApi.Transactions.html
+BankingApi.Transactions.Transaction.html
 BankingApiWeb.html
 BankingApiWeb.ChangesetView.html
 BankingApiWeb.Endpoint.html
@@ -28,6 +30,7 @@ BankingApiWeb.OperationView.html
 BankingApiWeb.Router.html
 BankingApiWeb.Router.Helpers.html
 BankingApiWeb.Telemetry.html
+BankingApiWeb.TransactionController.html
 BankingApiWeb.UserController.html
 BankingApiWeb.UserSocket.html
 BankingApiWeb.UserView.html

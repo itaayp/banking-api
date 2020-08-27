@@ -1,6 +1,8 @@
 defmodule BankingApiWeb.UserController do
   @moduledoc """
-  Esse é o User Controller. Este módulo é o primeiro contato entre as requisições e o back-end
+  User Controller.
+
+  Controller responsável por iniciar qualquer operação no back-end a partir de uma requisição da API relacionada a `/api/auth` ou `/api/user`.
   """
 
   use BankingApiWeb, :controller

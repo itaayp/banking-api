@@ -25,7 +25,7 @@ defmodule BankingApiWeb.UserView do
   end
 
   @doc """
-  Esta função é responsável por renderizar somente o resultado de um `user`: o que é passado como struct pelo argumento `user` da função
+  Esta função é responsável por renderizar somente o resultado de um `user`.
   Os argumentos da função são a string `show.json` e a `user` struct
   """
   def render("show.json", %{user: user}) do

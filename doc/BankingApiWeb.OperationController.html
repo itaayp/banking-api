@@ -86,15 +86,13 @@ BankingApiWeb.OperationController      </h1>
   <div class="summary-signature">
     <a href="#transfer/2">transfer(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>A função <a href="#transfer/2"><code class="inline">transfer/2</code></a> é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário final.
-Os argumentos da função são as informações da conexão: <code class="inline">conn</code> e um map contendo o id da conta pagadora (número da conta): <code class="inline">from_account</code>, o id da conta recebedora (número da conta): <code class="inline">to_account</code> e o valor transferido: <code class="inline">amount</code></p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário final.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#withdraw/2">withdraw(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário final.
-Os argumentos da função são as informações da conexão: <code class="inline">conn</code> e um map contendo o id da conta (número da conta) que fará o saque: <code class="inline">from_account</code>, e o valor transferido: <code class="inline">amount</code></p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário final.</p></div>
 </div>
   </div>
         </section>
@@ -118,8 +116,10 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função <a href="#transfer/2"><code class="inline">transfer/2</code></a> é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário final.
-Os argumentos da função são as informações da conexão: <code class="inline">conn</code> e um map contendo o id da conta pagadora (número da conta): <code class="inline">from_account</code>, o id da conta recebedora (número da conta): <code class="inline">to_account</code> e o valor transferido: <code class="inline">amount</code></p>  </section>
+<p>Esta função é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário final.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">map</code>: Um map que contém:
+2.1. <code class="inline">&quot;from_account&quot; =&gt; from</code>: O número da conta pagadora (id da conta)
+2.2. <code class="inline">&quot;to_account&quot; =&gt; to</code>: O número da conta recebedora (id da conta)
+2.3. <code class="inline">&quot;amount&quot; =&gt; amount</code>: Valor a ser transferido</li></ol>  </section>
 </section>
 <section class="detail" id="withdraw/2">
   <div class="detail-header">
@@ -132,8 +132,9 @@ Os argumentos da função são as informações da conexão: <code class="inline
 
   <section class="docstring">
 
-<p>Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário final.
-Os argumentos da função são as informações da conexão: <code class="inline">conn</code> e um map contendo o id da conta (número da conta) que fará o saque: <code class="inline">from_account</code>, e o valor transferido: <code class="inline">amount</code></p>  </section>
+<p>Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário final.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">map</code>: Um map que contém:
+2.1. <code class="inline">&quot;from_account&quot; =&gt; from</code>: O número da conta pagadora (id da conta)
+2.2. <code class="inline">&quot;amount&quot; =&gt; amount</code>: Valor a ser transferido</li></ol>  </section>
 </section>
           </div>
         </section>

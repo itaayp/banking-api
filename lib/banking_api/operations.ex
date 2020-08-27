@@ -1,7 +1,9 @@
 defmodule BankingApi.Operations do
   @moduledoc """
   Este é o Operations Context.
+
   Este módulo é responsável por expor as funcionalidades relacionadas às operações de `transfer` e `withdraw`.
+
   Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.
   """
 
