@@ -6,8 +6,20 @@ defmodule BankingApi.TransactionsTest do
   describe "transactions" do
     alias BankingApi.Transactions.Transaction
 
-    @valid_attrs %{account_from: "some account_from", account_to: "some account_to", date: ~D[2010-04-17], type: "some type", value: "120.5"}
-    @update_attrs %{account_from: "some updated account_from", account_to: "some updated account_to", date: ~D[2011-05-18], type: "some updated type", value: "456.7"}
+    @valid_attrs %{
+      account_from: "some account_from",
+      account_to: "some account_to",
+      date: ~D[2010-04-17],
+      type: "some type",
+      value: "120.5"
+    }
+    @update_attrs %{
+      account_from: "some updated account_from",
+      account_to: "some updated account_to",
+      date: ~D[2011-05-18],
+      type: "some updated type",
+      value: "456.7"
+    }
     @invalid_attrs %{account_from: nil, account_to: nil, date: nil, type: nil, value: nil}
 
     def transaction_fixture(attrs \\ %{}) do
@@ -44,7 +56,10 @@ defmodule BankingApi.TransactionsTest do
 
     test "update_transaction/2 with valid data updates the transaction" do
       transaction = transaction_fixture()
-      assert {:ok, %Transaction{} = transaction} = Transactions.update_transaction(transaction, @update_attrs)
+
+      assert {:ok, %Transaction{} = transaction} =
+               Transactions.update_transaction(transaction, @update_attrs)
+
       assert transaction.account_from == "some updated account_from"
       assert transaction.account_to == "some updated account_to"
       assert transaction.date == ~D[2011-05-18]
@@ -54,7 +69,10 @@ defmodule BankingApi.TransactionsTest do
 
     test "update_transaction/2 with invalid data returns error changeset" do
       transaction = transaction_fixture()
-      assert {:error, %Ecto.Changeset{}} = Transactions.update_transaction(transaction, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Transactions.update_transaction(transaction, @invalid_attrs)
+
       assert transaction == Transactions.get_transaction!(transaction.id)
     end
 

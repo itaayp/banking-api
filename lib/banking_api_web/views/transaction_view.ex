@@ -37,6 +37,6 @@ defmodule BankingApiWeb.TransactionView do
         }
       end)
 
-    %{"Total operado": "R$ #{transaction.total}", "Operações": transaction_list}
+    %{"Total operado": "R$ #{transaction.total}", Operações: transaction_list}
   end
 end

@@ -12,7 +12,7 @@ defmodule BankingApi.Operations do
   alias BankingApi.Transactions.Transaction
   alias Ecto.Multi
 
-  #variáveis de módulo
+  # variáveis de módulo
   @withdraw "withdraw"
   @transfer "transfer"
 
@@ -54,15 +54,24 @@ defmodule BankingApi.Operations do
   defp withdraw_operation(from, amount) do
     Multi.new()
     |> Multi.update(:account_from, perform_operation(from, amount, :sub))
-    |> Multi.insert(:transaction, create_transaction_struct(amount, Integer.to_string(from.id), "~", @withdraw))
+    |> Multi.insert(
+      :transaction,
+      create_transaction_struct(amount, Integer.to_string(from.id), "~", @withdraw)
+    )
     |> Repo.transaction()
     |> handle_feedback("Saque realizado! Foram sacados R$ #{amount} da conta #{from.id}")
   end
 
   defp operate_if_not_negative(balance, amount, function) do
     case is_negative?(balance, amount) do
-      true -> {:error, "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{balance},00"}
-      false -> function
+      true ->
+        {:error,
+         "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{
+           balance
+         },00"}
+
+      false ->
+        function
     end
   end
 
@@ -85,18 +94,31 @@ defmodule BankingApi.Operations do
     Multi.new()
     |> Multi.update(:from, perform_operation(from, amount, :sub))
     |> Multi.update(:to, perform_operation(to, amount, :sum))
-    |> Multi.insert(:transaction, create_transaction_struct(amount, Integer.to_string(from.id), to_id, @transfer))
+    |> Multi.insert(
+      :transaction,
+      create_transaction_struct(amount, Integer.to_string(from.id), to_id, @transfer)
+    )
     |> Repo.transaction()
-    |> handle_feedback("Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{amount}")
+    |> handle_feedback(
+      "Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{
+        amount
+      }"
+    )
   end
 
   defp handle_feedback(operations, message) do
     case operations do
       {:ok, _tail} ->
         {:ok, message}
-      {:error, :from, changeset, _tail} -> {:error, changeset}
-      {:error, :to, changeset, _tail} -> {:error, changeset}
-      {:error, :transaction, changeset, _tail} -> {:error, changeset}
+
+      {:error, :from, changeset, _tail} ->
+        {:error, changeset}
+
+      {:error, :to, changeset, _tail} ->
+        {:error, changeset}
+
+      {:error, :transaction, changeset, _tail} ->
+        {:error, changeset}
     end
   end
 
@@ -132,6 +154,12 @@ defmodule BankingApi.Operations do
   end
 
   defp create_transaction_struct(amount, from, to, type) do
-    %Transaction{value: amount, account_from: from, account_to: to, type: type, date: Date.utc_today()}
+    %Transaction{
+      value: amount,
+      account_from: from,
+      account_to: to,
+      type: type,
+      date: Date.utc_today()
+    }
   end
 end
