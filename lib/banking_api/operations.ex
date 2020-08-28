@@ -9,6 +9,12 @@ defmodule BankingApi.Operations do
 
   alias BankingApi.{Accounts, Accounts.Account}
   alias BankingApi.Repo
+  alias BankingApi.Transactions.Transaction
+  alias Ecto.Multi
+
+  #variáveis de módulo
+  @withdraw "withdraw"
+  @transfer "transfer"
 
   @doc """
   Esta função é responsável por operar a transferência bancária entre duas contas.
@@ -25,11 +31,7 @@ defmodule BankingApi.Operations do
   def transfer(from_id, to_id, amount) do
     from = Accounts.get!(from_id)
     amount = Decimal.new(amount)
-
-    case is_negative?(from.balance, amount) do
-      true -> {:error, "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{from.balance},00"}
-      false -> perform_update(from, to_id, amount)
-    end
+    operate_if_not_negative(from.balance, amount, transfer_operation(from, to_id, amount))
   end
 
   @doc """
@@ -46,15 +48,21 @@ defmodule BankingApi.Operations do
   def withdraw(from_id, amount) do
     from = Accounts.get!(from_id)
     amount = Decimal.new(amount)
+    operate_if_not_negative(from.balance, amount, withdraw_operation(from, amount))
+  end
 
-    case is_negative?(from.balance, amount) do
-      true -> {:error, "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{from.balance},00"}
-      false ->
-        {:ok, from} =
-          perform_operation(from, amount, :sub)
-          |> Repo.update()
+  defp withdraw_operation(from, amount) do
+    Multi.new()
+    |> Multi.update(:account_from, perform_operation(from, amount, :sub))
+    |> Multi.insert(:transaction, create_transaction_struct(amount, Integer.to_string(from.id), "~", @withdraw))
+    |> Repo.transaction()
+    |> handle_feedback("Saque realizado! Foram sacados R$ #{amount} da conta #{from.id}")
+  end
 
-        {:ok, "Saque realizado! Saque realizado na conta #{from.id} no valor de #{amount}"}
+  defp operate_if_not_negative(balance, amount, function) do
+    case is_negative?(balance, amount) do
+      true -> {:error, "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{balance},00"}
+      false -> function
     end
   end
 
@@ -64,26 +72,31 @@ defmodule BankingApi.Operations do
   end
 
   @doc """
-  Esta função é responsável validar se a operação de subtração da conta pagadora (`from`) foi concluida, e se for, realizar a operação de soma na conta recebedora (`to_id`)
+  Esta função é responsável por realizar a subtração no saldo da conta pagadora, e realizar a operação de soma no saldo da conta recebedora da transferência.
 
   Os argumentos da função são:
     1. `from`: É uma struct de `account` e representa a conta pagadora.
     2. `to_id`: É o id da conta recebedora.
     3. `amount`: Quantidade a ser transferida
   """
-  def perform_update(from, to_id, amount) do
+  def transfer_operation(from, to_id, amount) do
     to = Accounts.get!(to_id)
 
-    transaction = Ecto.Multi.new()
-    |> Ecto.Multi.update(:from, perform_operation(from, amount, :sub))
-    |> Ecto.Multi.update(:to, perform_operation(to, amount, :sum))
+    Multi.new()
+    |> Multi.update(:from, perform_operation(from, amount, :sub))
+    |> Multi.update(:to, perform_operation(to, amount, :sum))
+    |> Multi.insert(:transaction, create_transaction_struct(amount, Integer.to_string(from.id), to_id, @transfer))
     |> Repo.transaction()
+    |> handle_feedback("Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{amount}")
+  end
 
-    case transaction do
+  defp handle_feedback(operations, message) do
+    case operations do
       {:ok, _tail} ->
-        {:ok, "Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{amount}"}
+        {:ok, message}
       {:error, :from, changeset, _tail} -> {:error, changeset}
       {:error, :to, changeset, _tail} -> {:error, changeset}
+      {:error, :transaction, changeset, _tail} -> {:error, changeset}
     end
   end
 
@@ -116,5 +129,9 @@ defmodule BankingApi.Operations do
   """
   def update_account(%Account{} = account, params) do
     Account.changeset(account, params)
+  end
+
+  defp create_transaction_struct(amount, from, to, type) do
+    %Transaction{value: amount, account_from: from, account_to: to, type: type, date: Date.utc_today()}
   end
 end
