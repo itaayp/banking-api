@@ -47,7 +47,8 @@ defmodule BankingApi.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ex_doc, "~> 0.19"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:guardian, "~> 1.2"}
+      {:guardian, "~> 1.2"},
+      {:poison, "~> 3.1"}
     ]
   end
 
