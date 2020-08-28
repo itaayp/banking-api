@@ -7,6 +7,7 @@ defmodule BankingApiWeb.UserController do
 
   use BankingApiWeb, :controller
   alias BankingApi.Accounts
+  alias Accounts.Auth.Guardian
 
   action_fallback BankingApiWeb.FallbackController
 
@@ -26,6 +27,22 @@ defmodule BankingApiWeb.UserController do
     end
   end
 
+  @doc """
+  Essa função é responsável por autenticar um usuário no sistema e renderizar o feedback de signin para o usuário final
+
+  Os argumentos da função são:
+    1. `conn`: as informações da conexão
+    2. `map`: Um map que contém:
+      2.1. `"email" => email`: O email do usuário
+      2.2. `"password" => password`: A senha do usuário
+  """
+  def signin(conn, %{"email" => email, "password" => password}) do
+    with {:ok, user, token} <- Guardian.authenticate(email, password) do
+      conn
+      |> put_status(:created)
+      |> render("user_auth.json", user: user, token: token)
+    end
+  end
   @doc """
   Esta função é responsável por buscar um usuário pelo `id` e renderizar as informações deste usuário obtido.
   Os argumentos da função são as informações de conexão `conn` e o `id` do usuário que será resgatado

@@ -33,6 +33,20 @@ defmodule BankingApiWeb.UserView do
   end
 
   @doc """
+  Função responsável por renderizar para o usuário final o feedback de signin quando o usuário é autenticado com sucesso no sistema.
+
+  Os argumentos da função são:
+    1. A string `"user_auth.json"`
+    2. Um map que contenha as propriedades:
+      2.1. `user`: Uma `user struct`
+      2.2. `token`: Uma string com o valor `token` gerado pelo framework de autenticação, Guardian
+  """
+  def render("user_auth.json", %{user: user, token: token}) do
+    user = Map.put(render_one(user, BankingApiWeb.UserView, "user.json"), :token, token)
+    %{data: user}
+  end
+
+  @doc """
   retorna um `map` contendo as informações de um usuário.
   Os argumentos da função são a string "user.json" e um map contendo a struct de `user`
   """
