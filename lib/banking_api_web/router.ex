@@ -15,15 +15,17 @@ defmodule BankingApiWeb.Router do
 
   # scope "/", BankingApiWeb do
   #   pipe_through :browser
-
   #   get "/", PageController, :index
   # end
 
-  # Other scopes may use custom stacks.
+  scope "/api/auth", BankingApiWeb do
+    post "/signup", UserController, :signup
+    post "/signin", UserController, :signin
+  end
+
   scope "/api", BankingApiWeb do
     pipe_through :api
 
-    post "/auth/signup", UserController, :signup
     get "/user", UserController, :show
 
     put "/operations/transfer", OperationController, :transfer
