@@ -43,6 +43,7 @@ defmodule BankingApiWeb.UserController do
       |> render("user_auth.json", user: user, token: token)
     end
   end
+
   @doc """
   Esta função é responsável por buscar um usuário pelo `id` e renderizar as informações deste usuário obtido.
   Os argumentos da função são as informações de conexão `conn` e o `id` do usuário que será resgatado

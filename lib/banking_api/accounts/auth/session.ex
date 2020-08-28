@@ -27,7 +27,7 @@ defmodule BankingApi.Accounts.Auth.Session do
         {:error, :not_found}
 
       user ->
-        if (password == user.password) do
+        if password == user.password do
           {:ok, user |> Repo.preload(:accounts)}
         else
           {:error, :unauthorized}
