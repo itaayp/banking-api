@@ -15,6 +15,11 @@ defmodule BankingApi.Operations do
   # variáveis de módulo
   @withdraw "withdraw"
   @transfer "transfer"
+  @transfer_succeeded_from_account "Transferência realizada da conta"
+  @to_account "para a conta"
+  @in_the_amount_of "no valor de R$"
+  @withdraw_succeeded "Saque realizado"
+  @from_account "da conta"
 
   @doc """
   Esta função é responsável por operar a transferência bancária entre duas contas.
@@ -30,6 +35,23 @@ defmodule BankingApi.Operations do
   """
   def transfer(from, to_id, amount) do
     operate_if_not_negative(from.balance, amount, transfer_operation(from, to_id, amount))
+  end
+
+  @doc """
+  Esta função é responsável por realizar a subtração no saldo da conta pagadora, e realizar a operação de soma no saldo da conta recebedora da transferência.
+
+  Os argumentos da função são:
+    1. `from`: É uma struct de `account` e representa a conta pagadora.
+    2. `to_id`: É o id da conta recebedora.
+    3. `amount`: Quantidade a ser transferida
+  """
+  def transfer_operation(from, to_id, amount) do
+    to = Accounts.get!(to_id)
+
+    Multi.new()
+    |> Multi.update(:to, perform_operation(to, amount, :sum))
+    |> subtract_from_account(from, amount, to_id, @transfer)
+    |> handle_feedback("#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{@in_the_amount_of} #{amount}")
   end
 
   @doc """
@@ -49,23 +71,21 @@ defmodule BankingApi.Operations do
 
   defp withdraw_operation(from, amount) do
     Multi.new()
-    |> Multi.update(:account_from, perform_operation(from, amount, :sub))
-    |> Multi.insert(
-      :transaction,
-      create_transaction_struct(amount, Integer.to_string(from.id), "~", @withdraw)
-    )
+    |> subtract_from_account(from, amount, "~", @withdraw)
+    |> handle_feedback("#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}")
+  end
+
+  defp subtract_from_account(multi, from, amount, to_id, operation_type) do
+    Multi.update(multi, :from, perform_operation(from, amount, :sub))
+    |> Multi.insert(:transaction, create_transaction_struct(amount, Integer.to_string(from.id), to_id, operation_type))
     |> Repo.transaction()
-    |> handle_feedback("Saque realizado! Foram sacados R$ #{amount} da conta #{from.id}")
   end
 
   defp operate_if_not_negative(balance, amount, function) do
     case is_negative?(balance, amount) do
       true ->
         {:error,
-         "O saldo de sua conta não permite fazer uma transferência de R$ #{amount},00. Você não pode fazer transferências maiores que R$ #{
-           balance
-         },00"}
-
+         "O saldo de sua conta não permite fazer uma transferência de R$ #{amount}. Você não pode fazer transferências maiores que R$ #{balance}"}
       false ->
         function
     end
@@ -74,32 +94,6 @@ defmodule BankingApi.Operations do
   defp is_negative?(balance, amount) do
     Decimal.sub(balance, amount)
     |> Decimal.negative?()
-  end
-
-  @doc """
-  Esta função é responsável por realizar a subtração no saldo da conta pagadora, e realizar a operação de soma no saldo da conta recebedora da transferência.
-
-  Os argumentos da função são:
-    1. `from`: É uma struct de `account` e representa a conta pagadora.
-    2. `to_id`: É o id da conta recebedora.
-    3. `amount`: Quantidade a ser transferida
-  """
-  def transfer_operation(from, to_id, amount) do
-    to = Accounts.get!(to_id)
-
-    Multi.new()
-    |> Multi.update(:from, perform_operation(from, amount, :sub))
-    |> Multi.update(:to, perform_operation(to, amount, :sum))
-    |> Multi.insert(
-      :transaction,
-      create_transaction_struct(amount, Integer.to_string(from.id), to_id, @transfer)
-    )
-    |> Repo.transaction()
-    |> handle_feedback(
-      "Transferência concluída! Transferência realizada da conta #{from.id} para a conta #{to.id} no valor de #{
-        amount
-      }"
-    )
   end
 
   defp handle_feedback(operations, message) do
