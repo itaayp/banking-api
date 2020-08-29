@@ -24,7 +24,7 @@ defmodule BankingApiWeb.TransactionController do
 
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
-  def all(conn, _params) do
+  def generate_entire_life_report(conn, _params) do
     render(conn, "show.json", transaction: Transactions.all())
   end
 
@@ -39,7 +39,7 @@ defmodule BankingApiWeb.TransactionController do
 
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
-  def year(conn, %{"year" => year}) do
+  def generate_anual_report(conn, %{"year" => year}) do
     case Transactions.validate_date(year, @year_fail_message) do
       {:ok, _message} -> render(conn, "show.json", transaction: Transactions.year(year))
       {:error, reason} -> {:error, reason}
@@ -62,7 +62,7 @@ defmodule BankingApiWeb.TransactionController do
 
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
-  def month(conn, %{"year" => year, "month" => month}) do
+  def generate_monthly_report(conn, %{"year" => year, "month" => month}) do
     with {:ok, _message} <- Transactions.validate_date(year, @year_fail_message),
       {:ok, _message} <- Transactions.validate_date(month, @month_fail_message) do
         render(conn, "show.json", transaction: Transactions.month(year, month))
@@ -80,7 +80,7 @@ defmodule BankingApiWeb.TransactionController do
 
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
-  def day(conn, %{"day" => day}) do
+  def generate_daily_report(conn, %{"day" => day}) do
     render(conn, "show.json", transaction: Transactions.day(day))
   end
 

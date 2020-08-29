@@ -20,6 +20,9 @@ defmodule BankingApi.Operations do
   @in_the_amount_of "no valor de R$"
   @withdraw_succeeded "Saque realizado"
   @from_account "da conta"
+  @denied_operation "Operação negada"
+  @you_tried_to_operate_an_amount_greater_than_your_balance "Você tentou operar um valor maior do que o permitido para a sua conta"
+  @your_account_balance_is "O saldo de sua conta bancária é R$"
 
   @doc """
   Esta função é responsável por operar a transferência bancária entre duas contas.
@@ -88,8 +91,7 @@ defmodule BankingApi.Operations do
   defp operate_if_not_negative(balance, amount, function) do
     case is_negative?(balance, amount) do
       true ->
-        {:error,
-         "O saldo de sua conta não permite fazer uma transferência de R$ #{amount}. Você não pode fazer transferências maiores que R$ #{balance}"}
+        {:error,"#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{balance}."}
       false ->
         function
     end

@@ -35,10 +35,10 @@ defmodule BankingApiWeb.Router do
     put "/operations/transfer", OperationController, :transfer
     put "/operations/withdraw", OperationController, :withdraw
 
-    get "/transactions/all", TransactionController, :all
-    get "/transactions/year/:year", TransactionController, :year
-    get "/transactions/year/:year/month/:month", TransactionController, :month
-    get "/transactions/day/:day", TransactionController, :day
+    get "/transactions/all", TransactionController, :generate_entire_life_report
+    get "/transactions/year/:year", TransactionController, :generate_anual_report
+    get "/transactions/year/:year/month/:month", TransactionController, :generate_monthly_report
+    get "/transactions/day/:day", TransactionController, :generate_daily_report
   end
 
   # Enables LiveDashboard only for development
