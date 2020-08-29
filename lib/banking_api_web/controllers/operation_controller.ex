@@ -41,6 +41,9 @@ defmodule BankingApiWeb.OperationController do
     amount = Decimal.new(amount)
 
     with {:ok, message} <- Operations.withdraw(user.accounts, amount) do
+      IO.puts("Placeholder: Enviando email para o usuario")
+      IO.puts("Mensagem do email: Voce acabou de realizar um saque")
+
       conn
       |> render("operation_succeeded.json", message: message)
     end
