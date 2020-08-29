@@ -10,6 +10,8 @@ defmodule BankingApiWeb.TransactionController do
 
   action_fallback BankingApiWeb.FallbackController
 
+  plug :is_admin? when action in [:all, :year, :month, :day]
+
   @doc """
   Função responsável por buscar e exibir ao usuário final todas as transações armazenadas no banco de dados.
 
@@ -71,5 +73,18 @@ defmodule BankingApiWeb.TransactionController do
   """
   def day(conn, %{"day" => day}) do
     render(conn, "show.json", transaction: Transactions.day(day))
+  end
+
+  # Antes de qualquer função especificada na declaração do `plug`, a função `is_admin?` será chamada
+  defp is_admin?(conn, _params) do
+    user = Guardian.Plug.current_resource(conn)
+
+    if user.role =="admin" do
+      conn
+    else
+      conn
+      |> put_status(401)
+      |> json(%{error: "Acesso negado. Você não tem permissão para acessar este relatório."})
+    end
   end
 end
