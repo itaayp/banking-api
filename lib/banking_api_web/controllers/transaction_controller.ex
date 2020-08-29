@@ -79,7 +79,7 @@ defmodule BankingApiWeb.TransactionController do
   defp is_admin?(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
 
-    if user.role =="admin" do
+    if user.role == "admin" do
       conn
     else
       conn
