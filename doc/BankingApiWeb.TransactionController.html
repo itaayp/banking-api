@@ -68,7 +68,7 @@ BankingApiWeb.TransactionController      </h1>
 
 
         <section id="moduledoc">
-<p>  Transaction Controller</p><p>  Controller responsável por iniciar qualquer operação no back-end a partir de uma requisição da API relacionada a <code class="inline">/api/transaction</code>.</p>        </section>
+<p>Transaction Controller</p><p>Controller responsável por iniciar qualquer operação no back-end a partir de uma requisição da API relacionada a <code class="inline">/api/transaction</code>.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -84,27 +84,27 @@ BankingApiWeb.TransactionController      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#all/2">all(conn, params)</a>
+    <a href="#generate_anual_report/2">generate_anual_report(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final todas as transações armazenadas no banco de dados.</p></div>
+    <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final as transações filtradas por <code class="inline">year</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#day/2">day(conn, map)</a>
+    <a href="#generate_daily_report/2">generate_daily_report(conn, map)</a>
   </div>
     <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final as transações filtradas por uma data específica.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#month/2">month(conn, map)</a>
+    <a href="#generate_entire_life_report/2">generate_entire_life_report(conn, params)</a>
   </div>
-    <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final as transações filtradas por mês e ano.</p></div>
+    <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final todas as transações armazenadas no banco de dados.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#year/2">year(conn, map)</a>
+    <a href="#generate_monthly_report/2">generate_monthly_report(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final as transações filtradas por <code class="inline">year</code>.</p></div>
+    <div class="summary-synopsis"><p>Função responsável por buscar e exibir ao usuário final as transações filtradas por mês e ano.</p></div>
 </div>
   </div>
         </section>
@@ -117,59 +117,59 @@ BankingApiWeb.TransactionController      </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="all/2">
+<section class="detail" id="generate_anual_report/2">
   <div class="detail-header">
-    <a href="#all/2" class="detail-link" title="Link to this function">
+    <a href="#generate_anual_report/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">all(conn, params)</h1>
+    <h1 class="signature">generate_anual_report(conn, map)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Função responsável por buscar e exibir ao usuário final as transações filtradas por <code class="inline">year</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">%{&quot;year&quot; =&gt; year}</code>: Um map contendo o ano (<code class="inline">year</code>) que é passado na requisição.</li></ol><p>Observação: o campo <code class="inline">year</code> deve seguir o formato: <code class="inline">&quot;yyyy&quot;</code>.</p><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
+</section>
+<section class="detail" id="generate_daily_report/2">
+  <div class="detail-header">
+    <a href="#generate_daily_report/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_daily_report(conn, map)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Função responsável por buscar e exibir ao usuário final as transações filtradas por uma data específica.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">%{&quot;day&quot; =&gt; day}</code>: Um map contendo a data (<code class="inline">day</code>), que é passada na requisição.</li></ol><p>Obs: O campo <code class="inline">day</code> deve seguir formato: <code class="inline">&quot;yyyy-mm-dd&quot;</code>.</p><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
+</section>
+<section class="detail" id="generate_entire_life_report/2">
+  <div class="detail-header">
+    <a href="#generate_entire_life_report/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_entire_life_report(conn, params)</h1>
   </div>
 
   <section class="docstring">
 
 <p>Função responsável por buscar e exibir ao usuário final todas as transações armazenadas no banco de dados.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">_params</code>: Os parâmetros adicionados no request, que neste caso são nulos</li></ol><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
 </section>
-<section class="detail" id="day/2">
+<section class="detail" id="generate_monthly_report/2">
   <div class="detail-header">
-    <a href="#day/2" class="detail-link" title="Link to this function">
+    <a href="#generate_monthly_report/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">day(conn, map)</h1>
-  </div>
-
-  <section class="docstring">
-
-<p>Função responsável por buscar e exibir ao usuário final as transações filtradas por uma data específica.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">%{&quot;date&quot; =&gt; date}</code>: Um map contendo a data (<code class="inline">date</code>), que é passada na requisição.</li></ol><p>Obs: O campo <code class="inline">date</code> deve seguir formato: <code class="inline">yyyy-mm-dd</code>.</p><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
-</section>
-<section class="detail" id="month/2">
-  <div class="detail-header">
-    <a href="#month/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">month(conn, map)</h1>
+    <h1 class="signature">generate_monthly_report(conn, map)</h1>
   </div>
 
   <section class="docstring">
 
 <p>Função responsável por buscar e exibir ao usuário final as transações filtradas por mês e ano.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">map</code>: Um map que contém:
 2.1. <code class="inline">&quot;year&quot; =&gt; year</code>: o ano das transações
-2.2. <code class="inline">&quot;month&quot; =&gt; month</code>:  mês das transações</li></ol><p>Observação:</p><ol><li>O campo <code class="inline">year</code> deve seguir o formato: <code class="inline">yyyy</code>.</li><li>O campo <code class="inline">month</code> deve seguir o formato: <code class="inline">mm</code></li></ol><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
-</section>
-<section class="detail" id="year/2">
-  <div class="detail-header">
-    <a href="#year/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">year(conn, map)</h1>
-  </div>
-
-  <section class="docstring">
-
-<p>Função responsável por buscar e exibir ao usuário final as transações filtradas por <code class="inline">year</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">%{&quot;year&quot; =&gt; year}</code>: Um map contendo o ano (<code class="inline">year</code>) que é passado na requisição.</li></ol><p>Observação: o campo <code class="inline">year</code> deve seguir o formato: <code class="inline">yyyy</code>.</p><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
+2.2. <code class="inline">&quot;month&quot; =&gt; month</code>:  mês das transações</li></ol><p>Observação:</p><ol><li>O campo <code class="inline">year</code> deve seguir o formato: <code class="inline">&quot;yyyy&quot;</code>.</li><li>O campo <code class="inline">month</code> deve seguir o formato: <code class="inline">&quot;mm&quot;</code></li></ol><p>O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em <code class="inline">show.json</code> e em caso de falha é localizado em <a href="BankingApiWeb.FallbackController.html"><code class="inline">BankingApiWeb.FallbackController</code></a></p>  </section>
 </section>
           </div>
         </section>

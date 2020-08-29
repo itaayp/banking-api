@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.22.2">
+    <meta name="project" content="banking_api v0.1.0">
+    <title>BankingApi.Transactions.Helper — banking_api v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
+    <script src="dist/sidebar_items-0e6ac22d55.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-0103364119015b97e56c.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="api-reference.html" class="sidebar-projectName">
+banking_api      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">banking_api v0.1.0</small>
+BankingApi.Transactions.Helper      </h1>
+
+
+        <section id="moduledoc">
+<p>  Modulo helper ao <code class="inline">Transactions Context</code></p>        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_report/1">create_report(transactions)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função monta o que será o report de transações.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#do_query/2">do_query(start_date, end_date)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função monta e executa a query que retornará as tranactions no banco de dados.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_transactions/0">list_transactions()</a>
+  </div>
+    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#query_by_day/1">query_by_day(date)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#query_by_month/2">query_by_month(year, month)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#query_by_year/1">query_by_year(year)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sum_amount/1">sum_amount(trasactions)</a>
+  </div>
+    <div class="summary-synopsis"><p>A função é responsável por somar os valores de <code class="inline">transaction.value</code> de todas as structs passadas dentro da lista <code class="inline">transactions</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#validate_date/2">validate_date(date, fail_message)</a>
+  </div>
+    <div class="summary-synopsis"><p>Valida a data.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="create_report/1">
+  <div class="detail-header">
+    <a href="#create_report/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_report(transactions)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função monta o que será o report de transações.</p><p>O argumento da função é:</p><ol><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol>  </section>
+</section>
+<section class="detail" id="do_query/2">
+  <div class="detail-header">
+    <a href="#do_query/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">do_query(start_date, end_date)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função monta e executa a query que retornará as tranactions no banco de dados.</p><p>A consulta no banco de dados é feita baseada em um período de tempo. Portanto, os argumentos da função são:</p><ol><li><code class="inline">start_date</code>: O primeiro dia a ser levado em consideração para a consulta.</li><li><code class="inline">end_date</code>: O último dia a ser levado em consideração para a consulta.</li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol>  </section>
+</section>
+<section class="detail" id="list_transactions/0">
+  <div class="detail-header">
+    <a href="#list_transactions/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_transactions()</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função busca todos os registros da tabela <code class="inline">transactions</code>.</p><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="list_transactions/0-examples" class="section-heading">
+  <a href="#list_transactions/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_transactions</span><span class="p" data-group-id="1937097476-1">(</span><span class="p" data-group-id="1937097476-1">)</span><span class="w">
+</span><span class="p" data-group-id="1937097476-2">[</span><span class="p" data-group-id="1937097476-3">%</span><span class="nc" data-group-id="1937097476-3">Transactions</span><span class="p" data-group-id="1937097476-3">{</span><span class="p" data-group-id="1937097476-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1937097476-2">]</span></code></pre>  </section>
+</section>
+<section class="detail" id="query_by_day/1">
+  <div class="detail-header">
+    <a href="#query_by_day/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">query_by_day(date)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>O argumento da função é:</p><ol><li><code class="inline">date</code>: A data em formato string. A data deve seguir o formato: <code class="inline">&quot;yyyy-mm-dd&quot;</code>.</li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_day/1-examples" class="section-heading">
+  <a href="#query_by_day/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_day</span><span class="p" data-group-id="1830354783-1">(</span><span class="n">date</span><span class="p" data-group-id="1830354783-1">)</span><span class="w">
+</span><span class="p" data-group-id="1830354783-2">[</span><span class="p" data-group-id="1830354783-3">%</span><span class="nc" data-group-id="1830354783-3">Transactions</span><span class="p" data-group-id="1830354783-3">{</span><span class="p" data-group-id="1830354783-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1830354783-2">]</span></code></pre>  </section>
+</section>
+<section class="detail" id="query_by_month/2">
+  <div class="detail-header">
+    <a href="#query_by_month/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">query_by_month(year, month)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato <code class="inline">integer</code>. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li><li><code class="inline">month</code>: O mês em formato <code class="inline">integer</code>. O mês deve seguir o formato: <code class="inline">mm</code></li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_month/2-examples" class="section-heading">
+  <a href="#query_by_month/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_month</span><span class="p" data-group-id="7664240593-1">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p" data-group-id="7664240593-1">)</span><span class="w">
+</span><span class="p" data-group-id="7664240593-2">[</span><span class="p" data-group-id="7664240593-3">%</span><span class="nc" data-group-id="7664240593-3">Transactions</span><span class="p" data-group-id="7664240593-3">{</span><span class="p" data-group-id="7664240593-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="7664240593-2">]</span></code></pre>  </section>
+</section>
+<section class="detail" id="query_by_year/1">
+  <div class="detail-header">
+    <a href="#query_by_year/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">query_by_year(year)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p><p>O argumento da função é:
+<code class="inline">year</code>: O ano em formato integer. O ano deve seguir o formato: <code class="inline">yyyy</code>.</p><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_year/1-examples" class="section-heading">
+  <a href="#query_by_year/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_year</span><span class="p" data-group-id="4829099852-1">(</span><span class="n">year</span><span class="p" data-group-id="4829099852-1">)</span><span class="w">
+</span><span class="p" data-group-id="4829099852-2">[</span><span class="p" data-group-id="4829099852-3">%</span><span class="nc" data-group-id="4829099852-3">Transactions</span><span class="p" data-group-id="4829099852-3">{</span><span class="p" data-group-id="4829099852-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4829099852-2">]</span></code></pre>  </section>
+</section>
+<section class="detail" id="sum_amount/1">
+  <div class="detail-header">
+    <a href="#sum_amount/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sum_amount(trasactions)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>A função é responsável por somar os valores de <code class="inline">transaction.value</code> de todas as structs passadas dentro da lista <code class="inline">transactions</code></p><p>O argumento da função é a lista <code class="inline">transactions</code> que contém as structs de <code class="inline">transaction</code></p><p>O retorno da função é o resultado da soma de todas as <code class="inline">transaction.value</code> da lista</p>  </section>
+</section>
+<section class="detail" id="validate_date/2">
+  <div class="detail-header">
+    <a href="#validate_date/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">validate_date(date, fail_message)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Valida a data.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">date</code>: A data, em formato string, a ser validada</li><li><code class="inline">fail_message</code>: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</li></ol><p>Os dois possíveis retornos da função são uma túpla contendo o atom <code class="inline">:ok</code>, caso a data seja válida, ou uma tupla contendo o atom <code class="inline">:error</code> e a mensagem <code class="inline">fail_message</code>, caso a data seja inválida</p>  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.22.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

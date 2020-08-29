@@ -68,9 +68,7 @@ BankingApi.Operations      </h1>
 
 
         <section id="moduledoc">
-<p>Este é o Operations Context.
-Este módulo é responsável por expor as funcionalidades relacionadas às operações de <code class="inline">transfer</code> e <code class="inline">withdraw</code>.
-Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.</p>        </section>
+<p>Este é o Operations Context.</p><p>Este módulo é responsável por expor as funcionalidades relacionadas às operações de <code class="inline">transfer</code> e <code class="inline">withdraw</code>.</p><p>Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -86,6 +84,11 @@ Resumidamente, o objetivo de um context é desacoplar a responsabilidade de mode
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#is_transfering_to_same_account?/2">is_transfering_to_same_account?(from, to_id)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#perform_operation/3">perform_operation(account, amount, atom)</a>
   </div>
     <div class="summary-synopsis"><p>A função perform_operation/3 que recebe como último parâmetro o atom <code class="inline">:sum</code> é responsável por realizar a operação de soma na <code class="inline">account</code> passada por parâmetro.
@@ -94,15 +97,15 @@ O retorno da função é uma tupla contendo o status da operação de update no 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#perform_update/3">perform_update(from, to_id, amount)</a>
+    <a href="#transfer/3">transfer(from, to_id, amount)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável validar se a operação de subtração da conta pagadora (<code class="inline">from</code>) foi concluida, e se for, realizar a operação de soma na conta recebedora (<code class="inline">to_id</code>)</p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por operar a transferência bancária entre duas contas.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#transfer/3">transfer(from_id, to_id, amount)</a>
+    <a href="#transfer_operation/3">transfer_operation(from, to_id, amount)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável por operar a transferência bancária entre duas contas.</p></div>
+    <div class="summary-synopsis"><p>Esta função é responsável por realizar a subtração no saldo da conta pagadora, e realizar a operação de soma no saldo da conta recebedora da transferência.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -112,7 +115,7 @@ O retorno da função é uma tupla contendo o status da operação de update no 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#withdraw/2">withdraw(from_id, amount)</a>
+    <a href="#withdraw/2">withdraw(from, amount)</a>
   </div>
     <div class="summary-synopsis"><p>Esta função é responsável por operar a operação de saque.</p></div>
 </div>
@@ -127,6 +130,19 @@ O retorno da função é uma tupla contendo o status da operação de update no 
             </a>
 Functions          </h1>
           <div class="functions-list">
+<section class="detail" id="is_transfering_to_same_account?/2">
+  <div class="detail-header">
+    <a href="#is_transfering_to_same_account?/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_transfering_to_same_account?(from, to_id)</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
 <section class="detail" id="perform_operation/3">
   <div class="detail-header">
     <a href="#perform_operation/3" class="detail-link" title="Link to this function">
@@ -142,31 +158,31 @@ Functions          </h1>
 Os argumentos da função são uma struct <code class="inline">account</code>, a quantidade <code class="inline">amount</code> a ser somada e o atom <code class="inline">:sum</code>.
 O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</p>  </section>
 </section>
-<section class="detail" id="perform_update/3">
-  <div class="detail-header">
-    <a href="#perform_update/3" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">perform_update(from, to_id, amount)</h1>
-  </div>
-
-  <section class="docstring">
-
-<p>Esta função é responsável validar se a operação de subtração da conta pagadora (<code class="inline">from</code>) foi concluida, e se for, realizar a operação de soma na conta recebedora (<code class="inline">to_id</code>)</p><p>Os argumentos da função são:</p><ol><li><code class="inline">from</code>: É uma struct de <code class="inline">account</code> e representa a conta pagadora.</li><li><code class="inline">to_id</code>: É o id da conta recebedora.</li><li><code class="inline">amount</code>: Quantidade a ser transferida</li></ol>  </section>
-</section>
 <section class="detail" id="transfer/3">
   <div class="detail-header">
     <a href="#transfer/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">transfer(from_id, to_id, amount)</h1>
+    <h1 class="signature">transfer(from, to_id, amount)</h1>
   </div>
 
   <section class="docstring">
 
-<p>Esta função é responsável por operar a transferência bancária entre duas contas.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from_id</code>: O número da conta pagadora (id da conta).</li><li><code class="inline">to_id</code>: O número da conta recebedora (id da conta).</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando o status da operação.</p><p>Um dos possíveis motivos da operação não ser realizada (e retornar um  <code class="inline">error</code>), é se o valor <code class="inline">amount</code> a ser transferido é maior do que <code class="inline">from.balance</code>.</p>  </section>
+<p>Esta função é responsável por operar a transferência bancária entre duas contas.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from</code>: É a <code class="inline">account struct</code> da conta pagadora.</li><li><code class="inline">to_id</code>: O número da conta recebedora (id da conta).</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando o status da operação.</p><p>Um dos possíveis motivos da operação não ser realizada (e retornar um  <code class="inline">error</code>), é se o valor <code class="inline">amount</code> a ser transferido é maior do que <code class="inline">from.balance</code>.</p>  </section>
+</section>
+<section class="detail" id="transfer_operation/3">
+  <div class="detail-header">
+    <a href="#transfer_operation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">transfer_operation(from, to_id, amount)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Esta função é responsável por realizar a subtração no saldo da conta pagadora, e realizar a operação de soma no saldo da conta recebedora da transferência.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">from</code>: É uma struct de <code class="inline">account</code> e representa a conta pagadora.</li><li><code class="inline">to_id</code>: É o id da conta recebedora.</li><li><code class="inline">amount</code>: Quantidade a ser transferida</li></ol>  </section>
 </section>
 <section class="detail" id="update_account/2">
   <div class="detail-header">
@@ -187,12 +203,12 @@ O retorno da função é uma tupla contendo o status da operação de update no 
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">withdraw(from_id, amount)</h1>
+    <h1 class="signature">withdraw(from, amount)</h1>
   </div>
 
   <section class="docstring">
 
-<p>Esta função é responsável por operar a operação de saque.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from_id</code>: Número da conta (id da conta) que realizará o saque.</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando o status da operação.</p><p>Um dos possíveis motivos da operação não ser realizada, é se o valor <code class="inline">amount</code> é maior do que <code class="inline">from.balance</code>.</p>  </section>
+<p>Esta função é responsável por operar a operação de saque.</p><p>Os argumentos desta função são:</p><ol><li><code class="inline">from</code>: É a <code class="inline">account struct</code> de onde será feito saque.</li><li><code class="inline">amount</code>: Quantidade a ser transferida.</li></ol><p>O retorno da função é um map contendo o atom <code class="inline">:error</code> ou <code class="inline">:ok</code>. Representando o status da operação.</p><p>Um dos possíveis motivos da operação não ser realizada, é se o valor <code class="inline">amount</code> é maior do que <code class="inline">from.balance</code>.</p>  </section>
 </section>
           </div>
         </section>

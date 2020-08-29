@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.2">
     <meta name="project" content="banking_api v0.1.0">
-    <title>BankingApiWeb.OperationView — banking_api v0.1.0</title>
+    <title>BankingApi.Accounts.Auth.Session — banking_api v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-d678dad126d82ddc061f.css" />
     <script src="dist/sidebar_items-0e6ac22d55.js"></script>
       <script src="docs_config.js"></script>
@@ -64,11 +64,11 @@ banking_api      </a>
 
       <h1>
         <small class="app-vsn">banking_api v0.1.0</small>
-BankingApiWeb.OperationView      </h1>
+BankingApi.Accounts.Auth.Session      </h1>
 
 
         <section id="moduledoc">
-<p>Essa é a Operation View. Este módulo é responsável pelo layout que é apresentado ao usuário após chamar requisições relacionadas às operações, como transferência e saque</p>        </section>
+<p>Modulo responsável por autenticar um usuário.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -84,24 +84,9 @@ BankingApiWeb.OperationView      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__resource__/0">__resource__()</a>
+    <a href="#authenticate/2">authenticate(email, password)</a>
   </div>
-    <div class="summary-synopsis"><p>The resource name, as an atom, for this view</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#render/2">render(template, assigns \\ %{})</a>
-  </div>
-    <div class="summary-synopsis"><p>Essa função é responsável por renderizar para o usuário final o feedback de que a operação realizada foi bem sucedida.
-Os argumentos da função são a string &quot;operation_succeeded.json&quot; e um map contendo o valor <code class="inline">message</code> que será exibido ao usuário</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#template_not_found/2">template_not_found(template, assigns)</a>
-  </div>
-    <div class="summary-synopsis"><p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template.</p></div>
+    <div class="summary-synopsis"><p>Função que autentica se o email e senha passaos existem no banco de dados.</p></div>
 </div>
   </div>
         </section>
@@ -114,52 +99,18 @@ to render a particular template.</p></div>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="__resource__/0">
+<section class="detail" id="authenticate/2">
   <div class="detail-header">
-    <a href="#__resource__/0" class="detail-link" title="Link to this function">
+    <a href="#authenticate/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">__resource__()</h1>
+    <h1 class="signature">authenticate(email, password)</h1>
   </div>
 
   <section class="docstring">
 
-<p>The resource name, as an atom, for this view</p>  </section>
-</section>
-<section class="detail" id="render/2">
-    <span id="render/1"></span>
-  <div class="detail-header">
-    <a href="#render/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">render(template, assigns \\ %{})</h1>
-  </div>
-
-  <section class="docstring">
-
-<p>Essa função é responsável por renderizar para o usuário final o feedback de que a operação realizada foi bem sucedida.
-Os argumentos da função são a string &quot;operation_succeeded.json&quot; e um map contendo o valor <code class="inline">message</code> que será exibido ao usuário</p><p>A função é responsável por renderizar ao usuário final o feedback quando a operação realizada foi bem sucedida.</p><p>Os argumentos da função são:</p><ol><li>A string <code class="inline">&quot;operation_succeeded.json&quot;</code>.</li><li><code class="inline">%{message: message}</code>: Um map que contém a mensagem exibida no feedback.</li></ol>  </section>
-</section>
-<section class="detail" id="template_not_found/2">
-  <div class="detail-header">
-    <a href="#template_not_found/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">template_not_found(template, assigns)</h1>
-  </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>template_not_found(<a href="https://hexdocs.pm/phoenix/Phoenix.Template.html#t:name/0">Phoenix.Template.name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
-      </div>
-
-<p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template.</p>  </section>
+<p>Função que autentica se o email e senha passaos existem no banco de dados.</p><p>Argumentos para a função:</p><ol><li><code class="inline">email</code>: email do usuário</li><li><code class="inline">senha</code>: senha do usuário</li></ol><p>O retorno da função podem ser três tipos de tupla:</p><ol><li><code class="inline">{:error, :not_found}</code>: Caso o email não exista no banco de dados</li><li><code class="inline">{:ok, user}</code>: Onde, <code class="inline">user</code> é uma <code class="inline">user struct</code> já com as informações de <code class="inline">account</code></li><li><code class="inline">{:error, :unauthorized}</code></li></ol>  </section>
 </section>
           </div>
         </section>
