@@ -55,9 +55,16 @@ defmodule BankingApi.Operations do
       Multi.new()
       |> Multi.update(:to, perform_operation(to, amount, :sum))
       |> subtract_from_account(from, amount, to_id, @transfer)
-      |> handle_feedback("#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{@in_the_amount_of} #{amount}")
+      |> handle_feedback(
+        "#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{
+          @in_the_amount_of
+        } #{amount}"
+      )
     else
-      handle_feedback({:error, reason: "the target account does not exist"}, "A conta que você tentou transferir não existe.")
+      handle_feedback(
+        {:error, reason: "the target account does not exist"},
+        "A conta que você tentou transferir não existe."
+      )
     end
   end
 
@@ -79,19 +86,28 @@ defmodule BankingApi.Operations do
   defp withdraw_operation(from, amount) do
     Multi.new()
     |> subtract_from_account(from, amount, "~", @withdraw)
-    |> handle_feedback("#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}")
+    |> handle_feedback(
+      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}"
+    )
   end
 
   defp subtract_from_account(multi, from, amount, to_id, operation_type) do
     Multi.update(multi, :from, perform_operation(from, amount, :sub))
-    |> Multi.insert(:transaction, create_transaction_struct(amount, Integer.to_string(from.id), to_id, operation_type))
+    |> Multi.insert(
+      :transaction,
+      create_transaction_struct(amount, Integer.to_string(from.id), to_id, operation_type)
+    )
     |> Repo.transaction()
   end
 
   defp operate_if_not_negative(balance, amount, function) do
     case is_negative?(balance, amount) do
       true ->
-        {:error,"#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{balance}."}
+        {:error,
+         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{
+           @your_account_balance_is
+         } #{balance}."}
+
       false ->
         function
     end

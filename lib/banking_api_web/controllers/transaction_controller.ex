@@ -64,8 +64,8 @@ defmodule BankingApiWeb.TransactionController do
   """
   def generate_monthly_report(conn, %{"year" => year, "month" => month}) do
     with {:ok, _message} <- Transactions.validate_date(year, @year_fail_message),
-      {:ok, _message} <- Transactions.validate_date(month, @month_fail_message) do
-        render(conn, "show.json", transaction: Transactions.month(year, month))
+         {:ok, _message} <- Transactions.validate_date(month, @month_fail_message) do
+      render(conn, "show.json", transaction: Transactions.month(year, month))
     end
   end
 
