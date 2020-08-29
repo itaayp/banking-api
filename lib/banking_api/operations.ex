@@ -15,12 +15,15 @@ defmodule BankingApi.Operations do
   # variáveis de módulo
   @withdraw "withdraw"
   @transfer "transfer"
+
   @transfer_succeeded_from_account "Transferência realizada da conta"
   @to_account "para a conta"
   @in_the_amount_of "no valor de R$"
+
   @withdraw_succeeded "Saque realizado"
   @from_account "da conta"
   @denied_operation "Operação negada"
+
   @you_tried_to_operate_an_amount_greater_than_your_balance "Você tentou operar um valor maior do que o permitido para a sua conta"
   @your_account_balance_is "O saldo de sua conta bancária é R$"
 
@@ -37,7 +40,14 @@ defmodule BankingApi.Operations do
   Um dos possíveis motivos da operação não ser realizada (e retornar um  `error`), é se o valor `amount` a ser transferido é maior do que `from.balance`.
   """
   def transfer(from, to_id, amount) do
-    operate_if_not_negative(from.balance, amount, transfer_operation(from, to_id, amount))
+    case is_negative?(from.balance, amount) do
+      true ->
+        {:error,
+         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}
+
+      false ->
+        transfer_operation(from, to_id, amount)
+    end
   end
 
   @doc """
@@ -50,6 +60,7 @@ defmodule BankingApi.Operations do
   """
   def transfer_operation(from, to_id, amount) do
     to = Accounts.get!(to_id)
+    new_balance = Decimal.sub(from.balance, amount)
 
     if to != nil do
       Multi.new()
@@ -58,7 +69,7 @@ defmodule BankingApi.Operations do
       |> handle_feedback(
         "#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{
           @in_the_amount_of
-        } #{amount}"
+        } #{amount}. #{@your_account_balance_is} #{new_balance}"
       )
     else
       handle_feedback(
@@ -80,14 +91,23 @@ defmodule BankingApi.Operations do
   Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.
   """
   def withdraw(from, amount) do
-    operate_if_not_negative(from.balance, amount, withdraw_operation(from, amount))
+    case is_negative?(from.balance, amount) do
+      true ->
+        {:error,
+         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}
+
+      false ->
+        withdraw_operation(from, amount)
+    end
   end
 
   defp withdraw_operation(from, amount) do
+    new_balance = Decimal.sub(from.balance, amount)
+
     Multi.new()
     |> subtract_from_account(from, amount, "~", @withdraw)
     |> handle_feedback(
-      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}"
+      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}. #{@your_account_balance_is} #{new_balance}"
     )
   end
 
@@ -98,19 +118,6 @@ defmodule BankingApi.Operations do
       create_transaction_struct(amount, Integer.to_string(from.id), to_id, operation_type)
     )
     |> Repo.transaction()
-  end
-
-  defp operate_if_not_negative(balance, amount, function) do
-    case is_negative?(balance, amount) do
-      true ->
-        {:error,
-         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{
-           @your_account_balance_is
-         } #{balance}."}
-
-      false ->
-        function
-    end
   end
 
   defp is_negative?(balance, amount) do
