@@ -38,7 +38,12 @@ defmodule BankingApi.Accounts.Auth.Guardian do
     {:ok, to_string(user.id)}
   end
 
-  defp resource_from_claims(claims) do
+  @doc """
+  Busca o usuário no banco de dados a partir do `subject`.
+
+  O retorno da função é uma tupla, que contém o atom `:ok` e a `user struct`
+  """
+  def resource_from_claims(claims) do
     id = claims["sub"]
     {:ok, Accounts.get_user!(id)}
   end

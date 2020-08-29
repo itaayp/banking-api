@@ -20,7 +20,7 @@ defmodule BankingApi.Operations do
   Esta função é responsável por operar a transferência bancária entre duas contas.
 
   Os argumentos desta função são:
-    1. `from_id`: O número da conta pagadora (id da conta).
+    1. `from`: É a `account struct` da conta pagadora.
     2. `to_id`: O número da conta recebedora (id da conta).
     3. `amount`: Quantidade a ser transferida.
 
@@ -28,9 +28,7 @@ defmodule BankingApi.Operations do
 
   Um dos possíveis motivos da operação não ser realizada (e retornar um  `error`), é se o valor `amount` a ser transferido é maior do que `from.balance`.
   """
-  def transfer(from_id, to_id, amount) do
-    from = Accounts.get!(from_id)
-    amount = Decimal.new(amount)
+  def transfer(from, to_id, amount) do
     operate_if_not_negative(from.balance, amount, transfer_operation(from, to_id, amount))
   end
 
@@ -38,16 +36,14 @@ defmodule BankingApi.Operations do
   Esta função é responsável por operar a operação de saque.
 
   Os argumentos desta função são:
-    1. `from_id`: Número da conta (id da conta) que realizará o saque.
+    1. `from`: É a `account struct` de onde será feito saque.
     2. `amount`: Quantidade a ser transferida.
 
   O retorno da função é um map contendo o atom `:error` ou `:ok`. Representando o status da operação.
 
   Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.
   """
-  def withdraw(from_id, amount) do
-    from = Accounts.get!(from_id)
-    amount = Decimal.new(amount)
+  def withdraw(from, amount) do
     operate_if_not_negative(from.balance, amount, withdraw_operation(from, amount))
   end
 

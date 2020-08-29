@@ -8,33 +8,39 @@ defmodule BankingApiWeb.OperationController do
   action_fallback BankingApiWeb.FallbackController
 
   @doc """
-  Esta função é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário final.
+  Esta função é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário.
 
   Os argumentos da função são:
     1. `conn`: as informações da conexão
     2. `map`: Um map que contém:
-      2.1. `"from_account" => from`: O número da conta pagadora (id da conta)
-      2.2. `"to_account" => to`: O número da conta recebedora (id da conta)
-      2.3. `"amount" => amount`: Valor a ser transferido
+      2.1. `"to_account" => to`: O número da conta recebedora (id da conta)
+      2.2. `"amount" => amount`: Valor a ser transferido
   """
-  def transfer(conn, %{"from_account" => from, "to_account" => to, "amount" => amount}) do
-    with {:ok, message} <- Operations.transfer(from, to, amount) do
+  def transfer(conn, %{"to_account" => to, "amount" => amount}) do
+    # Busca a `user struct` do usuário que está realizando a transferência
+    user = Guardian.Plug.current_resource(conn)
+    amount = Decimal.new(amount)
+
+    with {:ok, message} <- Operations.transfer(user.accounts, to, amount) do
       conn
       |> render("operation_succeeded.json", message: message)
     end
   end
 
   @doc """
-  Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário final.
+  Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário.
 
   Os argumentos da função são:
     1. `conn`: as informações da conexão
     2. `map`: Um map que contém:
-      2.1. `"from_account" => from`: O número da conta pagadora (id da conta)
-      2.2. `"amount" => amount`: Valor a ser transferido
+      2.1. `"amount" => amount`: Valor a ser transferido
   """
-  def withdraw(conn, %{"from_account" => from, "amount" => amount}) do
-    with {:ok, message} <- Operations.withdraw(from, amount) do
+  def withdraw(conn, %{"amount" => amount}) do
+    # Busca a `user struct` do usuário que está realizando a transferência
+    user = Guardian.Plug.current_resource(conn)
+    amount = Decimal.new(amount)
+
+    with {:ok, message} <- Operations.withdraw(user.accounts, amount) do
       conn
       |> render("operation_succeeded.json", message: message)
     end

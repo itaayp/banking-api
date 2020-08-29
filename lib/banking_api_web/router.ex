@@ -13,6 +13,10 @@ defmodule BankingApiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug BankingApi.Accounts.Auth.Pipeline
+  end
+
   # scope "/", BankingApiWeb do
   #   pipe_through :browser
   #   get "/", PageController, :index
@@ -24,7 +28,7 @@ defmodule BankingApiWeb.Router do
   end
 
   scope "/api", BankingApiWeb do
-    pipe_through :api
+    pipe_through [:api, :auth]
 
     get "/user", UserController, :show
 
