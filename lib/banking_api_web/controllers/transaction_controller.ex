@@ -12,6 +12,9 @@ defmodule BankingApiWeb.TransactionController do
 
   plug :is_admin? when action in [:all, :year, :month, :day]
 
+  @year_fail_message "Você precisa inserir um ano válido"
+  @month_fail_message "Você precisa inserir um mês válido"
+
   @doc """
   Função responsável por buscar e exibir ao usuário final todas as transações armazenadas no banco de dados.
 
@@ -37,7 +40,10 @@ defmodule BankingApiWeb.TransactionController do
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
   def year(conn, %{"year" => year}) do
-    render(conn, "show.json", transaction: Transactions.year(year))
+    case Transactions.validate_date(year, @year_fail_message) do
+      {:ok, _message} -> render(conn, "show.json", transaction: Transactions.year(year))
+      {:error, reason} -> {:error, reason}
+    end
   end
 
   @doc """
@@ -57,7 +63,15 @@ defmodule BankingApiWeb.TransactionController do
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
   def month(conn, %{"year" => year, "month" => month}) do
-    render(conn, "show.json", transaction: Transactions.month(year, month))
+    case Transactions.validate_date(year, @year_fail_message) do
+      {:ok, _message} ->
+        case Transactions.validate_date(month, @month_fail_message) do
+          {:ok, _message} ->
+            render(conn, "show.json", transaction: Transactions.month(year, month))
+          {:error, reason} -> {:error, reason}
+        end
+      {:error, reason} -> {:error, reason}
+    end
   end
 
   @doc """

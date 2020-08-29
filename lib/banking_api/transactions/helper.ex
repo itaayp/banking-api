@@ -1,6 +1,6 @@
 defmodule BankingApi.Transactions.Helper do
   @moduledoc """
-    Modulo helper para suporte ao Transactions' context
+    Modulo helper ao `Transactions Context`
   """
   #! Developer:
   #! `^` é usado para passar valores como parâmetro em queries
@@ -54,8 +54,6 @@ defmodule BankingApi.Transactions.Helper do
   """
   def query_by_month(year, month) do
     start_date = Date.from_erl!({year, month, 01})
-
-    # `Date.days_in_month(start_date)` retorna a quantidade de dias no mês
     days_in_month = Date.days_in_month(start_date)
     end_date = Date.from_erl!({year, month, days_in_month})
 
@@ -125,5 +123,22 @@ defmodule BankingApi.Transactions.Helper do
     Enum.reduce(trasactions, Decimal.new("0"), fn transaction, acc ->
       Decimal.add(acc, transaction.value)
     end)
+  end
+
+  @doc """
+  Valida a data.
+
+  Os argumentos da função são:
+    1. `date`: A data, em formato string, a ser validada
+    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida
+
+  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida
+  """
+  def validate_date(date, fail_message) do
+    if String.equivalent?(date, "") || String.contains?(date, "-") do
+      {:error, fail_message}
+    else
+      {:ok, "A data é válida"}
+    end
   end
 end

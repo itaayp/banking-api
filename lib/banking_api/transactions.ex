@@ -174,4 +174,17 @@ defmodule BankingApi.Transactions do
   def change_transaction(%Transaction{} = transaction, attrs \\ %{}) do
     Transaction.changeset(transaction, attrs)
   end
+
+  @doc """
+  Chama o helper `validate_date/2` que faz a validação de data.
+
+  Os argumentos da função são:
+    1. `date`: A data, em formato string, a ser validada
+    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida
+
+  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida
+  """
+  def validate_date(date, fail_message) do
+    Helper.validate_date(date, fail_message)
+  end
 end
