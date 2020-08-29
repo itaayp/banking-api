@@ -63,14 +63,9 @@ defmodule BankingApiWeb.TransactionController do
   O retorno da função é o feedback da requisição, que em caso de sucesso é localizado em `show.json` e em caso de falha é localizado em `BankingApiWeb.FallbackController`
   """
   def month(conn, %{"year" => year, "month" => month}) do
-    case Transactions.validate_date(year, @year_fail_message) do
-      {:ok, _message} ->
-        case Transactions.validate_date(month, @month_fail_message) do
-          {:ok, _message} ->
-            render(conn, "show.json", transaction: Transactions.month(year, month))
-          {:error, reason} -> {:error, reason}
-        end
-      {:error, reason} -> {:error, reason}
+    with {:ok, _message} <- Transactions.validate_date(year, @year_fail_message),
+      {:ok, _message} <- Transactions.validate_date(month, @month_fail_message) do
+        render(conn, "show.json", transaction: Transactions.month(year, month))
     end
   end
 
