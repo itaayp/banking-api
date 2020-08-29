@@ -48,10 +48,14 @@ defmodule BankingApi.Operations do
   def transfer_operation(from, to_id, amount) do
     to = Accounts.get!(to_id)
 
-    Multi.new()
-    |> Multi.update(:to, perform_operation(to, amount, :sum))
-    |> subtract_from_account(from, amount, to_id, @transfer)
-    |> handle_feedback("#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{@in_the_amount_of} #{amount}")
+    if to != nil do
+      Multi.new()
+      |> Multi.update(:to, perform_operation(to, amount, :sum))
+      |> subtract_from_account(from, amount, to_id, @transfer)
+      |> handle_feedback("#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{@in_the_amount_of} #{amount}")
+    else
+      handle_feedback({:error, reason: "the target account does not exist"}, "A conta que você tentou transferir não existe.")
+    end
   end
 
   @doc """
@@ -109,6 +113,9 @@ defmodule BankingApi.Operations do
 
       {:error, :transaction, changeset, _tail} ->
         {:error, changeset}
+
+      {:error, _reason} ->
+        {:error, message}
     end
   end
 
@@ -151,5 +158,13 @@ defmodule BankingApi.Operations do
       type: type,
       date: Date.utc_today()
     }
+  end
+
+  def is_transfering_to_same_account?(from, to_id) do
+    if String.equivalent?(Integer.to_string(from.id), to_id) do
+      {:error, "Você não pode transferir para a sua própria conta"}
+    else
+      false
+    end
   end
 end

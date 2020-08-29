@@ -21,10 +21,11 @@ defmodule BankingApiWeb.OperationController do
     user = Guardian.Plug.current_resource(conn)
     amount = Decimal.new(amount)
 
-    with {:ok, message} <- Operations.transfer(user.accounts, to, amount) do
-      conn
-      |> render("operation_succeeded.json", message: message)
-    end
+    with false <- Operations.is_transfering_to_same_account?(user.accounts, to),
+      {:ok, message} <- Operations.transfer(user.accounts, to, amount) do
+        conn
+        |> render("operation_succeeded.json", message: message)
+      end
   end
 
   @doc """

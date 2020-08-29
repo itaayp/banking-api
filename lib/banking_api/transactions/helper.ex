@@ -3,8 +3,7 @@ defmodule BankingApi.Transactions.Helper do
     Modulo helper ao `Transactions Context`
   """
   #! Developer:
-  #! `^` é usado para passar valores como parâmetro em queries
-  #! `Date.from_erl!` é usado para converter a data passada como parâmetro para o formato do banco de dados, e então manipular dados do BD
+  #! `Date.from_erl!` é usado para converter a data para o formato do banco de dados, e assim manipular dados do BD
   import Ecto.Query, warn: false
   alias BankingApi.Repo
   alias BankingApi.Transactions.Transaction
