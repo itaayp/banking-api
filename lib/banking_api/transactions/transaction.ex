@@ -4,7 +4,7 @@ defmodule BankingApi.Transactions.Transaction do
 
   Este módulo é responsável por mapear e validar os valores da tabela `transaction` entre o banco de dados e o Elixir.
 
-  A `transaction table` é o local onde são registradas as transferências no banco de dados. É importante armazenar este valor, para poder gerar o relatório de transferências.
+  A `transaction table` é o local onde são registradas as operações bancárias no banco de dados. É importante armazenar este valor, para poder gerar o relatório de transferências.
   """
 
   use Ecto.Schema

@@ -1,6 +1,6 @@
 defmodule BankingApi.Accounts.Auth.ErrorHandler do
   @moduledoc """
-    Este é o módulo que trata os erros de autenticação
+    Este módulo é responsável por manipular os erros de autenticação
   """
 
   import Plug.Conn

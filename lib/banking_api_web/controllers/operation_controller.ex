@@ -1,6 +1,8 @@
 defmodule BankingApiWeb.OperationController do
   @moduledoc """
-    Esse é o Controller responsável por todas as operações bancárias (transferência e saque).
+    Operation Controller.
+
+    Controller responsável por iniciar qualquer operação no back-end a partir de uma requisição da API relacionada a `/api/operations`.
   """
 
   use BankingApiWeb, :controller
@@ -12,9 +14,9 @@ defmodule BankingApiWeb.OperationController do
 
   Os argumentos da função são:
     1. `conn`: as informações da conexão
-    2. `map`: Um map que contém:
-      2.1. `"to_account" => to`: O número da conta recebedora (id da conta)
-      2.2. `"amount" => amount`: Valor a ser transferido
+    2. `%{"to_account" => to, "amount" => amount}`: Um map que contenha:
+      2.1. `to_account`: O número da conta recebedora (id da conta)
+      2.2. `amount`: Valor a ser transferido
   """
   def transfer(conn, %{"to_account" => to, "amount" => amount}) do
     # Busca a `user struct` do usuário que está realizando a transferência
@@ -33,8 +35,8 @@ defmodule BankingApiWeb.OperationController do
 
   Os argumentos da função são:
     1. `conn`: as informações da conexão
-    2. `map`: Um map que contém:
-      2.1. `"amount" => amount`: Valor a ser transferido
+    2. `%{"amount" => amount}`: Um map que contenha:
+      2.1. `amount`: Valor a ser transferido
   """
   def withdraw(conn, %{"amount" => amount}) do
     # Busca a `user struct` do usuário que está realizando a transferência

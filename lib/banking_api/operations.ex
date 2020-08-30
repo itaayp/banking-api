@@ -1,8 +1,8 @@
 defmodule BankingApi.Operations do
   @moduledoc """
-  Este é o Operations Context.
+  Operations Context.
 
-  Este módulo é responsável por expor as funcionalidades relacionadas às operações de `transfer` e `withdraw`.
+  Este módulo é responsável por expor as funcionalidades que atuam sobre as operações `transfer` e `withdraw`.
 
   Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.
   """
@@ -16,28 +16,32 @@ defmodule BankingApi.Operations do
   @withdraw "withdraw"
   @transfer "transfer"
 
+  @your_account_balance_is "O saldo de sua conta bancária é R$"
+
   @transfer_succeeded_from_account "Transferência realizada da conta"
   @to_account "para a conta"
   @in_the_amount_of "no valor de R$"
 
   @withdraw_succeeded "Saque realizado"
   @from_account "da conta"
-  @denied_operation "Operação negada"
 
+  @denied_operation "Operação negada"
   @you_tried_to_operate_an_amount_greater_than_your_balance "Você tentou operar um valor maior do que o permitido para a sua conta"
-  @your_account_balance_is "O saldo de sua conta bancária é R$"
 
   @doc """
-  Esta função é responsável por operar a transferência bancária entre duas contas.
+  Inicia a operação de transferência bancária.
 
   Os argumentos desta função são:
     1. `from`: É a `account struct` da conta pagadora.
     2. `to_id`: O número da conta recebedora (id da conta).
     3. `amount`: Quantidade a ser transferida.
 
-  O retorno da função é um map contendo o atom `:error` ou `:ok`. Representando o status da operação.
+  Há possíveis retornos para a função. Eles podem ser:
+    1. `{:ok, message}`: Caso a transferência tenha ocorrido com sucesso
+    2. `{:error, message}`: Caso o saldo da conta seja menor do que o valor a ser transferido.
+    3. Qualquer retorno da função `handle_feedback/2`
 
-  Um dos possíveis motivos da operação não ser realizada (e retornar um  `error`), é se o valor `amount` a ser transferido é maior do que `from.balance`.
+  Um dos possíveis motivos da operação não ser realizada (e retornar `error`), é se o valor `amount` a ser transferido é maior do que `from.balance`.
   """
   def transfer(from, to_id, amount) do
     case is_negative?(from.balance, amount) do
@@ -50,15 +54,7 @@ defmodule BankingApi.Operations do
     end
   end
 
-  @doc """
-  Esta função é responsável por realizar a subtração no saldo da conta pagadora, e realizar a operação de soma no saldo da conta recebedora da transferência.
-
-  Os argumentos da função são:
-    1. `from`: É uma struct de `account` e representa a conta pagadora.
-    2. `to_id`: É o id da conta recebedora.
-    3. `amount`: Quantidade a ser transferida
-  """
-  def transfer_operation(from, to_id, amount) do
+  defp transfer_operation(from, to_id, amount) do
     to = Accounts.get!(to_id)
     new_balance = Decimal.sub(from.balance, amount)
 
@@ -80,13 +76,16 @@ defmodule BankingApi.Operations do
   end
 
   @doc """
-  Esta função é responsável por operar a operação de saque.
+  Inicia a operação de saque.
 
   Os argumentos desta função são:
     1. `from`: É a `account struct` de onde será feito saque.
     2. `amount`: Quantidade a ser transferida.
 
-  O retorno da função é um map contendo o atom `:error` ou `:ok`. Representando o status da operação.
+  Há possíveis retornos para a função. Eles podem ser:
+    1. `{:ok, message}`: Caso o saque tenha ocorrido com sucesso
+    2. `{:error, message}`: Caso o saldo da conta seja menor do que o valor de saque.
+    3. Qualquer retorno da função `handle_feedback/2`
 
   Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.
   """
@@ -145,8 +144,13 @@ defmodule BankingApi.Operations do
   end
 
   @doc """
-  A função perform_operation/3 que recebe como último parâmetro o atom `:sub` é responsável por realizar a operação de subtração na `account` passada por parâmetro.
-  Os argumentos da função são uma struct `account`, a quantidade `amount` a ser substraída e o atom `:sub`.
+  Faz a subtração de `amount` na conta bancária.
+
+  Os argumentos da função são:
+    1. `account`: É uma `account struct`
+    2. `amount`: É a quantidade a ser substraída
+    3. O atom `:sub`.
+
   O retorno da função é uma tupla contendo o status da operação de update no banco de dados.
   """
   def perform_operation(account, amount, :sub) do
@@ -155,8 +159,13 @@ defmodule BankingApi.Operations do
   end
 
   @doc """
-  A função perform_operation/3 que recebe como último parâmetro o atom `:sum` é responsável por realizar a operação de soma na `account` passada por parâmetro.
-  Os argumentos da função são uma struct `account`, a quantidade `amount` a ser somada e o atom `:sum`.
+  Faz a soma de `amount` na conta bancária.
+
+  Os argumentos da função são:
+    1. `account`: É uma `account struct`
+    2. `amount`: É a quantidade a ser somada
+    3. O atom `:sum`.
+
   O retorno da função é uma tupla contendo o status da operação de update no banco de dados.
   """
   def perform_operation(account, amount, :sum) do
@@ -165,7 +174,7 @@ defmodule BankingApi.Operations do
   end
 
   @doc """
-  Esta função é responsável por validar os dados de `account` antes que eles sejam inseridos no banco de dados.
+  Valida os dados de `account` antes que eles sejam inseridos no banco de dados.
 
   Os argumentos da função são:
     1. `account`: É uma struc de account, e representa a conta que será atualizada.
@@ -185,6 +194,13 @@ defmodule BankingApi.Operations do
     }
   end
 
+  @doc """
+  Verifica se está transferindo para a mesma conta.
+
+  Os argumentos da função são:
+    1. `from`: `account struct` da conta que realizará a transferência
+    2. `to_id`: id da conta que receberá a transferência
+  """
   def is_transfering_to_same_account?(from, to_id) do
     if String.equivalent?(Integer.to_string(from.id), to_id) do
       {:error, "Você não pode transferir para a sua própria conta"}

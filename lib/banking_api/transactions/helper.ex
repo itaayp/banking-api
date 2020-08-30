@@ -20,12 +20,12 @@ defmodule BankingApi.Transactions.Helper do
   def list_transactions, do: Repo.all(Transaction)
 
   @doc """
-  A função busca todos os registros da tabela `transactions` inseridos no ano `year`.
+  A função busca os registros da tabela `transactions` inseridos no ano `year`.
 
   O argumento da função é:
-  `year`: O ano em formato integer. O ano deve seguir o formato: `yyyy`.
+  1. `year`: O ano em formato integer. O ano deve seguir o formato: `yyyy`.
 
-  O retorno da função é uma lista de `transaction structs`
+  O retorno da função é uma lista de `transaction structs`.
 
   ## Examples
       iex> query_by_year(year)
@@ -39,7 +39,7 @@ defmodule BankingApi.Transactions.Helper do
   end
 
   @doc """
-  A função busca todos os registros da tabela `transactions` inseridos no ano `year` e no mês `month`.
+  A função busca os registros da tabela `transactions` inseridos no ano `year` e no mês `month`.
 
   Os argumentos da função são:
     1. `year`: O ano em formato `integer`. O ano deve seguir o formato: `yyyy`.
@@ -60,7 +60,7 @@ defmodule BankingApi.Transactions.Helper do
   end
 
   @doc """
-  A função busca todos os registros da tabela `transactions` inseridos no ano `year` e no mês `month`.
+  A função busca os registros da tabela `transactions` inseridos no dia especificado.
 
   O argumento da função é:
     1. `date`: A data em formato string. A data deve seguir o formato: `"yyyy-mm-dd"`.
@@ -77,7 +77,7 @@ defmodule BankingApi.Transactions.Helper do
   end
 
   @doc """
-  A função monta e executa a query que retornará as tranactions no banco de dados.
+  A função monta e executa a query que sera executada na tabela `tranactions`.
 
   A consulta no banco de dados é feita baseada em um período de tempo. Portanto, os argumentos da função são:
     1. `start_date`: O primeiro dia a ser levado em consideração para a consulta.

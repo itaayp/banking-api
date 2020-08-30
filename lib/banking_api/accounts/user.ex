@@ -6,9 +6,6 @@ defmodule BankingApi.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @doc """
-  Essa é a referência no código Elixir para a tabela `users` no banco de dados.
-  """
   schema "users" do
     field :email, :string
     field :first_name, :string
@@ -21,10 +18,7 @@ defmodule BankingApi.Accounts.User do
     has_one :accounts, BankingApi.Accounts.Account
   end
 
-  @doc """
-  Essa função converte a informação para o formato do Elixir e às valida.
-  Os parâmetros da função são a `user struct` que será usada para identificar a tabela no banco de dados, e o `params`, que são os dados que serão inseridos no BD
-  """
+  @doc false
   def changeset(user, params) do
     user
     |> cast(params, [

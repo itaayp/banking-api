@@ -12,10 +12,12 @@ defmodule BankingApiWeb.UserController do
   action_fallback BankingApiWeb.FallbackController
 
   @doc """
-  A função `signup` é responsável por cadastrar um novo usuário no sistema e criar uma nova conta bancária para este usuário.
-  O argumento `user` da função são os dados do novo usuário que será inserido no sistema.
-  O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o retorno de `create_user` tenha retornado `{:ok, user, account}`, ou uma mensagem de erro, caso o retorno de `create_user` tenha sido outro.
-  Neste segundo caso, o Plug `BankingApiWeb.FallbackController.call()` é invocado, e lá e construida o feedback de erro para o usuário.
+  Cadastra um novo usuário no sistema e criar uma nova conta bancária para este usuário.
+
+  Os argumentos da função são:
+    1. `conn`: as informações de conexão
+    2. `%{"user" => user}`: Um map que contenha:
+      2.1. `user`: A `user struct` a ser criada no sistema
   """
   def signup(conn, %{"user" => user}) do
     with {:ok, user, account} <- Accounts.create_user(user) do
@@ -28,13 +30,13 @@ defmodule BankingApiWeb.UserController do
   end
 
   @doc """
-  Essa função é responsável por autenticar um usuário no sistema e renderizar o feedback de signin para o usuário final
+  Autentica um usuário no sistema e renderizar o feedback de signin para o usuário final
 
   Os argumentos da função são:
-    1. `conn`: as informações da conexão
-    2. `map`: Um map que contém:
-      2.1. `"email" => email`: O email do usuário
-      2.2. `"password" => password`: A senha do usuário
+    1. `conn`: as informações de conexão
+    2. `%{"email" => email, "password" => password}`: Um map que contenha:
+      2.1. `email`: O email do usuário
+      2.2. `password`: A senha do usuário
   """
   def signin(conn, %{"email" => email, "password" => password}) do
     with {:ok, user, token} <- Guardian.authenticate(email, password) do
@@ -45,8 +47,12 @@ defmodule BankingApiWeb.UserController do
   end
 
   @doc """
-  Esta função é responsável por buscar um usuário pelo `id` e renderizar as informações deste usuário obtido.
-  Os argumentos da função são as informações de conexão `conn` e o `id` do usuário que será resgatado
+  Buscar um usuário pelo `id` e renderizar as informações deste usuário obtido.
+
+  Os argumentos da função são:
+    1. `conn`: as informações de conexão
+    2. `%{"id" => id}`: Um map que contenha:
+      2.1. `id`: O email do usuário
   """
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)

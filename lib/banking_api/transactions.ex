@@ -1,6 +1,6 @@
 defmodule BankingApi.Transactions do
   @moduledoc """
-  Esta é a Transactions Context.
+  Transactions Context.
 
   Este módulo é responsável por buscar no banco de dados as transações armazenadas na tabela `transactions`.
 
@@ -13,7 +13,7 @@ defmodule BankingApi.Transactions do
   alias BankingApi.Transactions.Transaction
 
   @doc """
-  Retorna todas as transações armazenadas no banco de dados, e a soma da quantia de todas as transações.
+  Retorna as transações armazenadas no banco de dados, e a soma da quantia de todas as transações.
 
   O retorno da função é um map contendo o total transacionado e a lista de transações: `%{total: 1000, transactions: [%Transactions{}, ...]}`
 
@@ -27,7 +27,7 @@ defmodule BankingApi.Transactions do
   end
 
   @doc """
-  Retorna todas as transações ocorridas no ano `year`, e a quantia total, em reais, transacionada na data.
+  Retorna as transações ocorridas no ano `year` e a quantia total transacionada na data.
 
   O argumento da função é:
   `year`: O ano em formato string. O ano deve seguir o formato: `"yyyy"`.
@@ -43,7 +43,7 @@ defmodule BankingApi.Transactions do
   end
 
   @doc """
-  Retorna todas as transações ocorridas no mês `month` do ano `year`, e a quantia total, em reais, transacionada na data.
+  Retorna as transações ocorridas no mês `month` do ano `year` e a quantia total transacionada na data.
 
   Os argumentos da função são:
     1. `year`: O ano em formato string. O ano deve seguir o formato: `"yyyy"`.
@@ -63,7 +63,7 @@ defmodule BankingApi.Transactions do
   end
 
   @doc """
-  Retorna todas as transações ocorridas na data `date`, e a quantia total, em reais, transacionada na data.
+  Retorna as transações ocorridas na data `date` e a quantia total transacionada na data.
 
   O argumento da função é:
     1. `date`: A data em formato string. A data deve seguir o formato: `"yyyy-mm-dd"`.
@@ -76,7 +76,7 @@ defmodule BankingApi.Transactions do
   end
 
   @doc """
-  Insere a transação no banco de dados.
+  Insere a `transaction` no banco de dados.
 
   O argumento da função é o map `params` que contém os valores a serem inseridos na tabela.
 
@@ -92,6 +92,19 @@ defmodule BankingApi.Transactions do
     %Transaction{}
     |> Transaction.changeset(params)
     |> Repo.insert()
+  end
+
+  @doc """
+  Chama a função `BankingApi.Transactions.Helper.validate_date/2` que faz a validação de data.
+
+  Os argumentos da função são:
+    1. `date`: A data, em formato string, a ser validada
+    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida
+
+  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida
+  """
+  def validate_date(date, fail_message) do
+    Helper.validate_date(date, fail_message)
   end
 
   @doc """
@@ -175,16 +188,4 @@ defmodule BankingApi.Transactions do
     Transaction.changeset(transaction, attrs)
   end
 
-  @doc """
-  Chama o helper `validate_date/2` que faz a validação de data.
-
-  Os argumentos da função são:
-    1. `date`: A data, em formato string, a ser validada
-    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida
-
-  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida
-  """
-  def validate_date(date, fail_message) do
-    Helper.validate_date(date, fail_message)
-  end
 end

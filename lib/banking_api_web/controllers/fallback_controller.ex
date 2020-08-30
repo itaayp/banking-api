@@ -1,13 +1,16 @@
 defmodule BankingApiWeb.FallbackController do
   @moduledoc """
-  O objetivo deste módulo é centralizar a manipulação de erros relacionadas ao `BankingApiWeb.UserController`.
+  O objetivo deste módulo é centralizar a manipulação de erros relacionadas às Controllers da aplicação.
   """
 
   use BankingApiWeb, :controller
 
   @doc """
-  A função `call` é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema na criação de `user` ou `account`.
-  Os argumentos da função são as informações de connection `conn` e os dados de `error`.
+  Renderiza a mensagem de erro ao usuário final.
+
+  Os argumentos da função são:
+    1. `conn`: as informações de `connection` e da `request`.
+    2. Uma tupla que contenha o atom `:error` e a `changeset`.
   """
   def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
     conn
@@ -17,8 +20,11 @@ defmodule BankingApiWeb.FallbackController do
   end
 
   @doc """
-  A função `call` é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema durante alguma operation, seja ela de `transfer` ou de `withdraw`.
-  Os argumentos da função são as informações de connection `conn` e a mensagem de erro: `message`.
+  Renderiza a mensagem de erro ao usuário final.
+
+  Os argumentos da função são:
+    1. `conn`: as informações de `connection` e da `request`.
+    2. Uma tupla que contenha o atom `:error` e a mensagem a ser exibida ao usuário.
   """
   def call(conn, {:error, message}) do
     conn

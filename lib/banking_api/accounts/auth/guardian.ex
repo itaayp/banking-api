@@ -2,7 +2,7 @@ defmodule BankingApi.Accounts.Auth.Guardian do
   @moduledoc """
   Módulo responsável por lidar com as funcionalidades de autenticação do Guardian.
 
-  Conceitos importantes sobre o guardian:
+  Conceitos importantes sobre o Guardian:
     1. `claims`: informações sobre o token, como, tempo de duração, tipo de acesso, subject e o próprio token
     2. `resource`: O que será autenticado. No nosso caso, o `user`.
     3. `token`: É um hash muito grande que armazena as informações de todas as claims.
@@ -32,7 +32,14 @@ defmodule BankingApi.Accounts.Auth.Guardian do
   end
 
   @doc """
-  Busca o `subject` do `token` do `user`.
+  Busca o `subject` do `user` para o `token`.
+
+  Os argumentos dessa função são:
+    1. `user`: Uma `user struct` que deve conter o valor `id` preenchido
+
+  O retorno da função é uma tupla com dois valores:
+    1. `:ok`
+    2. O `user.id` em formato string
   """
   def subject_for_token(user, _claims) do
     {:ok, to_string(user.id)}
