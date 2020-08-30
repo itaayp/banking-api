@@ -68,9 +68,7 @@ BankingApi.Accounts      </h1>
 
 
         <section id="moduledoc">
-<p>Este módulo representa a Accounts Context.
-Este módulo é responsável por expor as funcionalidades relacionadas à <code class="inline">acounts</code> e <code class="inline">users</code>.
-Resumidamente, o objetivo do context é desacoplar a responsabilidade de models e controllers.</p>        </section>
+<p>Accounts Context.</p><p>Este módulo é responsável por expor as funcionalidades relacionadas à <code class="inline">acounts</code> e <code class="inline">users</code>.</p><p>Resumidamente, o objetivo do context é desacoplar a responsabilidade de models e controllers.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -88,25 +86,19 @@ Resumidamente, o objetivo do context é desacoplar a responsabilidade de models 
   <div class="summary-signature">
     <a href="#create_user/1">create_user(params)</a>
   </div>
-    <div class="summary-synopsis"><p>  Função responsável por criar um <code class="inline">user</code>(usuário) e uma <code class="inline">account</code>(conta bancária) e a associação entre eles no banco de dados
-  O argumento <code class="inline">params</code> são os dados do <code class="inline">user</code> a serem inseridos.
-  O retorno da função é uma tupla de <code class="inline">{:ok, user, account}</code> ou <code class="inline">{:error, changeset}</code></p></div>
+    <div class="summary-synopsis"><p>Cria um <code class="inline">user</code>, uma <code class="inline">account</code>(conta bancária) e faz a associação entre ambos no banco de dados</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get!/1">get!(id)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função buscar uma <code class="inline">account</code> baseada em um <code class="inline">id</code> passado por parâmetro.
-O único parâmetro desta função é o <code class="inline">account id</code>.
-O retorno desta função é uma struct de <code class="inline">account</code>.</p></div>
+    <div class="summary-synopsis"><p>Busca por uma <code class="inline">account</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get_user!/1">get_user!(id)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função busca o <code class="inline">user</code> pelo <code class="inline">id</code>, vincula o resultado com a informação da conta bancária <code class="inline">account</code>.
-O argumento da função é o <code class="inline">user id</code>.
-O retorno da função é um map do usuário vinculado com a respectiva conta bancária.</p></div>
+    <div class="summary-synopsis"><p>Busca o <code class="inline">user</code> no banco de dados e vincula o resultado com a respectiva conta bancária.</p></div>
 </div>
   </div>
         </section>
@@ -130,9 +122,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>  Função responsável por criar um <code class="inline">user</code>(usuário) e uma <code class="inline">account</code>(conta bancária) e a associação entre eles no banco de dados
-  O argumento <code class="inline">params</code> são os dados do <code class="inline">user</code> a serem inseridos.
-  O retorno da função é uma tupla de <code class="inline">{:ok, user, account}</code> ou <code class="inline">{:error, changeset}</code></p>  </section>
+<p>Cria um <code class="inline">user</code>, uma <code class="inline">account</code>(conta bancária) e faz a associação entre ambos no banco de dados</p><p>O argumento da função é:</p><ol><li><code class="inline">params</code>: Um map com os dados de <code class="inline">user</code> a serem inseridos.</li></ol><p>Há dois possíveis retornos para a função:</p><ol><li>Uma tupla do tipo: <code class="inline">{:ok, user, account}</code>, onde <code class="inline">user</code> e <code class="inline">account</code> são structs</li><li>Uma tupla do tipo: <code class="inline">{:error, changeset}</code></li></ol>  </section>
 </section>
 <section class="detail" id="get!/1">
   <div class="detail-header">
@@ -145,9 +135,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Esta função buscar uma <code class="inline">account</code> baseada em um <code class="inline">id</code> passado por parâmetro.
-O único parâmetro desta função é o <code class="inline">account id</code>.
-O retorno desta função é uma struct de <code class="inline">account</code>.</p>  </section>
+<p>Busca por uma <code class="inline">account</code>.</p><p>O argumento desta função é:</p><ol><li><code class="inline">id</code>: O <code class="inline">id</code> da <code class="inline">account</code></li></ol><p>O retorno desta função é uma struct de <code class="inline">account</code>.</p>  </section>
 </section>
 <section class="detail" id="get_user!/1">
   <div class="detail-header">
@@ -160,9 +148,7 @@ O retorno desta função é uma struct de <code class="inline">account</code>.</
 
   <section class="docstring">
 
-<p>Esta função busca o <code class="inline">user</code> pelo <code class="inline">id</code>, vincula o resultado com a informação da conta bancária <code class="inline">account</code>.
-O argumento da função é o <code class="inline">user id</code>.
-O retorno da função é um map do usuário vinculado com a respectiva conta bancária.</p>  </section>
+<p>Busca o <code class="inline">user</code> no banco de dados e vincula o resultado com a respectiva conta bancária.</p><p>Argumentos da função:</p><ol><li><code class="inline">id</code>: O <code class="inline">id</code> do usuário</li></ol><p>O retorno da função é uma <code class="inline">user struct</code> carregada com a respectiva <code class="inline">account struct</code>.</p>  </section>
 </section>
           </div>
         </section>

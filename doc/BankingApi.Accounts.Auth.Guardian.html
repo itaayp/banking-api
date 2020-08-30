@@ -68,7 +68,7 @@ BankingApi.Accounts.Auth.Guardian      </h1>
 
 
         <section id="moduledoc">
-<p>Módulo responsável por lidar com as funcionalidades de autenticação do Guardian.</p><p>Conceitos importantes sobre o guardian:</p><ol><li><code class="inline">claims</code>: informações sobre o token, como, tempo de duração, tipo de acesso, subject e o próprio token</li><li><code class="inline">resource</code>: O que será autenticado. No nosso caso, o <code class="inline">user</code>.</li><li><code class="inline">token</code>: É um hash muito grande que armazena as informações de todas as claims.</li><li><code class="inline">subject</code> ou <code class="inline">sub</code>: É um identificador curto que é usado para identificar a <code class="inline">resource</code></li></ol>        </section>
+<p>Módulo responsável por lidar com as funcionalidades de autenticação do Guardian.</p><p>Conceitos importantes sobre o Guardian:</p><ol><li><code class="inline">claims</code>: informações sobre o token, como, tempo de duração, tipo de acesso, subject e o próprio token</li><li><code class="inline">resource</code>: O que será autenticado. No nosso caso, o <code class="inline">user</code>.</li><li><code class="inline">token</code>: É um hash muito grande que armazena as informações de todas as claims.</li><li><code class="inline">subject</code> ou <code class="inline">sub</code>: É um identificador curto que é usado para identificar a <code class="inline">resource</code></li></ol>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -209,7 +209,7 @@ of either the claims or the signature.</p></div>
   <div class="summary-signature">
     <a href="#subject_for_token/2">subject_for_token(user, claims)</a>
   </div>
-    <div class="summary-synopsis"><p>Busca o <code class="inline">subject</code> do <code class="inline">token</code> do <code class="inline">user</code>.</p></div>
+    <div class="summary-synopsis"><p>Busca o <code class="inline">subject</code> do <code class="inline">user</code> para o <code class="inline">token</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -573,7 +573,7 @@ of either the claims or the signature.</p><p>Claims will be present at the <code
 
   <section class="docstring">
 
-<p>Busca o <code class="inline">subject</code> do <code class="inline">token</code> do <code class="inline">user</code>.</p>  </section>
+<p>Busca o <code class="inline">subject</code> do <code class="inline">user</code> para o <code class="inline">token</code>.</p><p>Os argumentos dessa função são:</p><ol><li><code class="inline">user</code>: Uma <code class="inline">user struct</code> que deve conter o valor <code class="inline">id</code> preenchido</li></ol><p>O retorno da função é uma tupla com dois valores:</p><ol><li><code class="inline">:ok</code></li><li>O <code class="inline">user.id</code> em formato string</li></ol>  </section>
 </section>
 <section class="detail" id="verify_claims/2">
   <div class="detail-header">

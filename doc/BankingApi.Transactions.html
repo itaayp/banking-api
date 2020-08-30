@@ -68,7 +68,7 @@ BankingApi.Transactions      </h1>
 
 
         <section id="moduledoc">
-<p>Esta é a Transactions Context.</p><p>Este módulo é responsável por buscar no banco de dados as transações armazenadas na tabela <code class="inline">transactions</code>.</p><p>Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.</p>        </section>
+<p>Transactions Context.</p><p>Este módulo é responsável por buscar no banco de dados as transações armazenadas na tabela <code class="inline">transactions</code>.</p><p>Resumidamente, o objetivo de um context é desacoplar a responsabilidade de models e controllers.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -86,7 +86,7 @@ BankingApi.Transactions      </h1>
   <div class="summary-signature">
     <a href="#all/0">all()</a>
   </div>
-    <div class="summary-synopsis"><p>Retorna todas as transações armazenadas no banco de dados, e a soma da quantia de todas as transações.</p></div>
+    <div class="summary-synopsis"><p>Retorna as transações armazenadas no banco de dados, e a soma da quantia de todas as transações.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -104,7 +104,7 @@ BankingApi.Transactions      </h1>
   <div class="summary-signature">
     <a href="#day/1">day(date)</a>
   </div>
-    <div class="summary-synopsis"><p>Retorna todas as transações ocorridas na data <code class="inline">date</code>, e a quantia total, em reais, transacionada na data.</p></div>
+    <div class="summary-synopsis"><p>Retorna as transações ocorridas na data <code class="inline">date</code> e a quantia total transacionada na data.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -122,13 +122,13 @@ BankingApi.Transactions      </h1>
   <div class="summary-signature">
     <a href="#insert_transaction/1">insert_transaction(params)</a>
   </div>
-    <div class="summary-synopsis"><p>Insere a transação no banco de dados.</p></div>
+    <div class="summary-synopsis"><p>Insere a <code class="inline">transaction</code> no banco de dados.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#month/2">month(year, month)</a>
   </div>
-    <div class="summary-synopsis"><p>Retorna todas as transações ocorridas no mês <code class="inline">month</code> do ano <code class="inline">year</code>, e a quantia total, em reais, transacionada na data.</p></div>
+    <div class="summary-synopsis"><p>Retorna as transações ocorridas no mês <code class="inline">month</code> do ano <code class="inline">year</code> e a quantia total transacionada na data.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -140,13 +140,13 @@ BankingApi.Transactions      </h1>
   <div class="summary-signature">
     <a href="#validate_date/2">validate_date(date, fail_message)</a>
   </div>
-    <div class="summary-synopsis"><p>Chama o helper <a href="#validate_date/2"><code class="inline">validate_date/2</code></a> que faz a validação de data.</p></div>
+    <div class="summary-synopsis"><p>Chama a função <a href="BankingApi.Transactions.Helper.html#validate_date/2"><code class="inline">BankingApi.Transactions.Helper.validate_date/2</code></a> que faz a validação de data.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#year/1">year(year)</a>
   </div>
-    <div class="summary-synopsis"><p>Retorna todas as transações ocorridas no ano <code class="inline">year</code>, e a quantia total, em reais, transacionada na data.</p></div>
+    <div class="summary-synopsis"><p>Retorna as transações ocorridas no ano <code class="inline">year</code> e a quantia total transacionada na data.</p></div>
 </div>
   </div>
         </section>
@@ -170,12 +170,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Retorna todas as transações armazenadas no banco de dados, e a soma da quantia de todas as transações.</p><p>O retorno da função é um map contendo o total transacionado e a lista de transações: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p><h2 id="all/0-examples" class="section-heading">
+<p>Retorna as transações armazenadas no banco de dados, e a soma da quantia de todas as transações.</p><p>O retorno da função é um map contendo o total transacionado e a lista de transações: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p><h2 id="all/0-examples" class="section-heading">
   <a href="#all/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">all</span><span class="p" data-group-id="0504888912-1">(</span><span class="p" data-group-id="0504888912-1">)</span><span class="w">
-</span><span class="p" data-group-id="0504888912-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0504888912-3">[</span><span class="p" data-group-id="0504888912-4">%</span><span class="nc" data-group-id="0504888912-4">Transactions</span><span class="p" data-group-id="0504888912-4">{</span><span class="p" data-group-id="0504888912-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="0504888912-3">]</span><span class="p" data-group-id="0504888912-2">}</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">all</span><span class="p" data-group-id="5011128789-1">(</span><span class="p" data-group-id="5011128789-1">)</span><span class="w">
+</span><span class="p" data-group-id="5011128789-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5011128789-3">[</span><span class="p" data-group-id="5011128789-4">%</span><span class="nc" data-group-id="5011128789-4">Transactions</span><span class="p" data-group-id="5011128789-4">{</span><span class="p" data-group-id="5011128789-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="5011128789-3">]</span><span class="p" data-group-id="5011128789-2">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="change_transaction/2">
     <span id="change_transaction/1"></span>
@@ -193,8 +193,8 @@ Functions          </h1>
   <a href="#change_transaction/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_transaction</span><span class="p" data-group-id="2930327041-1">(</span><span class="n">transaction</span><span class="p" data-group-id="2930327041-1">)</span><span class="w">
-</span><span class="p" data-group-id="2930327041-2">%</span><span class="nc" data-group-id="2930327041-2">Ecto.Changeset</span><span class="p" data-group-id="2930327041-2">{</span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2930327041-3">%</span><span class="nc" data-group-id="2930327041-3">Transaction</span><span class="p" data-group-id="2930327041-3">{</span><span class="p" data-group-id="2930327041-3">}</span><span class="p" data-group-id="2930327041-2">}</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_transaction</span><span class="p" data-group-id="4772943026-1">(</span><span class="n">transaction</span><span class="p" data-group-id="4772943026-1">)</span><span class="w">
+</span><span class="p" data-group-id="4772943026-2">%</span><span class="nc" data-group-id="4772943026-2">Ecto.Changeset</span><span class="p" data-group-id="4772943026-2">{</span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4772943026-3">%</span><span class="nc" data-group-id="4772943026-3">Transaction</span><span class="p" data-group-id="4772943026-3">{</span><span class="p" data-group-id="4772943026-3">}</span><span class="p" data-group-id="4772943026-2">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="create_transaction/1">
     <span id="create_transaction/0"></span>
@@ -212,11 +212,11 @@ Functions          </h1>
   <a href="#create_transaction/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_transaction</span><span class="p" data-group-id="6766322188-1">(</span><span class="p" data-group-id="6766322188-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="6766322188-2">}</span><span class="p" data-group-id="6766322188-1">)</span><span class="w">
-</span><span class="p" data-group-id="6766322188-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6766322188-4">%</span><span class="nc" data-group-id="6766322188-4">Transaction</span><span class="p" data-group-id="6766322188-4">{</span><span class="p" data-group-id="6766322188-4">}</span><span class="p" data-group-id="6766322188-3">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_transaction</span><span class="p" data-group-id="3227877932-1">(</span><span class="p" data-group-id="3227877932-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="3227877932-2">}</span><span class="p" data-group-id="3227877932-1">)</span><span class="w">
+</span><span class="p" data-group-id="3227877932-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3227877932-4">%</span><span class="nc" data-group-id="3227877932-4">Transaction</span><span class="p" data-group-id="3227877932-4">{</span><span class="p" data-group-id="3227877932-4">}</span><span class="p" data-group-id="3227877932-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">create_transaction</span><span class="p" data-group-id="6766322188-5">(</span><span class="p" data-group-id="6766322188-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="6766322188-6">}</span><span class="p" data-group-id="6766322188-5">)</span><span class="w">
-</span><span class="p" data-group-id="6766322188-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6766322188-8">%</span><span class="nc" data-group-id="6766322188-8">Ecto.Changeset</span><span class="p" data-group-id="6766322188-8">{</span><span class="p" data-group-id="6766322188-8">}</span><span class="p" data-group-id="6766322188-7">}</span></code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_transaction</span><span class="p" data-group-id="3227877932-5">(</span><span class="p" data-group-id="3227877932-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="3227877932-6">}</span><span class="p" data-group-id="3227877932-5">)</span><span class="w">
+</span><span class="p" data-group-id="3227877932-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3227877932-8">%</span><span class="nc" data-group-id="3227877932-8">Ecto.Changeset</span><span class="p" data-group-id="3227877932-8">{</span><span class="p" data-group-id="3227877932-8">}</span><span class="p" data-group-id="3227877932-7">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="day/1">
   <div class="detail-header">
@@ -229,7 +229,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Retorna todas as transações ocorridas na data <code class="inline">date</code>, e a quantia total, em reais, transacionada na data.</p><p>O argumento da função é:</p><ol><li><code class="inline">date</code>: A data em formato string. A data deve seguir o formato: <code class="inline">&quot;yyyy-mm-dd&quot;</code>.</li></ol><p>O retorno da função é um map e segue o padrão: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p>  </section>
+<p>Retorna as transações ocorridas na data <code class="inline">date</code> e a quantia total transacionada na data.</p><p>O argumento da função é:</p><ol><li><code class="inline">date</code>: A data em formato string. A data deve seguir o formato: <code class="inline">&quot;yyyy-mm-dd&quot;</code>.</li></ol><p>O retorno da função é um map e segue o padrão: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p>  </section>
 </section>
 <section class="detail" id="delete_transaction/1">
   <div class="detail-header">
@@ -246,11 +246,11 @@ Functions          </h1>
   <a href="#delete_transaction/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_transaction</span><span class="p" data-group-id="7956907897-1">(</span><span class="n">transaction</span><span class="p" data-group-id="7956907897-1">)</span><span class="w">
-</span><span class="p" data-group-id="7956907897-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7956907897-3">%</span><span class="nc" data-group-id="7956907897-3">Transaction</span><span class="p" data-group-id="7956907897-3">{</span><span class="p" data-group-id="7956907897-3">}</span><span class="p" data-group-id="7956907897-2">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_transaction</span><span class="p" data-group-id="8465637629-1">(</span><span class="n">transaction</span><span class="p" data-group-id="8465637629-1">)</span><span class="w">
+</span><span class="p" data-group-id="8465637629-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8465637629-3">%</span><span class="nc" data-group-id="8465637629-3">Transaction</span><span class="p" data-group-id="8465637629-3">{</span><span class="p" data-group-id="8465637629-3">}</span><span class="p" data-group-id="8465637629-2">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_transaction</span><span class="p" data-group-id="7956907897-4">(</span><span class="n">transaction</span><span class="p" data-group-id="7956907897-4">)</span><span class="w">
-</span><span class="p" data-group-id="7956907897-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7956907897-6">%</span><span class="nc" data-group-id="7956907897-6">Ecto.Changeset</span><span class="p" data-group-id="7956907897-6">{</span><span class="p" data-group-id="7956907897-6">}</span><span class="p" data-group-id="7956907897-5">}</span></code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_transaction</span><span class="p" data-group-id="8465637629-4">(</span><span class="n">transaction</span><span class="p" data-group-id="8465637629-4">)</span><span class="w">
+</span><span class="p" data-group-id="8465637629-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8465637629-6">%</span><span class="nc" data-group-id="8465637629-6">Ecto.Changeset</span><span class="p" data-group-id="8465637629-6">{</span><span class="p" data-group-id="8465637629-6">}</span><span class="p" data-group-id="8465637629-5">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="get_transaction!/1">
   <div class="detail-header">
@@ -267,10 +267,10 @@ Functions          </h1>
   <a href="#get_transaction!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_transaction!</span><span class="p" data-group-id="6438383668-1">(</span><span class="mi">123</span><span class="p" data-group-id="6438383668-1">)</span><span class="w">
-</span><span class="p" data-group-id="6438383668-2">%</span><span class="nc" data-group-id="6438383668-2">Transaction</span><span class="p" data-group-id="6438383668-2">{</span><span class="p" data-group-id="6438383668-2">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_transaction!</span><span class="p" data-group-id="2556729928-1">(</span><span class="mi">123</span><span class="p" data-group-id="2556729928-1">)</span><span class="w">
+</span><span class="p" data-group-id="2556729928-2">%</span><span class="nc" data-group-id="2556729928-2">Transaction</span><span class="p" data-group-id="2556729928-2">{</span><span class="p" data-group-id="2556729928-2">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">get_transaction!</span><span class="p" data-group-id="6438383668-3">(</span><span class="mi">456</span><span class="p" data-group-id="6438383668-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_transaction!</span><span class="p" data-group-id="2556729928-3">(</span><span class="mi">456</span><span class="p" data-group-id="2556729928-3">)</span><span class="w">
 </span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>  </section>
 </section>
 <section class="detail" id="insert_transaction/1">
@@ -284,14 +284,14 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Insere a transação no banco de dados.</p><p>O argumento da função é o map <code class="inline">params</code> que contém os valores a serem inseridos na tabela.</p><p>O retorno da função é uma tupla, e retornará o atom <code class="inline">:ok</code>, caso a inserção tenha ocorrido com sucesso, ou <code class="inline">:error</code>, caso haja falha durante a inserção.</p><h2 id="insert_transaction/1-examples" class="section-heading">
+<p>Insere a <code class="inline">transaction</code> no banco de dados.</p><p>O argumento da função é o map <code class="inline">params</code> que contém os valores a serem inseridos na tabela.</p><p>O retorno da função é uma tupla, e retornará o atom <code class="inline">:ok</code>, caso a inserção tenha ocorrido com sucesso, ou <code class="inline">:error</code>, caso haja falha durante a inserção.</p><h2 id="insert_transaction/1-examples" class="section-heading">
   <a href="#insert_transaction/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">insert_transaction</span><span class="p" data-group-id="0289251758-1">(</span><span class="p" data-group-id="0289251758-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="0289251758-2">}</span><span class="p" data-group-id="0289251758-1">)</span><span class="w">
-</span><span class="p" data-group-id="0289251758-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0289251758-4">%</span><span class="nc" data-group-id="0289251758-4">Transaction</span><span class="p" data-group-id="0289251758-4">{</span><span class="p" data-group-id="0289251758-4">}</span><span class="p" data-group-id="0289251758-3">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">create_user</span><span class="p" data-group-id="0289251758-5">(</span><span class="p" data-group-id="0289251758-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="0289251758-6">}</span><span class="p" data-group-id="0289251758-5">)</span><span class="w">
-</span><span class="p" data-group-id="0289251758-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0289251758-8">%</span><span class="nc" data-group-id="0289251758-8">Ecto.Changeset</span><span class="p" data-group-id="0289251758-8">{</span><span class="p" data-group-id="0289251758-8">}</span><span class="p" data-group-id="0289251758-7">}</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">insert_transaction</span><span class="p" data-group-id="7744201119-1">(</span><span class="p" data-group-id="7744201119-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="7744201119-2">}</span><span class="p" data-group-id="7744201119-1">)</span><span class="w">
+</span><span class="p" data-group-id="7744201119-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7744201119-4">%</span><span class="nc" data-group-id="7744201119-4">Transaction</span><span class="p" data-group-id="7744201119-4">{</span><span class="p" data-group-id="7744201119-4">}</span><span class="p" data-group-id="7744201119-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_user</span><span class="p" data-group-id="7744201119-5">(</span><span class="p" data-group-id="7744201119-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="7744201119-6">}</span><span class="p" data-group-id="7744201119-5">)</span><span class="w">
+</span><span class="p" data-group-id="7744201119-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7744201119-8">%</span><span class="nc" data-group-id="7744201119-8">Ecto.Changeset</span><span class="p" data-group-id="7744201119-8">{</span><span class="p" data-group-id="7744201119-8">}</span><span class="p" data-group-id="7744201119-7">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="month/2">
   <div class="detail-header">
@@ -304,7 +304,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Retorna todas as transações ocorridas no mês <code class="inline">month</code> do ano <code class="inline">year</code>, e a quantia total, em reais, transacionada na data.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato string. O ano deve seguir o formato: <code class="inline">&quot;yyyy&quot;</code>.</li><li><code class="inline">month</code>: O mês em formato string. O mês deve seguir o formato: <code class="inline">&quot;mm&quot;</code></li></ol><p>O retorno da função é um map e segue o padrão: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p><h2 id="month/2-examples" class="section-heading">
+<p>Retorna as transações ocorridas no mês <code class="inline">month</code> do ano <code class="inline">year</code> e a quantia total transacionada na data.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato string. O ano deve seguir o formato: <code class="inline">&quot;yyyy&quot;</code>.</li><li><code class="inline">month</code>: O mês em formato string. O mês deve seguir o formato: <code class="inline">&quot;mm&quot;</code></li></ol><p>O retorno da função é um map e segue o padrão: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p><h2 id="month/2-examples" class="section-heading">
   <a href="#month/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
@@ -326,11 +326,11 @@ Functions          </h1>
   <a href="#update_transaction/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_transaction</span><span class="p" data-group-id="5799037110-1">(</span><span class="n">transaction</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5799037110-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="5799037110-2">}</span><span class="p" data-group-id="5799037110-1">)</span><span class="w">
-</span><span class="p" data-group-id="5799037110-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5799037110-4">%</span><span class="nc" data-group-id="5799037110-4">Transaction</span><span class="p" data-group-id="5799037110-4">{</span><span class="p" data-group-id="5799037110-4">}</span><span class="p" data-group-id="5799037110-3">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_transaction</span><span class="p" data-group-id="5310971597-1">(</span><span class="n">transaction</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5310971597-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="5310971597-2">}</span><span class="p" data-group-id="5310971597-1">)</span><span class="w">
+</span><span class="p" data-group-id="5310971597-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5310971597-4">%</span><span class="nc" data-group-id="5310971597-4">Transaction</span><span class="p" data-group-id="5310971597-4">{</span><span class="p" data-group-id="5310971597-4">}</span><span class="p" data-group-id="5310971597-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">update_transaction</span><span class="p" data-group-id="5799037110-5">(</span><span class="n">transaction</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5799037110-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="5799037110-6">}</span><span class="p" data-group-id="5799037110-5">)</span><span class="w">
-</span><span class="p" data-group-id="5799037110-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5799037110-8">%</span><span class="nc" data-group-id="5799037110-8">Ecto.Changeset</span><span class="p" data-group-id="5799037110-8">{</span><span class="p" data-group-id="5799037110-8">}</span><span class="p" data-group-id="5799037110-7">}</span></code></pre>  </section>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_transaction</span><span class="p" data-group-id="5310971597-5">(</span><span class="n">transaction</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5310971597-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="5310971597-6">}</span><span class="p" data-group-id="5310971597-5">)</span><span class="w">
+</span><span class="p" data-group-id="5310971597-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5310971597-8">%</span><span class="nc" data-group-id="5310971597-8">Ecto.Changeset</span><span class="p" data-group-id="5310971597-8">{</span><span class="p" data-group-id="5310971597-8">}</span><span class="p" data-group-id="5310971597-7">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="validate_date/2">
   <div class="detail-header">
@@ -343,7 +343,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Chama o helper <a href="#validate_date/2"><code class="inline">validate_date/2</code></a> que faz a validação de data.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">date</code>: A data, em formato string, a ser validada</li><li><code class="inline">fail_message</code>: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</li></ol><p>Os dois possíveis retornos da função são uma túpla contendo o atom <code class="inline">:ok</code>, caso a data seja válida, ou uma tupla contendo o atom <code class="inline">:error</code> e a mensagem <code class="inline">fail_message</code>, caso a data seja inválida</p>  </section>
+<p>Chama a função <a href="BankingApi.Transactions.Helper.html#validate_date/2"><code class="inline">BankingApi.Transactions.Helper.validate_date/2</code></a> que faz a validação de data.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">date</code>: A data, em formato string, a ser validada</li><li><code class="inline">fail_message</code>: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</li></ol><p>Os dois possíveis retornos da função são uma túpla contendo o atom <code class="inline">:ok</code>, caso a data seja válida, ou uma tupla contendo o atom <code class="inline">:error</code> e a mensagem <code class="inline">fail_message</code>, caso a data seja inválida</p>  </section>
 </section>
 <section class="detail" id="year/1">
   <div class="detail-header">
@@ -356,13 +356,13 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Retorna todas as transações ocorridas no ano <code class="inline">year</code>, e a quantia total, em reais, transacionada na data.</p><p>O argumento da função é:
+<p>Retorna as transações ocorridas no ano <code class="inline">year</code> e a quantia total transacionada na data.</p><p>O argumento da função é:
 <code class="inline">year</code>: O ano em formato string. O ano deve seguir o formato: <code class="inline">&quot;yyyy&quot;</code>.</p><p>O retorno da função é um map contendo o total transacionado e a lista de transações: <code class="inline">%{total: 1000, transactions: [%Transactions{}, ...]}</code></p><h2 id="year/1-examples" class="section-heading">
   <a href="#year/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">year</span><span class="p" data-group-id="6900214934-1">(</span><span class="n">year</span><span class="p" data-group-id="6900214934-1">)</span><span class="w">
-</span><span class="p" data-group-id="6900214934-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6900214934-3">[</span><span class="p" data-group-id="6900214934-4">%</span><span class="nc" data-group-id="6900214934-4">Transactions</span><span class="p" data-group-id="6900214934-4">{</span><span class="p" data-group-id="6900214934-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="6900214934-3">]</span><span class="p" data-group-id="6900214934-2">}</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">year</span><span class="p" data-group-id="4869563614-1">(</span><span class="n">year</span><span class="p" data-group-id="4869563614-1">)</span><span class="w">
+</span><span class="p" data-group-id="4869563614-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4869563614-3">[</span><span class="p" data-group-id="4869563614-4">%</span><span class="nc" data-group-id="4869563614-4">Transactions</span><span class="p" data-group-id="4869563614-4">{</span><span class="p" data-group-id="4869563614-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4869563614-3">]</span><span class="p" data-group-id="4869563614-2">}</span></code></pre>  </section>
 </section>
           </div>
         </section>

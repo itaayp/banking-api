@@ -68,7 +68,7 @@ BankingApiWeb.FallbackController      </h1>
 
 
         <section id="moduledoc">
-<p>O objetivo deste módulo é centralizar a manipulação de erros relacionadas ao <a href="BankingApiWeb.UserController.html"><code class="inline">BankingApiWeb.UserController</code></a>.</p>        </section>
+<p>O objetivo deste módulo é centralizar a manipulação de erros relacionadas às Controllers da aplicação.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -86,8 +86,7 @@ BankingApiWeb.FallbackController      </h1>
   <div class="summary-signature">
     <a href="#call/2">call(conn, action)</a>
   </div>
-    <div class="summary-synopsis"><p>A função <code class="inline">call</code> é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema durante alguma operation, seja ela de <code class="inline">transfer</code> ou de <code class="inline">withdraw</code>.
-Os argumentos da função são as informações de connection <code class="inline">conn</code> e a mensagem de erro: <code class="inline">message</code>.</p></div>
+    <div class="summary-synopsis"><p>Renderiza a mensagem de erro ao usuário final.</p></div>
 </div>
   </div>
         </section>
@@ -111,8 +110,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função <code class="inline">call</code> é responsável por retornar uma mensagem de erro ao usuário final quando há algum problema durante alguma operation, seja ela de <code class="inline">transfer</code> ou de <code class="inline">withdraw</code>.
-Os argumentos da função são as informações de connection <code class="inline">conn</code> e a mensagem de erro: <code class="inline">message</code>.</p>  </section>
+<p>Renderiza a mensagem de erro ao usuário final.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações de <code class="inline">connection</code> e da <code class="inline">request</code>.</li><li>Uma tupla que contenha o atom <code class="inline">:error</code> e a mensagem a ser exibida ao usuário.</li></ol>  </section>
 </section>
           </div>
         </section>

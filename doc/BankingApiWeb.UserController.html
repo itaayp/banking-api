@@ -86,23 +86,19 @@ BankingApiWeb.UserController      </h1>
   <div class="summary-signature">
     <a href="#show/2">show(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>Esta função é responsável por buscar um usuário pelo <code class="inline">id</code> e renderizar as informações deste usuário obtido.
-Os argumentos da função são as informações de conexão <code class="inline">conn</code> e o <code class="inline">id</code> do usuário que será resgatado</p></div>
+    <div class="summary-synopsis"><p>Buscar um usuário pelo <code class="inline">id</code> e renderizar as informações deste usuário obtido.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#signin/2">signin(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>Essa função é responsável por autenticar um usuário no sistema e renderizar o feedback de signin para o usuário final</p></div>
+    <div class="summary-synopsis"><p>Autentica um usuário no sistema e renderizar o feedback de signin para o usuário final</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#signup/2">signup(conn, map)</a>
   </div>
-    <div class="summary-synopsis"><p>A função <code class="inline">signup</code> é responsável por cadastrar um novo usuário no sistema e criar uma nova conta bancária para este usuário.
-O argumento <code class="inline">user</code> da função são os dados do novo usuário que será inserido no sistema.
-O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o retorno de <code class="inline">create_user</code> tenha retornado <code class="inline">{:ok, user, account}</code>, ou uma mensagem de erro, caso o retorno de <code class="inline">create_user</code> tenha sido outro.
-Neste segundo caso, o Plug <code class="inline">BankingApiWeb.FallbackController.call()</code> é invocado, e lá e construida o feedback de erro para o usuário.</p></div>
+    <div class="summary-synopsis"><p>Cadastra um novo usuário no sistema e criar uma nova conta bancária para este usuário.</p></div>
 </div>
   </div>
         </section>
@@ -126,8 +122,8 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Esta função é responsável por buscar um usuário pelo <code class="inline">id</code> e renderizar as informações deste usuário obtido.
-Os argumentos da função são as informações de conexão <code class="inline">conn</code> e o <code class="inline">id</code> do usuário que será resgatado</p>  </section>
+<p>Buscar um usuário pelo <code class="inline">id</code> e renderizar as informações deste usuário obtido.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações de conexão</li><li><code class="inline">%{&quot;id&quot; =&gt; id}</code>: Um map que contenha:
+2.1. <code class="inline">id</code>: O email do usuário</li></ol>  </section>
 </section>
 <section class="detail" id="signin/2">
   <div class="detail-header">
@@ -140,9 +136,9 @@ Os argumentos da função são as informações de conexão <code class="inline"
 
   <section class="docstring">
 
-<p>Essa função é responsável por autenticar um usuário no sistema e renderizar o feedback de signin para o usuário final</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">map</code>: Um map que contém:
-2.1. <code class="inline">&quot;email&quot; =&gt; email</code>: O email do usuário
-2.2. <code class="inline">&quot;password&quot; =&gt; password</code>: A senha do usuário</li></ol>  </section>
+<p>Autentica um usuário no sistema e renderizar o feedback de signin para o usuário final</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações de conexão</li><li><code class="inline">%{&quot;email&quot; =&gt; email, &quot;password&quot; =&gt; password}</code>: Um map que contenha:
+2.1. <code class="inline">email</code>: O email do usuário
+2.2. <code class="inline">password</code>: A senha do usuário</li></ol>  </section>
 </section>
 <section class="detail" id="signup/2">
   <div class="detail-header">
@@ -155,10 +151,8 @@ Os argumentos da função são as informações de conexão <code class="inline"
 
   <section class="docstring">
 
-<p>A função <code class="inline">signup</code> é responsável por cadastrar um novo usuário no sistema e criar uma nova conta bancária para este usuário.
-O argumento <code class="inline">user</code> da função são os dados do novo usuário que será inserido no sistema.
-O retorno da função é a resposta ao usuário final que pode ser: uma mensagem informativa, caso o retorno de <code class="inline">create_user</code> tenha retornado <code class="inline">{:ok, user, account}</code>, ou uma mensagem de erro, caso o retorno de <code class="inline">create_user</code> tenha sido outro.
-Neste segundo caso, o Plug <code class="inline">BankingApiWeb.FallbackController.call()</code> é invocado, e lá e construida o feedback de erro para o usuário.</p>  </section>
+<p>Cadastra um novo usuário no sistema e criar uma nova conta bancária para este usuário.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações de conexão</li><li><code class="inline">%{&quot;user&quot; =&gt; user}</code>: Um map que contenha:
+2.1. <code class="inline">user</code>: A <code class="inline">user struct</code> a ser criada no sistema</li></ol>  </section>
 </section>
           </div>
         </section>

@@ -92,7 +92,7 @@ BankingApi.Transactions.Helper      </h1>
   <div class="summary-signature">
     <a href="#do_query/2">do_query(start_date, end_date)</a>
   </div>
-    <div class="summary-synopsis"><p>A função monta e executa a query que retornará as tranactions no banco de dados.</p></div>
+    <div class="summary-synopsis"><p>A função monta e executa a query que sera executada na tabela <code class="inline">tranactions</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -104,19 +104,19 @@ BankingApi.Transactions.Helper      </h1>
   <div class="summary-signature">
     <a href="#query_by_day/1">query_by_day(date)</a>
   </div>
-    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p></div>
+    <div class="summary-synopsis"><p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no dia especificado.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#query_by_month/2">query_by_month(year, month)</a>
   </div>
-    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p></div>
+    <div class="summary-synopsis"><p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#query_by_year/1">query_by_year(year)</a>
   </div>
-    <div class="summary-synopsis"><p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p></div>
+    <div class="summary-synopsis"><p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -165,7 +165,7 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função monta e executa a query que retornará as tranactions no banco de dados.</p><p>A consulta no banco de dados é feita baseada em um período de tempo. Portanto, os argumentos da função são:</p><ol><li><code class="inline">start_date</code>: O primeiro dia a ser levado em consideração para a consulta.</li><li><code class="inline">end_date</code>: O último dia a ser levado em consideração para a consulta.</li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol>  </section>
+<p>A função monta e executa a query que sera executada na tabela <code class="inline">tranactions</code>.</p><p>A consulta no banco de dados é feita baseada em um período de tempo. Portanto, os argumentos da função são:</p><ol><li><code class="inline">start_date</code>: O primeiro dia a ser levado em consideração para a consulta.</li><li><code class="inline">end_date</code>: O último dia a ser levado em consideração para a consulta.</li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol>  </section>
 </section>
 <section class="detail" id="list_transactions/0">
   <div class="detail-header">
@@ -182,8 +182,8 @@ Functions          </h1>
   <a href="#list_transactions/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_transactions</span><span class="p" data-group-id="1937097476-1">(</span><span class="p" data-group-id="1937097476-1">)</span><span class="w">
-</span><span class="p" data-group-id="1937097476-2">[</span><span class="p" data-group-id="1937097476-3">%</span><span class="nc" data-group-id="1937097476-3">Transactions</span><span class="p" data-group-id="1937097476-3">{</span><span class="p" data-group-id="1937097476-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1937097476-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_transactions</span><span class="p" data-group-id="8898755756-1">(</span><span class="p" data-group-id="8898755756-1">)</span><span class="w">
+</span><span class="p" data-group-id="8898755756-2">[</span><span class="p" data-group-id="8898755756-3">%</span><span class="nc" data-group-id="8898755756-3">Transactions</span><span class="p" data-group-id="8898755756-3">{</span><span class="p" data-group-id="8898755756-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="8898755756-2">]</span></code></pre>  </section>
 </section>
 <section class="detail" id="query_by_day/1">
   <div class="detail-header">
@@ -196,12 +196,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>O argumento da função é:</p><ol><li><code class="inline">date</code>: A data em formato string. A data deve seguir o formato: <code class="inline">&quot;yyyy-mm-dd&quot;</code>.</li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_day/1-examples" class="section-heading">
+<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no dia especificado.</p><p>O argumento da função é:</p><ol><li><code class="inline">date</code>: A data em formato string. A data deve seguir o formato: <code class="inline">&quot;yyyy-mm-dd&quot;</code>.</li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_day/1-examples" class="section-heading">
   <a href="#query_by_day/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_day</span><span class="p" data-group-id="1830354783-1">(</span><span class="n">date</span><span class="p" data-group-id="1830354783-1">)</span><span class="w">
-</span><span class="p" data-group-id="1830354783-2">[</span><span class="p" data-group-id="1830354783-3">%</span><span class="nc" data-group-id="1830354783-3">Transactions</span><span class="p" data-group-id="1830354783-3">{</span><span class="p" data-group-id="1830354783-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1830354783-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_day</span><span class="p" data-group-id="4057536917-1">(</span><span class="n">date</span><span class="p" data-group-id="4057536917-1">)</span><span class="w">
+</span><span class="p" data-group-id="4057536917-2">[</span><span class="p" data-group-id="4057536917-3">%</span><span class="nc" data-group-id="4057536917-3">Transactions</span><span class="p" data-group-id="4057536917-3">{</span><span class="p" data-group-id="4057536917-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4057536917-2">]</span></code></pre>  </section>
 </section>
 <section class="detail" id="query_by_month/2">
   <div class="detail-header">
@@ -214,12 +214,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato <code class="inline">integer</code>. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li><li><code class="inline">month</code>: O mês em formato <code class="inline">integer</code>. O mês deve seguir o formato: <code class="inline">mm</code></li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_month/2-examples" class="section-heading">
+<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato <code class="inline">integer</code>. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li><li><code class="inline">month</code>: O mês em formato <code class="inline">integer</code>. O mês deve seguir o formato: <code class="inline">mm</code></li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_month/2-examples" class="section-heading">
   <a href="#query_by_month/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_month</span><span class="p" data-group-id="7664240593-1">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p" data-group-id="7664240593-1">)</span><span class="w">
-</span><span class="p" data-group-id="7664240593-2">[</span><span class="p" data-group-id="7664240593-3">%</span><span class="nc" data-group-id="7664240593-3">Transactions</span><span class="p" data-group-id="7664240593-3">{</span><span class="p" data-group-id="7664240593-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="7664240593-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_month</span><span class="p" data-group-id="1466444675-1">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p" data-group-id="1466444675-1">)</span><span class="w">
+</span><span class="p" data-group-id="1466444675-2">[</span><span class="p" data-group-id="1466444675-3">%</span><span class="nc" data-group-id="1466444675-3">Transactions</span><span class="p" data-group-id="1466444675-3">{</span><span class="p" data-group-id="1466444675-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1466444675-2">]</span></code></pre>  </section>
 </section>
 <section class="detail" id="query_by_year/1">
   <div class="detail-header">
@@ -232,13 +232,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função busca todos os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p><p>O argumento da função é:
-<code class="inline">year</code>: O ano em formato integer. O ano deve seguir o formato: <code class="inline">yyyy</code>.</p><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_year/1-examples" class="section-heading">
+<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p><p>O argumento da função é:</p><ol><li><code class="inline">year</code>: O ano em formato integer. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code>.</p><h2 id="query_by_year/1-examples" class="section-heading">
   <a href="#query_by_year/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_year</span><span class="p" data-group-id="4829099852-1">(</span><span class="n">year</span><span class="p" data-group-id="4829099852-1">)</span><span class="w">
-</span><span class="p" data-group-id="4829099852-2">[</span><span class="p" data-group-id="4829099852-3">%</span><span class="nc" data-group-id="4829099852-3">Transactions</span><span class="p" data-group-id="4829099852-3">{</span><span class="p" data-group-id="4829099852-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4829099852-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_year</span><span class="p" data-group-id="7842468633-1">(</span><span class="n">year</span><span class="p" data-group-id="7842468633-1">)</span><span class="w">
+</span><span class="p" data-group-id="7842468633-2">[</span><span class="p" data-group-id="7842468633-3">%</span><span class="nc" data-group-id="7842468633-3">Transactions</span><span class="p" data-group-id="7842468633-3">{</span><span class="p" data-group-id="7842468633-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="7842468633-2">]</span></code></pre>  </section>
 </section>
 <section class="detail" id="sum_amount/1">
   <div class="detail-header">

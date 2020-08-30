@@ -68,7 +68,7 @@ BankingApiWeb.OperationController      </h1>
 
 
         <section id="moduledoc">
-<p>  Esse é o Controller responsável por todas as operações bancárias (transferência e saque).</p>        </section>
+<p>  Operation Controller.</p><p>  Controller responsável por iniciar qualquer operação no back-end a partir de uma requisição da API relacionada a <code class="inline">/api/operations</code>.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -116,9 +116,9 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Esta função é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">map</code>: Um map que contém:
-2.1. <code class="inline">&quot;to_account&quot; =&gt; to</code>: O número da conta recebedora (id da conta)
-2.2. <code class="inline">&quot;amount&quot; =&gt; amount</code>: Valor a ser transferido</li></ol>  </section>
+<p>Esta função é responsável por iniciar o processo de transferência bancária entre duas contas e renderizar o feedback sobre o status da operação para o usuário.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">%{&quot;to_account&quot; =&gt; to, &quot;amount&quot; =&gt; amount}</code>: Um map que contenha:
+2.1. <code class="inline">to_account</code>: O número da conta recebedora (id da conta)
+2.2. <code class="inline">amount</code>: Valor a ser transferido</li></ol>  </section>
 </section>
 <section class="detail" id="withdraw/2">
   <div class="detail-header">
@@ -131,8 +131,8 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">map</code>: Um map que contém:
-2.1. <code class="inline">&quot;amount&quot; =&gt; amount</code>: Valor a ser transferido</li></ol>  </section>
+<p>Esta função é responsável por iniciar a operação de saque e renderizar o feedback sobre o status do processo para o usuário.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">conn</code>: as informações da conexão</li><li><code class="inline">%{&quot;amount&quot; =&gt; amount}</code>: Um map que contenha:
+2.1. <code class="inline">amount</code>: Valor a ser transferido</li></ol>  </section>
 </section>
           </div>
         </section>
