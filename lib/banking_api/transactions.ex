@@ -52,8 +52,8 @@ defmodule BankingApi.Transactions do
   O retorno da função é um map e segue o padrão: `%{total: 1000, transactions: [%Transactions{}, ...]}`
 
   ## Examples
-    iex> Transactions.month("2020", "02")
-    %{total: 22, transactions: [%Transactions{}, ...]}
+      iex> Transactions.month("2020", "02")
+      %{total: 22, transactions: [%Transactions{}, ...]}
   """
   def month(year, month) do
     Helper.query_by_month(
@@ -71,8 +71,8 @@ defmodule BankingApi.Transactions do
   O retorno da função é um map e segue o padrão: `%{total: 1000, transactions: [%Transactions{}, ...]}`
 
   ## Examples
-    iex> Transactions.day("2020-02-02")
-    %{total: 22, transactions: [%Transactions{}, ...]}
+      iex> Transactions.day("2020-02-02")
+      %{total: 22, transactions: [%Transactions{}, ...]}
   """
   def day(date) do
     Helper.query_by_day(date)

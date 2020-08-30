@@ -120,7 +120,7 @@ BankingApi.Transactions.Helper      </h1>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#sum_amount/1">sum_amount(trasactions)</a>
+    <a href="#sum_amount/1">sum_amount(transactions)</a>
   </div>
     <div class="summary-synopsis"><p>A função é responsável por somar os valores de <code class="inline">transaction.value</code> de todas as structs passadas dentro da lista <code class="inline">transactions</code></p></div>
 </div>
@@ -128,7 +128,7 @@ BankingApi.Transactions.Helper      </h1>
   <div class="summary-signature">
     <a href="#validate_date/2">validate_date(date, fail_message)</a>
   </div>
-    <div class="summary-synopsis"><p>Valida a data.</p></div>
+    <div class="summary-synopsis"><p>Valida se o ano, mês ou dia são uma string vazia ou contém o caractére <code class="inline">&quot;-&quot;</code>.</p></div>
 </div>
   </div>
         </section>
@@ -152,7 +152,22 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função monta o que será o report de transações.</p><p>O argumento da função é:</p><ol><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol>  </section>
+<p>A função monta o que será o report de transações.</p><p>O argumento da função é:</p><ol><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol><h2 id="create_report/1-examples" class="section-heading">
+  <a href="#create_report/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">transactions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2006200357-1">[</span><span class="w"> </span><span class="p" data-group-id="2006200357-2">%{</span><span class="w">
+    </span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">account_from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;withdraw&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">account_to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">date</span><span class="p">:</span><span class="w"> </span><span class="ld">~D[2019-10-30]</span><span class="w">
+  </span><span class="p" data-group-id="2006200357-2">}</span><span class="p" data-group-id="2006200357-1">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">create_report</span><span class="p" data-group-id="2006200357-3">(</span><span class="n">transactions</span><span class="p" data-group-id="2006200357-3">)</span><span class="w">
+</span><span class="p" data-group-id="2006200357-4">%{</span><span class="w">
+  </span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2006200357-5">#</span><span class="nc" data-group-id="2006200357-5">Decimal</span><span class="p" data-group-id="2006200357-5">&lt;</span><span class="mi">100</span><span class="p" data-group-id="2006200357-5">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2006200357-6">[</span><span class="p" data-group-id="2006200357-7">%{</span><span class="ss">account_from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">account_to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">date</span><span class="p">:</span><span class="w"> </span><span class="ld">~D[2019-10-30]</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;withdraw&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100&quot;</span><span class="p" data-group-id="2006200357-7">}</span><span class="p" data-group-id="2006200357-6">]</span><span class="w">
+</span><span class="p" data-group-id="2006200357-4">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="do_query/2">
   <div class="detail-header">
@@ -165,7 +180,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função monta e executa a query que sera executada na tabela <code class="inline">tranactions</code>.</p><p>A consulta no banco de dados é feita baseada em um período de tempo. Portanto, os argumentos da função são:</p><ol><li><code class="inline">start_date</code>: O primeiro dia a ser levado em consideração para a consulta.</li><li><code class="inline">end_date</code>: O último dia a ser levado em consideração para a consulta.</li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol>  </section>
+<p>A função monta e executa a query que sera executada na tabela <code class="inline">tranactions</code>.</p><p>A consulta no banco de dados é feita baseada em um período de tempo. Portanto, os argumentos da função são:</p><ol><li><code class="inline">start_date</code>: O primeiro dia a ser levado em consideração para a consulta. A variável é do tipo string e deve seguir o formato <code class="inline">&quot;yyyy-mm-dd&quot;</code></li><li><code class="inline">end_date</code>: O último dia a ser levado em consideração para a consulta. A variável é do tipo string e deve seguir o formato <code class="inline">&quot;yyyy-mm-dd&quot;</code></li></ol><p>O retorno da função é um map com duas keys:</p><ol><li><code class="inline">total</code>: O valor total transacionado</li><li><code class="inline">transactions</code>: Uma lista de <code class="inline">transaction structs</code></li></ol><h2 id="do_query/2-examples" class="section-heading">
+  <a href="#do_query/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">do_query</span><span class="p" data-group-id="2219497741-1">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2020-12-30&quot;</span><span class="p" data-group-id="2219497741-1">)</span><span class="w">
+</span><span class="p" data-group-id="2219497741-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2219497741-3">#</span><span class="nc" data-group-id="2219497741-3">Decimal</span><span class="p" data-group-id="2219497741-3">&lt;</span><span class="mi">100</span><span class="p" data-group-id="2219497741-3">&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2219497741-4">[</span><span class="p" data-group-id="2219497741-5">%</span><span class="nc" data-group-id="2219497741-5">Transactions</span><span class="p" data-group-id="2219497741-5">{</span><span class="p" data-group-id="2219497741-5">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="2219497741-4">]</span><span class="p" data-group-id="2219497741-2">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="list_transactions/0">
   <div class="detail-header">
@@ -182,8 +202,8 @@ Functions          </h1>
   <a href="#list_transactions/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_transactions</span><span class="p" data-group-id="7374104730-1">(</span><span class="p" data-group-id="7374104730-1">)</span><span class="w">
-</span><span class="p" data-group-id="7374104730-2">[</span><span class="p" data-group-id="7374104730-3">%</span><span class="nc" data-group-id="7374104730-3">Transactions</span><span class="p" data-group-id="7374104730-3">{</span><span class="p" data-group-id="7374104730-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="7374104730-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">list_transactions</span><span class="p" data-group-id="2105084484-1">(</span><span class="p" data-group-id="2105084484-1">)</span><span class="w">
+</span><span class="p" data-group-id="2105084484-2">[</span><span class="p" data-group-id="2105084484-3">%</span><span class="nc" data-group-id="2105084484-3">Transactions</span><span class="p" data-group-id="2105084484-3">{</span><span class="p" data-group-id="2105084484-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="2105084484-2">]</span></code></pre>  </section>
 </section>
 <section class="detail" id="query_by_day/1">
   <div class="detail-header">
@@ -200,8 +220,8 @@ Functions          </h1>
   <a href="#query_by_day/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_day</span><span class="p" data-group-id="0857687920-1">(</span><span class="n">date</span><span class="p" data-group-id="0857687920-1">)</span><span class="w">
-</span><span class="p" data-group-id="0857687920-2">[</span><span class="p" data-group-id="0857687920-3">%</span><span class="nc" data-group-id="0857687920-3">Transactions</span><span class="p" data-group-id="0857687920-3">{</span><span class="p" data-group-id="0857687920-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="0857687920-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">query_by_day</span><span class="p" data-group-id="6748853329-1">(</span><span class="s">&quot;2009-01-01&quot;</span><span class="p" data-group-id="6748853329-1">)</span><span class="w">
+</span><span class="p" data-group-id="6748853329-2">[</span><span class="p" data-group-id="6748853329-3">%</span><span class="nc" data-group-id="6748853329-3">Transactions</span><span class="p" data-group-id="6748853329-3">{</span><span class="p" data-group-id="6748853329-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="6748853329-2">]</span></code></pre>  </section>
 </section>
 <section class="detail" id="query_by_month/2">
   <div class="detail-header">
@@ -214,12 +234,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato <code class="inline">integer</code>. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li><li><code class="inline">month</code>: O mês em formato <code class="inline">integer</code>. O mês deve seguir o formato: <code class="inline">mm</code></li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_month/2-examples" class="section-heading">
+<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code> e no mês <code class="inline">month</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">year</code>: O ano em formato <code class="inline">integer</code>. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li><li><code class="inline">month</code>: O mês em formato <code class="inline">integer</code>. O mês deve seguir o formato: <code class="inline">mm</code></li></ol><p>O retorno da função é um map que contém o total transacionado e uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_month/2-examples" class="section-heading">
   <a href="#query_by_month/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_month</span><span class="p" data-group-id="0985622308-1">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p" data-group-id="0985622308-1">)</span><span class="w">
-</span><span class="p" data-group-id="0985622308-2">[</span><span class="p" data-group-id="0985622308-3">%</span><span class="nc" data-group-id="0985622308-3">Transactions</span><span class="p" data-group-id="0985622308-3">{</span><span class="p" data-group-id="0985622308-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="0985622308-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">query_by_month</span><span class="p" data-group-id="6963360546-1">(</span><span class="mi">2020</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="6963360546-1">)</span><span class="w">
+</span><span class="p" data-group-id="6963360546-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6963360546-3">#</span><span class="nc" data-group-id="6963360546-3">Decimal</span><span class="p" data-group-id="6963360546-3">&lt;</span><span class="mi">100</span><span class="p" data-group-id="6963360546-3">&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6963360546-4">[</span><span class="p" data-group-id="6963360546-5">%</span><span class="nc" data-group-id="6963360546-5">Transactions</span><span class="p" data-group-id="6963360546-5">{</span><span class="p" data-group-id="6963360546-5">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="6963360546-4">]</span><span class="p" data-group-id="6963360546-2">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="query_by_year/1">
   <div class="detail-header">
@@ -232,12 +252,12 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p><p>O argumento da função é:</p><ol><li><code class="inline">year</code>: O ano em formato integer. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li></ol><p>O retorno da função é uma lista de <code class="inline">transaction structs</code>.</p><h2 id="query_by_year/1-examples" class="section-heading">
+<p>A função busca os registros da tabela <code class="inline">transactions</code> inseridos no ano <code class="inline">year</code>.</p><p>O argumento da função é:</p><ol><li><code class="inline">year</code>: O ano em formato integer. O ano deve seguir o formato: <code class="inline">yyyy</code>.</li></ol><p>O retorno da função é um map que contém o total transacionado e uma lista de <code class="inline">transaction structs</code></p><h2 id="query_by_year/1-examples" class="section-heading">
   <a href="#query_by_year/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">query_by_year</span><span class="p" data-group-id="2628136703-1">(</span><span class="n">year</span><span class="p" data-group-id="2628136703-1">)</span><span class="w">
-</span><span class="p" data-group-id="2628136703-2">[</span><span class="p" data-group-id="2628136703-3">%</span><span class="nc" data-group-id="2628136703-3">Transactions</span><span class="p" data-group-id="2628136703-3">{</span><span class="p" data-group-id="2628136703-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="2628136703-2">]</span></code></pre>  </section>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">query_by_year</span><span class="p" data-group-id="1113397620-1">(</span><span class="mi">2020</span><span class="p" data-group-id="1113397620-1">)</span><span class="w">
+</span><span class="p" data-group-id="1113397620-2">%{</span><span class="ss">total</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1113397620-3">#</span><span class="nc" data-group-id="1113397620-3">Decimal</span><span class="p" data-group-id="1113397620-3">&lt;</span><span class="mi">100</span><span class="p" data-group-id="1113397620-3">&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">transactions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1113397620-4">[</span><span class="p" data-group-id="1113397620-5">%</span><span class="nc" data-group-id="1113397620-5">Transactions</span><span class="p" data-group-id="1113397620-5">{</span><span class="p" data-group-id="1113397620-5">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1113397620-4">]</span><span class="p" data-group-id="1113397620-2">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="sum_amount/1">
   <div class="detail-header">
@@ -245,7 +265,7 @@ Functions          </h1>
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">sum_amount(trasactions)</h1>
+    <h1 class="signature">sum_amount(transactions)</h1>
   </div>
 
   <section class="docstring">
@@ -263,7 +283,15 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Valida a data.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">date</code>: A data, em formato string, a ser validada</li><li><code class="inline">fail_message</code>: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</li></ol><p>Os dois possíveis retornos da função são uma túpla contendo o atom <code class="inline">:ok</code>, caso a data seja válida, ou uma tupla contendo o atom <code class="inline">:error</code> e a mensagem <code class="inline">fail_message</code>, caso a data seja inválida</p>  </section>
+<p>Valida se o ano, mês ou dia são uma string vazia ou contém o caractére <code class="inline">&quot;-&quot;</code>.</p><p>Os argumentos da função são:</p><ol><li><code class="inline">date</code>: Pode ser o ano, o mês ou o dia, em formato string, a ser validado</li><li><code class="inline">fail_message</code>: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</li></ol><p>Os dois possíveis retornos da função são uma túpla contendo o atom <code class="inline">:ok</code>, caso a data seja válida, ou uma tupla contendo o atom <code class="inline">:error</code> e a mensagem <code class="inline">fail_message</code>, caso a data seja inválida</p><h2 id="validate_date/2-examples" class="section-heading">
+  <a href="#validate_date/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">validate_date</span><span class="p" data-group-id="3077389818-1">(</span><span class="s">&quot;2020&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;this is an invalid year&quot;</span><span class="p" data-group-id="3077389818-1">)</span><span class="w">
+</span><span class="p" data-group-id="3077389818-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A data é válida&quot;</span><span class="p" data-group-id="3077389818-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Helper</span><span class="o">.</span><span class="n">validate_date</span><span class="p" data-group-id="3077389818-3">(</span><span class="s">&quot;-2020&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;this is an invalid year&quot;</span><span class="p" data-group-id="3077389818-3">)</span><span class="w">
+</span><span class="p" data-group-id="3077389818-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;this is an invalid year&quot;</span><span class="p" data-group-id="3077389818-4">}</span></code></pre>  </section>
 </section>
           </div>
         </section>

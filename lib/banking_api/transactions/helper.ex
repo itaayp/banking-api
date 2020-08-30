@@ -119,8 +119,9 @@ defmodule BankingApi.Transactions.Helper do
         }]
       iex> Helper.create_report(transactions)
       %{
-  total: #Decimal<100>,
-  transactions: %{account_from: "1", account_to: "~", date: ~D[2019-10-30], type: "withdraw", value: "100"}]}
+        total: #Decimal<100>,
+        transactions: [%{account_from: "1", account_to: "~", date: ~D[2019-10-30], type: "withdraw", value: "100"}]
+      }
   """
   def create_report(transactions) do
     # Prepara o report de transações: soma o total operacionado e adiciona a lista de `transactions` em um map
