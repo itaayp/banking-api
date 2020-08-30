@@ -1,25 +1,26 @@
 defmodule BankingApiWeb.TransactionView do
   @moduledoc """
-  Essa é a Transaction View.
+  Transaction View.
 
-  Esse módulo é responsável por renderizar para o usuário final os reports de transações por data
+  Esse módulo é responsável por renderizar ao usuário final os reports de transações por data
   """
 
   use BankingApiWeb, :view
 
   @doc """
-  Função responsável por renderizar o report de transações.
+  Renderiza o report de transações.
 
   Os argumentos da função são:
     1. A string `show.json`.
-    2. `%{transaction: transaction}`: É um map que contém a lista de structs que serão exibidas e o valor total operado
+    2. `%{transaction: transaction}`: Um map que contenha
+      2.1. `transaction`: Uma lista com `transaction structs` e o valor total operado
   """
   def render("show.json", %{transaction: transaction}) do
     render_one(transaction, BankingApiWeb.TransactionView, "report.json")
   end
 
   @doc """
-  A função prepara a lista de transações para ser exibida ao usuário final.
+  Prepara a lista de transações para ser exibida ao usuário final.
 
   Os argumentos da função são:
     1. A string `report.json`.

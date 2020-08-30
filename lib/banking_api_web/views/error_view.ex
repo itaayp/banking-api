@@ -15,9 +15,11 @@ defmodule BankingApiWeb.ErrorView do
   end
 
   @doc """
-  Esta função é responsável por retornar ao usuário final uma mensagem de erro.
-  Os argumentos da função são a string `error_message.json` e um map contendo uma `message`
-  O retorno da função é um map contendo a mesma `message` passada como parâmetro
+  Retorna ao usuário final uma mensagem de erro.
+
+  Os argumentos da função são:
+    1. A string `error_message.json`
+    2. %{message: message}: Um map que contenha o valor da mensagem de erro `message`
   """
   def render("error_message.json", %{message: message}) do
     %{erro: message}
