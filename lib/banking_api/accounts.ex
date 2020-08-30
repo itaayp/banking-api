@@ -14,11 +14,22 @@ defmodule BankingApi.Accounts do
   Cria um `user`, uma `account`(conta bancária) e faz a associação entre ambos no banco de dados
 
   O argumento da função é:
-    1. `params`: Um map com os dados de `user` a serem inseridos.
+    1. `params`: Um map com as chaves de `user struct` a serem inseridos.
 
   Há dois possíveis retornos para a função:
     1. Uma tupla do tipo: `{:ok, user, account}`, onde `user` e `account` são structs
     2. Uma tupla do tipo: `{:error, changeset}`
+
+    ## Examples
+      iex> user = %{
+        email: "email@email.com",
+        first_name: "first_name",
+        last_name: "last_name",
+        password: "pwd",
+        password_confirmation: "pwd"
+      }
+      iex> Accounts.create_user(user)
+      %{:ok, %User{...}, %Account{...}}
   """
   def create_user(params) do
     transaction =
@@ -48,9 +59,13 @@ defmodule BankingApi.Accounts do
   Busca o `user` no banco de dados e vincula o resultado com a respectiva conta bancária.
 
   Argumentos da função:
-    1. `id`: O `id` do usuário
+    1. `id`: O `id` do usuário em formato Integet
 
   O retorno da função é uma `user struct` carregada com a respectiva `account struct`.
+
+  ## Examples
+      iex> Accounts.get_user!(10)
+      %User{accounts: %Account{...}, ...}
   """
   def get_user!(id), do: Repo.get(User, id) |> Repo.preload(:accounts)
 
@@ -58,9 +73,13 @@ defmodule BankingApi.Accounts do
   Busca por uma `account`.
 
   O argumento desta função é:
-    1. `id`: O `id` da `account`
+    1. `id`: O `id` da `account` em formato Integer
 
   O retorno desta função é uma struct de `account`.
+
+  ## Examples
+      iex> Accounts.get!(10)
+      %Account{...}
   """
   def get!(id), do: Repo.get(Account, id)
 end
