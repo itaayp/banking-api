@@ -48,7 +48,8 @@ defmodule BankingApi.MixProject do
       {:ex_doc, "~> 0.19"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:guardian, "~> 1.2"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 
