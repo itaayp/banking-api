@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApi.Transactions.Helper.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/transactions/helper.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 10:17:27</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/transactions/helper.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 17:33:01</p></footer>
 <table>
 <tbody>
 <tr>
@@ -189,7 +189,7 @@ td.source {
 <tr>
 <td class="line" id="L17"><a href="#L17">17</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; list_transactions()</code></td>
+<td class="source"><code>      iex&gt; Helper.list_transactions()</code></td>
 </tr>
 <tr>
 <td class="line" id="L18"><a href="#L18">18</a></td>
@@ -201,9 +201,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  """</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L20"><a href="#L20">20</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>  def list_transactions, do: Repo.all(Transaction)</code></td>
 </tr>
 <tr>
@@ -244,7 +244,7 @@ td.source {
 <tr>
 <td class="line" id="L28"><a href="#L28">28</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma lista de `transaction structs`.</code></td>
+<td class="source"><code>  O retorno da função é um map que contém o total transacionado e uma lista de `transaction structs`</code></td>
 </tr>
 <tr>
 <td class="line" id="L29"><a href="#L29">29</a></td>
@@ -259,12 +259,12 @@ td.source {
 <tr>
 <td class="line" id="L31"><a href="#L31">31</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; query_by_year(year)</code></td>
+<td class="source"><code>      iex&gt; Helper.query_by_year(2020)</code></td>
 </tr>
 <tr>
 <td class="line" id="L32"><a href="#L32">32</a></td>
 <td class="hits"></td>
-<td class="source"><code>      [%Transactions{}, ...]</code></td>
+<td class="source"><code>      %{total: #Decimal&lt;100&gt;, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L33"><a href="#L33">33</a></td>
@@ -276,14 +276,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def query_by_year(year) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L35"><a href="#L35">35</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    start_date = Date.from_erl!({year, 01, 01})</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L36"><a href="#L36">36</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    end_date = Date.from_erl!({year, 12, 31})</code></td>
 </tr>
 <tr>
@@ -291,9 +291,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L38"><a href="#L38">38</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    do_query(start_date, end_date)</code></td>
 </tr>
 <tr>
@@ -344,7 +344,7 @@ td.source {
 <tr>
 <td class="line" id="L48"><a href="#L48">48</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma lista de `transaction structs`</code></td>
+<td class="source"><code>  O retorno da função é um map que contém o total transacionado e uma lista de `transaction structs`</code></td>
 </tr>
 <tr>
 <td class="line" id="L49"><a href="#L49">49</a></td>
@@ -359,12 +359,12 @@ td.source {
 <tr>
 <td class="line" id="L51"><a href="#L51">51</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; query_by_month(year, month)</code></td>
+<td class="source"><code>      iex&gt; Helper.query_by_month(2020, 10)</code></td>
 </tr>
 <tr>
 <td class="line" id="L52"><a href="#L52">52</a></td>
 <td class="hits"></td>
-<td class="source"><code>      [%Transactions{}, ...]</code></td>
+<td class="source"><code>      %{total: #Decimal&lt;100&gt;, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L53"><a href="#L53">53</a></td>
@@ -376,19 +376,19 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def query_by_month(year, month) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L55"><a href="#L55">55</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    start_date = Date.from_erl!({year, month, 01})</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L56"><a href="#L56">56</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    days_in_month = Date.days_in_month(start_date)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L57"><a href="#L57">57</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    end_date = Date.from_erl!({year, month, days_in_month})</code></td>
 </tr>
 <tr>
@@ -396,9 +396,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L59"><a href="#L59">59</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    do_query(start_date, end_date)</code></td>
 </tr>
 <tr>
@@ -459,7 +459,7 @@ td.source {
 <tr>
 <td class="line" id="L71"><a href="#L71">71</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; query_by_day(date)</code></td>
+<td class="source"><code>      iex&gt; Helper.query_by_day("2009-01-01")</code></td>
 </tr>
 <tr>
 <td class="line" id="L72"><a href="#L72">72</a></td>
@@ -476,14 +476,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def query_by_day(date) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L75"><a href="#L75">75</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    query = from t in Transaction, where: t.date == ^Date.from_iso8601!(date)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L76"><a href="#L76">76</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    Repo.all(query)</code></td>
 </tr>
 <tr>
@@ -519,12 +519,12 @@ td.source {
 <tr>
 <td class="line" id="L83"><a href="#L83">83</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `start_date`: O primeiro dia a ser levado em consideração para a consulta.</code></td>
+<td class="source"><code>    1. `start_date`: O primeiro dia a ser levado em consideração para a consulta. A variável é do tipo string e deve seguir o formato `"yyyy-mm-dd"`</code></td>
 </tr>
 <tr>
 <td class="line" id="L84"><a href="#L84">84</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `end_date`: O último dia a ser levado em consideração para a consulta.</code></td>
+<td class="source"><code>    2. `end_date`: O último dia a ser levado em consideração para a consulta. A variável é do tipo string e deve seguir o formato `"yyyy-mm-dd"`</code></td>
 </tr>
 <tr>
 <td class="line" id="L85"><a href="#L85">85</a></td>
@@ -549,112 +549,112 @@ td.source {
 <tr>
 <td class="line" id="L89"><a href="#L89">89</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L90"><a href="#L90">90</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def do_query(start_date, end_date) do</code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L91"><a href="#L91">91</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    query = from t in Transaction, where: t.date &gt;= ^start_date and t.date &lt;= ^end_date</code></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; Helper.do_query("2020-01-01", "2020-12-30")</code></td>
 </tr>
 <tr>
 <td class="line" id="L92"><a href="#L92">92</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>      %{total: #Decimal&lt;100&gt;, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L93"><a href="#L93">93</a></td>
 <td class="hits"></td>
-<td class="source"><code>    Repo.all(query)</code></td>
+<td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L94"><a href="#L94">94</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; create_report()</code></td>
-</tr>
-<tr>
-<td class="line" id="L95"><a href="#L95">95</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L96"><a href="#L96">96</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L97"><a href="#L97">97</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
-</tr>
-<tr>
-<td class="line" id="L98"><a href="#L98">98</a></td>
-<td class="hits"></td>
-<td class="source"><code>  A função monta o que será o report de transações.</code></td>
-</tr>
-<tr>
-<td class="line" id="L99"><a href="#L99">99</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L100"><a href="#L100">100</a></td>
-<td class="hits"></td>
-<td class="source"><code>  O argumento da função é:</code></td>
-</tr>
-<tr>
-<td class="line" id="L101"><a href="#L101">101</a></td>
-<td class="hits"></td>
-<td class="source"><code>    1. `transactions`: Uma lista de `transaction structs`</code></td>
-</tr>
-<tr>
-<td class="line" id="L102"><a href="#L102">102</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L103"><a href="#L103">103</a></td>
-<td class="hits"></td>
-<td class="source"><code>  O retorno da função é um map com duas keys:</code></td>
-</tr>
-<tr>
-<td class="line" id="L104"><a href="#L104">104</a></td>
-<td class="hits"></td>
-<td class="source"><code>    1. `total`: O valor total transacionado</code></td>
-</tr>
-<tr>
-<td class="line" id="L105"><a href="#L105">105</a></td>
-<td class="hits"></td>
-<td class="source"><code>    2. `transactions`: Uma lista de `transaction structs`</code></td>
-</tr>
-<tr>
-<td class="line" id="L106"><a href="#L106">106</a></td>
 <td class="hits"></td>
 <td class="source"><code>  """</code></td>
 </tr>
 <tr>
+<td class="line" id="L95"><a href="#L95">95</a></td>
+<td class="hits"></td>
+<td class="source"><code>  def do_query(start_date, end_date) do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L96"><a href="#L96">96</a></td>
+<td class="hits">5</td>
+<td class="source"><code>    query = from t in Transaction, where: t.date &gt;= ^start_date and t.date &lt;= ^end_date</code></td>
+</tr>
+<tr>
+<td class="line" id="L97"><a href="#L97">97</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L98"><a href="#L98">98</a></td>
+<td class="hits"></td>
+<td class="source"><code>    Repo.all(query)</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L99"><a href="#L99">99</a></td>
+<td class="hits">5</td>
+<td class="source"><code>    |&gt; create_report()</code></td>
+</tr>
+<tr>
+<td class="line" id="L100"><a href="#L100">100</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
+</tr>
+<tr>
+<td class="line" id="L101"><a href="#L101">101</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L102"><a href="#L102">102</a></td>
+<td class="hits"></td>
+<td class="source"><code>  @doc """</code></td>
+</tr>
+<tr>
+<td class="line" id="L103"><a href="#L103">103</a></td>
+<td class="hits"></td>
+<td class="source"><code>  A função monta o que será o report de transações.</code></td>
+</tr>
+<tr>
+<td class="line" id="L104"><a href="#L104">104</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L105"><a href="#L105">105</a></td>
+<td class="hits"></td>
+<td class="source"><code>  O argumento da função é:</code></td>
+</tr>
+<tr>
+<td class="line" id="L106"><a href="#L106">106</a></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `transactions`: Uma lista de `transaction structs`</code></td>
+</tr>
+<tr>
 <td class="line" id="L107"><a href="#L107">107</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def create_report(transactions) do</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L108"><a href="#L108">108</a></td>
 <td class="hits"></td>
-<td class="source"><code>    # Prepara o report de transações: soma o total operacionado e adiciona a lista de `transactions` em um map</code></td>
+<td class="source"><code>  O retorno da função é um map com duas keys:</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L109"><a href="#L109">109</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    %{total: sum_amount(transactions), transactions: transactions}</code></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `total`: O valor total transacionado</code></td>
 </tr>
 <tr>
 <td class="line" id="L110"><a href="#L110">110</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>    2. `transactions`: Uma lista de `transaction structs`</code></td>
 </tr>
 <tr>
 <td class="line" id="L111"><a href="#L111">111</a></td>
@@ -664,87 +664,87 @@ td.source {
 <tr>
 <td class="line" id="L112"><a href="#L112">112</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
 <tr>
 <td class="line" id="L113"><a href="#L113">113</a></td>
 <td class="hits"></td>
-<td class="source"><code>  A função é responsável por somar os valores de `transaction.value` de todas as structs passadas dentro da lista `transactions`</code></td>
+<td class="source"><code>      iex&gt; transactions = [ %{</code></td>
 </tr>
 <tr>
 <td class="line" id="L114"><a href="#L114">114</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>          value: "100",</code></td>
 </tr>
 <tr>
 <td class="line" id="L115"><a href="#L115">115</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O argumento da função é a lista `transactions` que contém as structs de `transaction`</code></td>
+<td class="source"><code>          account_from: "1",</code></td>
 </tr>
 <tr>
 <td class="line" id="L116"><a href="#L116">116</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>          type: "withdraw",</code></td>
 </tr>
 <tr>
 <td class="line" id="L117"><a href="#L117">117</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é o resultado da soma de todas as `transaction.value` da lista</code></td>
+<td class="source"><code>          account_to: "~",</code></td>
 </tr>
 <tr>
 <td class="line" id="L118"><a href="#L118">118</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>          date: ~D[2019-10-30]</code></td>
 </tr>
 <tr>
 <td class="line" id="L119"><a href="#L119">119</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def sum_amount(trasactions) do</code></td>
+<td class="source"><code>        }]</code></td>
 </tr>
 <tr>
 <td class="line" id="L120"><a href="#L120">120</a></td>
 <td class="hits"></td>
-<td class="source"><code>    # Foi preciso fazer a soma das quantias usando `Enum.reduce` e `Decimal.new` para evitar um resultado do tipo: `1.3e3`</code></td>
+<td class="source"><code>      iex&gt; Helper.create_report(transactions)</code></td>
 </tr>
 <tr>
 <td class="line" id="L121"><a href="#L121">121</a></td>
 <td class="hits"></td>
-<td class="source"><code>    # `Enum.reduce` soma cada valor de `transaction.value`. E o primeiro valor a ser somado é o segundo argumento da função (`0`)</code></td>
+<td class="source"><code>      %{</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L122"><a href="#L122">122</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    Enum.reduce(trasactions, Decimal.new("0"), fn transaction, acc -&gt;</code></td>
+<td class="hits"></td>
+<td class="source"><code>  total: #Decimal&lt;100&gt;,</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L123"><a href="#L123">123</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>      Decimal.add(acc, transaction.value)</code></td>
+<td class="hits"></td>
+<td class="source"><code>  transactions: %{account_from: "1", account_to: "~", date: ~D[2019-10-30], type: "withdraw", value: "100"}]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L124"><a href="#L124">124</a></td>
 <td class="hits"></td>
-<td class="source"><code>    end)</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L125"><a href="#L125">125</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>  def create_report(transactions) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L126"><a href="#L126">126</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>    # Prepara o report de transações: soma o total operacionado e adiciona a lista de `transactions` em um map</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L127"><a href="#L127">127</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="hits">8</td>
+<td class="source"><code>    %{total: sum_amount(transactions), transactions: transactions}</code></td>
 </tr>
 <tr>
 <td class="line" id="L128"><a href="#L128">128</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Valida a data.</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L129"><a href="#L129">129</a></td>
@@ -754,70 +754,195 @@ td.source {
 <tr>
 <td class="line" id="L130"><a href="#L130">130</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos da função são:</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L131"><a href="#L131">131</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `date`: A data, em formato string, a ser validada</code></td>
+<td class="source"><code>  A função é responsável por somar os valores de `transaction.value` de todas as structs passadas dentro da lista `transactions`</code></td>
 </tr>
 <tr>
 <td class="line" id="L132"><a href="#L132">132</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L133"><a href="#L133">133</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  O argumento da função é a lista `transactions` que contém as structs de `transaction`</code></td>
 </tr>
 <tr>
 <td class="line" id="L134"><a href="#L134">134</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L135"><a href="#L135">135</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>  O retorno da função é o resultado da soma de todas as `transaction.value` da lista</code></td>
 </tr>
 <tr>
 <td class="line" id="L136"><a href="#L136">136</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def validate_date(date, fail_message) do</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L137"><a href="#L137">137</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    if String.equivalent?(date, "") || String.contains?(date, "-") do</code></td>
+<td class="hits"></td>
+<td class="source"><code>  def sum_amount(transactions) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L138"><a href="#L138">138</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:error, fail_message}</code></td>
+<td class="source"><code>    # Foi preciso fazer a soma das quantias usando `Enum.reduce` e `Decimal.new` para evitar um resultado do tipo: `1.3e3`</code></td>
 </tr>
 <tr>
 <td class="line" id="L139"><a href="#L139">139</a></td>
 <td class="hits"></td>
-<td class="source"><code>    else</code></td>
+<td class="source"><code>    # `Enum.reduce` soma cada valor de `transaction.value`. E o primeiro valor a ser somado é o segundo argumento da função (`0`)</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L140"><a href="#L140">140</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:ok, "A data é válida"}</code></td>
+<td class="hits">9</td>
+<td class="source"><code>    Enum.reduce(transactions, Decimal.new("0"), fn transaction, acc -&gt;</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L141"><a href="#L141">141</a></td>
-<td class="hits"></td>
-<td class="source"><code>    end</code></td>
+<td class="hits">20</td>
+<td class="source"><code>      Decimal.add(acc, transaction.value)</code></td>
 </tr>
 <tr>
 <td class="line" id="L142"><a href="#L142">142</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>    end)</code></td>
 </tr>
 <tr>
 <td class="line" id="L143"><a href="#L143">143</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
+</tr>
+<tr>
+<td class="line" id="L144"><a href="#L144">144</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L145"><a href="#L145">145</a></td>
+<td class="hits"></td>
+<td class="source"><code>  @doc """</code></td>
+</tr>
+<tr>
+<td class="line" id="L146"><a href="#L146">146</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Valida se o ano, mês ou dia são uma string vazia ou contém o caractére `"-"`.</code></td>
+</tr>
+<tr>
+<td class="line" id="L147"><a href="#L147">147</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L148"><a href="#L148">148</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Os argumentos da função são:</code></td>
+</tr>
+<tr>
+<td class="line" id="L149"><a href="#L149">149</a></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `date`: Pode ser o ano, o mês ou o dia, em formato string, a ser validado</code></td>
+</tr>
+<tr>
+<td class="line" id="L150"><a href="#L150">150</a></td>
+<td class="hits"></td>
+<td class="source"><code>    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</code></td>
+</tr>
+<tr>
+<td class="line" id="L151"><a href="#L151">151</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L152"><a href="#L152">152</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida</code></td>
+</tr>
+<tr>
+<td class="line" id="L153"><a href="#L153">153</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L154"><a href="#L154">154</a></td>
+<td class="hits"></td>
+<td class="source"><code>  ## Examples</code></td>
+</tr>
+<tr>
+<td class="line" id="L155"><a href="#L155">155</a></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; Helper.validate_date("2020", "this is an invalid year")</code></td>
+</tr>
+<tr>
+<td class="line" id="L156"><a href="#L156">156</a></td>
+<td class="hits"></td>
+<td class="source"><code>      {:ok, "A data é válida"}</code></td>
+</tr>
+<tr>
+<td class="line" id="L157"><a href="#L157">157</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L158"><a href="#L158">158</a></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; Helper.validate_date("-2020", "this is an invalid year")</code></td>
+</tr>
+<tr>
+<td class="line" id="L159"><a href="#L159">159</a></td>
+<td class="hits"></td>
+<td class="source"><code>      {:error, "this is an invalid year"}</code></td>
+</tr>
+<tr>
+<td class="line" id="L160"><a href="#L160">160</a></td>
+<td class="hits"></td>
+<td class="source"><code>  """</code></td>
+</tr>
+<tr>
+<td class="line" id="L161"><a href="#L161">161</a></td>
+<td class="hits"></td>
+<td class="source"><code>  def validate_date(date, fail_message) do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L162"><a href="#L162">162</a></td>
+<td class="hits">4</td>
+<td class="source"><code>    if String.equivalent?(date, "") || String.contains?(date, "-") do</code></td>
+</tr>
+<tr>
+<td class="line" id="L163"><a href="#L163">163</a></td>
+<td class="hits"></td>
+<td class="source"><code>      {:error, fail_message}</code></td>
+</tr>
+<tr>
+<td class="line" id="L164"><a href="#L164">164</a></td>
+<td class="hits"></td>
+<td class="source"><code>    else</code></td>
+</tr>
+<tr>
+<td class="line" id="L165"><a href="#L165">165</a></td>
+<td class="hits"></td>
+<td class="source"><code>      {:ok, "A data é válida"}</code></td>
+</tr>
+<tr>
+<td class="line" id="L166"><a href="#L166">166</a></td>
+<td class="hits"></td>
+<td class="source"><code>    end</code></td>
+</tr>
+<tr>
+<td class="line" id="L167"><a href="#L167">167</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
+</tr>
+<tr>
+<td class="line" id="L168"><a href="#L168">168</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>

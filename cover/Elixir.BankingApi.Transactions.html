@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApi.Transactions.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/transactions.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 10:17:27</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/transactions.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 17:33:01</p></footer>
 <table>
 <tbody>
 <tr>
@@ -209,12 +209,12 @@ td.source {
 <tr>
 <td class="line" id="L21"><a href="#L21">21</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; all()</code></td>
+<td class="source"><code>      iex&gt; Transactions.all()</code></td>
 </tr>
 <tr>
 <td class="line" id="L22"><a href="#L22">22</a></td>
 <td class="hits"></td>
-<td class="source"><code>      %{total: 1000, transactions: [%Transactions{}, ...]}</code></td>
+<td class="source"><code>      %{total: 100, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L23"><a href="#L23">23</a></td>
@@ -231,9 +231,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>    Helper.list_transactions()</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L26"><a href="#L26">26</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    |&gt; Helper.create_report()</code></td>
 </tr>
 <tr>
@@ -294,12 +294,12 @@ td.source {
 <tr>
 <td class="line" id="L38"><a href="#L38">38</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; year(year)</code></td>
+<td class="source"><code>      iex&gt; Transactions.year("2020")</code></td>
 </tr>
 <tr>
 <td class="line" id="L39"><a href="#L39">39</a></td>
 <td class="hits"></td>
-<td class="source"><code>      %{total: 1000, transactions: [%Transactions{}, ...]}</code></td>
+<td class="source"><code>      %{total: 33, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L40"><a href="#L40">40</a></td>
@@ -311,9 +311,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def year(year) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L42"><a href="#L42">42</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    Helper.query_by_year(String.to_integer(year))</code></td>
 </tr>
 <tr>
@@ -379,12 +379,12 @@ td.source {
 <tr>
 <td class="line" id="L55"><a href="#L55">55</a></td>
 <td class="hits"></td>
-<td class="source"><code>    iex&gt; month(year, month)</code></td>
+<td class="source"><code>    iex&gt; Transactions.month("2020", "02")</code></td>
 </tr>
 <tr>
 <td class="line" id="L56"><a href="#L56">56</a></td>
 <td class="hits"></td>
-<td class="source"><code>    %{total: 1000, transactions: [%Transactions{}, ...]}</code></td>
+<td class="source"><code>    %{total: 22, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L57"><a href="#L57">57</a></td>
@@ -396,9 +396,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def month(year, month) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L59"><a href="#L59">59</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    Helper.query_by_month(</code></td>
 </tr>
 <tr>
@@ -464,62 +464,62 @@ td.source {
 <tr>
 <td class="line" id="L72"><a href="#L72">72</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L73"><a href="#L73">73</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def day(date) do</code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
 <tr>
 <td class="line" id="L74"><a href="#L74">74</a></td>
 <td class="hits"></td>
-<td class="source"><code>    Helper.query_by_day(date)</code></td>
+<td class="source"><code>    iex&gt; Transactions.day("2020-02-02")</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L75"><a href="#L75">75</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; Helper.create_report()</code></td>
+<td class="hits"></td>
+<td class="source"><code>    %{total: 22, transactions: [%Transactions{}, ...]}</code></td>
 </tr>
 <tr>
 <td class="line" id="L76"><a href="#L76">76</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L77"><a href="#L77">77</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  def day(date) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L78"><a href="#L78">78</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>    Helper.query_by_day(date)</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L79"><a href="#L79">79</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Insere a `transaction` no banco de dados.</code></td>
+<td class="hits">1</td>
+<td class="source"><code>    |&gt; Helper.create_report()</code></td>
 </tr>
 <tr>
 <td class="line" id="L80"><a href="#L80">80</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L81"><a href="#L81">81</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O argumento da função é o map `params` que contém os valores a serem inseridos na tabela.</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L82"><a href="#L82">82</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L83"><a href="#L83">83</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma tupla, e retornará o atom `:ok`, caso a inserção tenha ocorrido com sucesso, ou `:error`, caso haja falha durante a inserção.</code></td>
+<td class="source"><code>  Insere a `transaction` no banco de dados.</code></td>
 </tr>
 <tr>
 <td class="line" id="L84"><a href="#L84">84</a></td>
@@ -529,72 +529,72 @@ td.source {
 <tr>
 <td class="line" id="L85"><a href="#L85">85</a></td>
 <td class="hits"></td>
-<td class="source"><code>  ## Examples</code></td>
+<td class="source"><code>  O argumento da função é o map `params` que contém todos os valores a serem inseridos na tabela `transactions`.</code></td>
 </tr>
 <tr>
 <td class="line" id="L86"><a href="#L86">86</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; insert_transaction(%{field: value})</code></td>
+<td class="source"><code>  Os valores do map `params` e obrigatoriedade de cada um deles são definidos pela `transaction model`</code></td>
 </tr>
 <tr>
 <td class="line" id="L87"><a href="#L87">87</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:ok, %Transaction{}}</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L88"><a href="#L88">88</a></td>
 <td class="hits"></td>
-<td class="source"><code>      iex&gt; create_user(%{field: bad_value})</code></td>
+<td class="source"><code>  O retorno da função é uma tupla, e retornará o atom `:ok`, caso a inserção tenha ocorrido com sucesso, ou `:error`, caso haja falha durante a inserção.</code></td>
 </tr>
 <tr>
 <td class="line" id="L89"><a href="#L89">89</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:error, %Ecto.Changeset{}}</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L90"><a href="#L90">90</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
 <tr>
 <td class="line" id="L91"><a href="#L91">91</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def insert_transaction(params) do</code></td>
+<td class="source"><code>      iex&gt; Transactions.insert_transaction(%{value: "111", account_from: "3", account_to: "~", type: "withdraw", date: "2019-02-02"})</code></td>
 </tr>
 <tr>
 <td class="line" id="L92"><a href="#L92">92</a></td>
 <td class="hits"></td>
-<td class="source"><code>    %Transaction{}</code></td>
+<td class="source"><code>      {:ok, %Transaction{}}</code></td>
 </tr>
 <tr>
 <td class="line" id="L93"><a href="#L93">93</a></td>
 <td class="hits"></td>
-<td class="source"><code>    |&gt; Transaction.changeset(params)</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L94"><a href="#L94">94</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; Repo.insert()</code></td>
+<td class="hits"></td>
+<td class="source"><code>  def insert_transaction(params) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L95"><a href="#L95">95</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>    %Transaction{}</code></td>
 </tr>
 <tr>
 <td class="line" id="L96"><a href="#L96">96</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>    |&gt; Transaction.changeset(params)</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L97"><a href="#L97">97</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="hits">60</td>
+<td class="source"><code>    |&gt; Repo.insert()</code></td>
 </tr>
 <tr>
 <td class="line" id="L98"><a href="#L98">98</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Chama a função `BankingApi.Transactions.Helper.validate_date/2` que faz a validação de data.</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L99"><a href="#L99">99</a></td>
@@ -604,62 +604,62 @@ td.source {
 <tr>
 <td class="line" id="L100"><a href="#L100">100</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos da função são:</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L101"><a href="#L101">101</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `date`: A data, em formato string, a ser validada</code></td>
+<td class="source"><code>  Chama a função `BankingApi.Transactions.Helper.validate_date/2` que faz a validação de data.</code></td>
 </tr>
 <tr>
 <td class="line" id="L102"><a href="#L102">102</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L103"><a href="#L103">103</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  Os argumentos da função são:</code></td>
 </tr>
 <tr>
 <td class="line" id="L104"><a href="#L104">104</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida</code></td>
+<td class="source"><code>    1. `date`: A data, em formato string, a ser validada</code></td>
 </tr>
 <tr>
 <td class="line" id="L105"><a href="#L105">105</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>    2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida</code></td>
 </tr>
 <tr>
 <td class="line" id="L106"><a href="#L106">106</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def validate_date(date, fail_message) do</code></td>
+<td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L107"><a href="#L107">107</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    Helper.validate_date(date, fail_message)</code></td>
+<td class="hits"></td>
+<td class="source"><code>  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida</code></td>
 </tr>
 <tr>
 <td class="line" id="L108"><a href="#L108">108</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L109"><a href="#L109">109</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
 <tr>
 <td class="line" id="L110"><a href="#L110">110</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>      iex&gt; Transactions.validate_date("2020", "this is an invalid year")</code></td>
 </tr>
 <tr>
 <td class="line" id="L111"><a href="#L111">111</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Gets a single transaction.</code></td>
+<td class="source"><code>      {:ok, "A data é válida"}</code></td>
 </tr>
 <tr>
 <td class="line" id="L112"><a href="#L112">112</a></td>
@@ -669,395 +669,35 @@ td.source {
 <tr>
 <td class="line" id="L113"><a href="#L113">113</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Raises `Ecto.NoResultsError` if the Transaction does not exist.</code></td>
+<td class="source"><code>      iex&gt; Transactions.validate_date("-2020", "this is an invalid year")</code></td>
 </tr>
 <tr>
 <td class="line" id="L114"><a href="#L114">114</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>      {:error, "this is an invalid year"}</code></td>
 </tr>
 <tr>
 <td class="line" id="L115"><a href="#L115">115</a></td>
 <td class="hits"></td>
-<td class="source"><code>  ## Examples</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L116"><a href="#L116">116</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  def validate_date(date, fail_message) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L117"><a href="#L117">117</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; get_transaction!(123)</code></td>
+<td class="hits">2</td>
+<td class="source"><code>    Helper.validate_date(date, fail_message)</code></td>
 </tr>
 <tr>
 <td class="line" id="L118"><a href="#L118">118</a></td>
 <td class="hits"></td>
-<td class="source"><code>      %Transaction{}</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L119"><a href="#L119">119</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L120"><a href="#L120">120</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; get_transaction!(456)</code></td>
-</tr>
-<tr>
-<td class="line" id="L121"><a href="#L121">121</a></td>
-<td class="hits"></td>
-<td class="source"><code>      ** (Ecto.NoResultsError)</code></td>
-</tr>
-<tr>
-<td class="line" id="L122"><a href="#L122">122</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L123"><a href="#L123">123</a></td>
-<td class="hits"></td>
-<td class="source"><code>  """</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L124"><a href="#L124">124</a></td>
-<td class="hits">1</td>
-<td class="source"><code>  def get_transaction!(id), do: Repo.get!(Transaction, id)</code></td>
-</tr>
-<tr>
-<td class="line" id="L125"><a href="#L125">125</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L126"><a href="#L126">126</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
-</tr>
-<tr>
-<td class="line" id="L127"><a href="#L127">127</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Creates a transaction.</code></td>
-</tr>
-<tr>
-<td class="line" id="L128"><a href="#L128">128</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L129"><a href="#L129">129</a></td>
-<td class="hits"></td>
-<td class="source"><code>  ## Examples</code></td>
-</tr>
-<tr>
-<td class="line" id="L130"><a href="#L130">130</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L131"><a href="#L131">131</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; create_transaction(%{field: value})</code></td>
-</tr>
-<tr>
-<td class="line" id="L132"><a href="#L132">132</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:ok, %Transaction{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L133"><a href="#L133">133</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L134"><a href="#L134">134</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; create_transaction(%{field: bad_value})</code></td>
-</tr>
-<tr>
-<td class="line" id="L135"><a href="#L135">135</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:error, %Ecto.Changeset{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L136"><a href="#L136">136</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L137"><a href="#L137">137</a></td>
-<td class="hits"></td>
-<td class="source"><code>  """</code></td>
-</tr>
-<tr class="miss">
-<td class="line" id="L138"><a href="#L138">138</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>  def create_transaction(attrs \\ %{}) do</code></td>
-</tr>
-<tr>
-<td class="line" id="L139"><a href="#L139">139</a></td>
-<td class="hits"></td>
-<td class="source"><code>    %Transaction{}</code></td>
-</tr>
-<tr>
-<td class="line" id="L140"><a href="#L140">140</a></td>
-<td class="hits"></td>
-<td class="source"><code>    |&gt; Transaction.changeset(attrs)</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L141"><a href="#L141">141</a></td>
-<td class="hits">5</td>
-<td class="source"><code>    |&gt; Repo.insert()</code></td>
-</tr>
-<tr>
-<td class="line" id="L142"><a href="#L142">142</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L143"><a href="#L143">143</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L144"><a href="#L144">144</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
-</tr>
-<tr>
-<td class="line" id="L145"><a href="#L145">145</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Updates a transaction.</code></td>
-</tr>
-<tr>
-<td class="line" id="L146"><a href="#L146">146</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L147"><a href="#L147">147</a></td>
-<td class="hits"></td>
-<td class="source"><code>  ## Examples</code></td>
-</tr>
-<tr>
-<td class="line" id="L148"><a href="#L148">148</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L149"><a href="#L149">149</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; update_transaction(transaction, %{field: new_value})</code></td>
-</tr>
-<tr>
-<td class="line" id="L150"><a href="#L150">150</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:ok, %Transaction{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L151"><a href="#L151">151</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L152"><a href="#L152">152</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; update_transaction(transaction, %{field: bad_value})</code></td>
-</tr>
-<tr>
-<td class="line" id="L153"><a href="#L153">153</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:error, %Ecto.Changeset{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L154"><a href="#L154">154</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L155"><a href="#L155">155</a></td>
-<td class="hits"></td>
-<td class="source"><code>  """</code></td>
-</tr>
-<tr>
-<td class="line" id="L156"><a href="#L156">156</a></td>
-<td class="hits"></td>
-<td class="source"><code>  def update_transaction(%Transaction{} = transaction, attrs) do</code></td>
-</tr>
-<tr>
-<td class="line" id="L157"><a href="#L157">157</a></td>
-<td class="hits"></td>
-<td class="source"><code>    transaction</code></td>
-</tr>
-<tr>
-<td class="line" id="L158"><a href="#L158">158</a></td>
-<td class="hits"></td>
-<td class="source"><code>    |&gt; Transaction.changeset(attrs)</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L159"><a href="#L159">159</a></td>
-<td class="hits">1</td>
-<td class="source"><code>    |&gt; Repo.update()</code></td>
-</tr>
-<tr>
-<td class="line" id="L160"><a href="#L160">160</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L161"><a href="#L161">161</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L162"><a href="#L162">162</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
-</tr>
-<tr>
-<td class="line" id="L163"><a href="#L163">163</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Deletes a transaction.</code></td>
-</tr>
-<tr>
-<td class="line" id="L164"><a href="#L164">164</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L165"><a href="#L165">165</a></td>
-<td class="hits"></td>
-<td class="source"><code>  ## Examples</code></td>
-</tr>
-<tr>
-<td class="line" id="L166"><a href="#L166">166</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L167"><a href="#L167">167</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; delete_transaction(transaction)</code></td>
-</tr>
-<tr>
-<td class="line" id="L168"><a href="#L168">168</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:ok, %Transaction{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L169"><a href="#L169">169</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L170"><a href="#L170">170</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; delete_transaction(transaction)</code></td>
-</tr>
-<tr>
-<td class="line" id="L171"><a href="#L171">171</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:error, %Ecto.Changeset{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L172"><a href="#L172">172</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L173"><a href="#L173">173</a></td>
-<td class="hits"></td>
-<td class="source"><code>  """</code></td>
-</tr>
-<tr>
-<td class="line" id="L174"><a href="#L174">174</a></td>
-<td class="hits"></td>
-<td class="source"><code>  def delete_transaction(%Transaction{} = transaction) do</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L175"><a href="#L175">175</a></td>
-<td class="hits">1</td>
-<td class="source"><code>    Repo.delete(transaction)</code></td>
-</tr>
-<tr>
-<td class="line" id="L176"><a href="#L176">176</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L177"><a href="#L177">177</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L178"><a href="#L178">178</a></td>
-<td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
-</tr>
-<tr>
-<td class="line" id="L179"><a href="#L179">179</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Returns an `%Ecto.Changeset{}` for tracking transaction changes.</code></td>
-</tr>
-<tr>
-<td class="line" id="L180"><a href="#L180">180</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L181"><a href="#L181">181</a></td>
-<td class="hits"></td>
-<td class="source"><code>  ## Examples</code></td>
-</tr>
-<tr>
-<td class="line" id="L182"><a href="#L182">182</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L183"><a href="#L183">183</a></td>
-<td class="hits"></td>
-<td class="source"><code>      iex&gt; change_transaction(transaction)</code></td>
-</tr>
-<tr>
-<td class="line" id="L184"><a href="#L184">184</a></td>
-<td class="hits"></td>
-<td class="source"><code>      %Ecto.Changeset{data: %Transaction{}}</code></td>
-</tr>
-<tr>
-<td class="line" id="L185"><a href="#L185">185</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L186"><a href="#L186">186</a></td>
-<td class="hits"></td>
-<td class="source"><code>  """</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L187"><a href="#L187">187</a></td>
-<td class="hits">1</td>
-<td class="source"><code>  def change_transaction(%Transaction{} = transaction, attrs \\ %{}) do</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L188"><a href="#L188">188</a></td>
-<td class="hits">1</td>
-<td class="source"><code>    Transaction.changeset(transaction, attrs)</code></td>
-</tr>
-<tr>
-<td class="line" id="L189"><a href="#L189">189</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L190"><a href="#L190">190</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr>
-<td class="line" id="L191"><a href="#L191">191</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>
