@@ -68,7 +68,7 @@ BankingApiWeb.UserView      </h1>
 
 
         <section id="moduledoc">
-<p>Essa é a User View. Esse módulo é responsável pelo layout que é apresentado ao usuário após chamar requisições relacionadas ao <code class="inline">user</code></p>        </section>
+<p>User View.</p><p>Módulo responsável por renderizar ao usuário final o feedback sobre as requisições requisições da API relacionadas a <code class="inline">/api/auth</code> e <code class="inline">/api/user</code>.</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -92,8 +92,7 @@ BankingApiWeb.UserView      </h1>
   <div class="summary-signature">
     <a href="#render/2">render(template, assigns \\ %{})</a>
   </div>
-    <div class="summary-synopsis"><p>retorna um <code class="inline">map</code> contendo as informações de um usuário.
-Os argumentos da função são a string &quot;user.json&quot; e um map contendo a struct de <code class="inline">user</code></p></div>
+    <div class="summary-synopsis"><p>Renderiza o feedback de signin quando o usuário é autenticado com sucesso no sistema.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -139,8 +138,9 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>retorna um <code class="inline">map</code> contendo as informações de um usuário.
-Os argumentos da função são a string &quot;user.json&quot; e um map contendo a struct de <code class="inline">user</code></p>  </section>
+<p>Renderiza o feedback de signin quando o usuário é autenticado com sucesso no sistema.</p><p>Os argumentos da função são:</p><ol><li>A string <code class="inline">&quot;user_auth.json&quot;</code></li><li>Um map que contenha as propriedades:
+2.1. <code class="inline">user</code>: Uma <code class="inline">user struct</code>
+2.2. <code class="inline">token</code>: Uma string com o valor <code class="inline">token</code> gerado pelo framework de autenticação, Guardian</li></ol>  </section>
 </section>
 <section class="detail" id="template_not_found/2">
   <div class="detail-header">

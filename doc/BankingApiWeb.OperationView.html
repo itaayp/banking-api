@@ -68,7 +68,7 @@ BankingApiWeb.OperationView      </h1>
 
 
         <section id="moduledoc">
-<p>Essa é a Operation View. Este módulo é responsável pelo layout que é apresentado ao usuário após chamar requisições relacionadas às operações, como transferência e saque</p>        </section>
+<p>Operation View.</p><p>Módulo responsável por renderizar ao usuário final o feedback positivo de operações bancárias realizadas</p>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -92,8 +92,7 @@ BankingApiWeb.OperationView      </h1>
   <div class="summary-signature">
     <a href="#render/2">render(template, assigns \\ %{})</a>
   </div>
-    <div class="summary-synopsis"><p>Essa função é responsável por renderizar para o usuário final o feedback de que a operação realizada foi bem sucedida.
-Os argumentos da função são a string &quot;operation_succeeded.json&quot; e um map contendo o valor <code class="inline">message</code> que será exibido ao usuário</p></div>
+    <div class="summary-synopsis"><p>Renderiza ao usuário final o feedback de que a operação realizada foi bem sucedida.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -139,8 +138,8 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Essa função é responsável por renderizar para o usuário final o feedback de que a operação realizada foi bem sucedida.
-Os argumentos da função são a string &quot;operation_succeeded.json&quot; e um map contendo o valor <code class="inline">message</code> que será exibido ao usuário</p><p>A função é responsável por renderizar ao usuário final o feedback quando a operação realizada foi bem sucedida.</p><p>Os argumentos da função são:</p><ol><li>A string <code class="inline">&quot;operation_succeeded.json&quot;</code>.</li><li><code class="inline">%{message: message}</code>: Um map que contém a mensagem exibida no feedback.</li></ol>  </section>
+<p>Renderiza ao usuário final o feedback de que a operação realizada foi bem sucedida.</p><p>Os argumentos da função são:</p><ol><li>A string <code class="inline">&quot;operation_succeeded.json&quot;</code></li><li><code class="inline">%{message: message}</code>: um map que contenha:
+2.1. <code class="inline">message</code>: a mensagem que será exibida ao usuário</li></ol>  </section>
 </section>
 <section class="detail" id="template_not_found/2">
   <div class="detail-header">
