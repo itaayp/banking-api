@@ -103,12 +103,12 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApi.DataCase.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/test/support/data_case.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 17:33:01</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/test/support/data_case.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 19:34:20</p></footer>
 <table>
 <tbody>
 <tr class="hit">
 <td class="line" id="L1"><a href="#L1">1</a></td>
-<td class="hits">18</td>
+<td class="hits">25</td>
 <td class="source"><code>defmodule BankingApi.DataCase do</code></td>
 </tr>
 <tr>
@@ -198,7 +198,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L19"><a href="#L19">19</a></td>
-<td class="hits">2</td>
+<td class="hits">3</td>
 <td class="source"><code>  using do</code></td>
 </tr>
 <tr>
@@ -258,7 +258,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L31"><a href="#L31">31</a></td>
-<td class="hits">16</td>
+<td class="hits">22</td>
 <td class="source"><code>    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BankingApi.Repo)</code></td>
 </tr>
 <tr>
@@ -268,12 +268,12 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L33"><a href="#L33">33</a></td>
-<td class="hits">16</td>
+<td class="hits">22</td>
 <td class="source"><code>    unless tags[:async] do</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L34"><a href="#L34">34</a></td>
-<td class="hits">16</td>
+<td class="hits">22</td>
 <td class="source"><code>      Ecto.Adapters.SQL.Sandbox.mode(BankingApi.Repo, {:shared, self()})</code></td>
 </tr>
 <tr>
@@ -346,14 +346,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def errors_on(changeset) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L49"><a href="#L49">49</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">4</td>
 <td class="source"><code>    Ecto.Changeset.traverse_errors(changeset, fn {message, opts} -&gt;</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L50"><a href="#L50">50</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">6</td>
 <td class="source"><code>      Regex.replace(~r"%{(\w+)}", message, fn _, key -&gt;</code></td>
 </tr>
 <tr class="miss">
