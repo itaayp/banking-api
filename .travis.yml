@@ -1,7 +1,5 @@
 language: elixir
 elixir:
     - 1.10.3
-otp_release:
-    - 21
 script:
     - mix format --check-formatted --dry-run
