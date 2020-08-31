@@ -103,12 +103,12 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApiWeb.TransactionController.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/controllers/transaction_controller.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 01:24:38</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/controllers/transaction_controller.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 02:22:48</p></footer>
 <table>
 <tbody>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L1"><a href="#L1">1</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">8</td>
 <td class="source"><code>defmodule BankingApiWeb.TransactionController do</code></td>
 </tr>
 <tr>
@@ -141,9 +141,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L8"><a href="#L8">8</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">12</td>
 <td class="source"><code>  use BankingApiWeb, :controller</code></td>
 </tr>
 <tr>
@@ -241,9 +241,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def generate_entire_life_report(conn, _params) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L28"><a href="#L28">28</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    render(conn, "show.json", transaction: Transactions.all())</code></td>
 </tr>
 <tr>
@@ -316,14 +316,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def generate_anual_report(conn, %{"year" =&gt; year}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L43"><a href="#L43">43</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    case Transactions.validate_date(year, @year_fail_message) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L44"><a href="#L44">44</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      {:ok, _message} -&gt; render(conn, "show.json", transaction: Transactions.year(year))</code></td>
 </tr>
 <tr>
@@ -431,19 +431,19 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def generate_monthly_report(conn, %{"year" =&gt; year, "month" =&gt; month}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L66"><a href="#L66">66</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    with {:ok, _message} &lt;- Transactions.validate_date(year, @year_fail_message),</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L67"><a href="#L67">67</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>         {:ok, _message} &lt;- Transactions.validate_date(month, @month_fail_message) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L68"><a href="#L68">68</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      render(conn, "show.json", transaction: Transactions.month(year, month))</code></td>
 </tr>
 <tr>
@@ -521,9 +521,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def generate_daily_report(conn, %{"day" =&gt; day}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L84"><a href="#L84">84</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    render(conn, "show.json", transaction: Transactions.day(day))</code></td>
 </tr>
 <tr>
@@ -546,9 +546,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  defp is_admin?(conn, _params) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L89"><a href="#L89">89</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">4</td>
 <td class="source"><code>    user = Guardian.Plug.current_resource(conn)</code></td>
 </tr>
 <tr>
@@ -556,14 +556,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L91"><a href="#L91">91</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">4</td>
 <td class="source"><code>    if user.role == "admin" do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L92"><a href="#L92">92</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">4</td>
 <td class="source"><code>      conn</code></td>
 </tr>
 <tr>
