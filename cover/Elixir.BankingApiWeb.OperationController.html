@@ -103,12 +103,12 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApiWeb.OperationController.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/controllers/operation_controller.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 21:52:17</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/controllers/operation_controller.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 01:24:38</p></footer>
 <table>
 <tbody>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L1"><a href="#L1">1</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">10</td>
 <td class="source"><code>defmodule BankingApiWeb.OperationController do</code></td>
 </tr>
 <tr>
@@ -141,9 +141,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L8"><a href="#L8">8</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">15</td>
 <td class="source"><code>  use BankingApiWeb, :controller</code></td>
 </tr>
 <tr>
@@ -216,14 +216,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>    # Busca a `user struct` do usuário que está realizando a transferência</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L23"><a href="#L23">23</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">3</td>
 <td class="source"><code>    user = Guardian.Plug.current_resource(conn)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L24"><a href="#L24">24</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">3</td>
 <td class="source"><code>    amount = Decimal.new(amount)</code></td>
 </tr>
 <tr>
@@ -231,14 +231,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L26"><a href="#L26">26</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">3</td>
 <td class="source"><code>    with false &lt;- Operations.is_transfering_to_same_account?(user.accounts, to),</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L27"><a href="#L27">27</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">3</td>
 <td class="source"><code>         {:ok, message} &lt;- Operations.transfer(user.accounts, to, amount) do</code></td>
 </tr>
 <tr>
@@ -246,9 +246,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      conn</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L29"><a href="#L29">29</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      |&gt; render("operation_succeeded.json", message: message)</code></td>
 </tr>
 <tr>
@@ -316,14 +316,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>    # Busca a `user struct` do usuário que está realizando a transferência</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L43"><a href="#L43">43</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    user = Guardian.Plug.current_resource(conn)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L44"><a href="#L44">44</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    amount = Decimal.new(amount)</code></td>
 </tr>
 <tr>
@@ -331,19 +331,19 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L46"><a href="#L46">46</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    with {:ok, message} &lt;- Operations.withdraw(user.accounts, amount) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L47"><a href="#L47">47</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      IO.puts("Placeholder: Enviando email para o usuario")</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L48"><a href="#L48">48</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      IO.puts("Mensagem do email: Voce acabou de realizar um saque")</code></td>
 </tr>
 <tr>
@@ -356,9 +356,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      conn</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L51"><a href="#L51">51</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      |&gt; render("operation_succeeded.json", message: message)</code></td>
 </tr>
 <tr>

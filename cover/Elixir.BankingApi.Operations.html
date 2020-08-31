@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApi.Operations.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/operations.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 21:52:18</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/operations.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 01:24:38</p></footer>
 <table>
 <tbody>
 <tr>
@@ -329,57 +329,57 @@ td.source {
 <tr>
 <td class="line" id="L45"><a href="#L45">45</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L46"><a href="#L46">46</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def transfer(from, to_id, amount) do</code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L47"><a href="#L47">47</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    case is_negative?(from.balance, amount) do</code></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; from = %Account{balance: "1000.00", user_id: "1"}</code></td>
 </tr>
 <tr>
 <td class="line" id="L48"><a href="#L48">48</a></td>
 <td class="hits"></td>
-<td class="source"><code>      true -&gt;</code></td>
+<td class="source"><code>      iex&gt; Operations.transfer(from, "2", "50.00")</code></td>
 </tr>
 <tr>
 <td class="line" id="L49"><a href="#L49">49</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error,</code></td>
+<td class="source"><code>      {:ok, "Transferência realizada da conta 1 para a conta 2 no valor de R$ 50.00. O saldo de sua conta bancária é R$ 950.00"}</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L50"><a href="#L50">50</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}</code></td>
+<td class="hits"></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L51"><a href="#L51">51</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  def transfer(from, to_id, amount) do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L52"><a href="#L52">52</a></td>
+<td class="hits">3</td>
+<td class="source"><code>    case is_negative?(from.balance, amount) do</code></td>
 </tr>
 <tr>
-<td class="line" id="L52"><a href="#L52">52</a></td>
-<td class="hits"></td>
-<td class="source"><code>      false -&gt;</code></td>
-</tr>
-<tr class="miss">
 <td class="line" id="L53"><a href="#L53">53</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>        transfer_operation(from, to_id, amount)</code></td>
+<td class="hits"></td>
+<td class="source"><code>      true -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L54"><a href="#L54">54</a></td>
 <td class="hits"></td>
-<td class="source"><code>    end</code></td>
+<td class="source"><code>        {:error,</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L55"><a href="#L55">55</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="hits">1</td>
+<td class="source"><code>         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}</code></td>
 </tr>
 <tr>
 <td class="line" id="L56"><a href="#L56">56</a></td>
@@ -389,87 +389,87 @@ td.source {
 <tr>
 <td class="line" id="L57"><a href="#L57">57</a></td>
 <td class="hits"></td>
-<td class="source"><code>  defp transfer_operation(from, to_id, amount) do</code></td>
+<td class="source"><code>      false -&gt;</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L58"><a href="#L58">58</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    to = Accounts.get!(to_id)</code></td>
+<td class="hits">2</td>
+<td class="source"><code>        transfer_operation(from, to_id, amount)</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L59"><a href="#L59">59</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    new_balance = Decimal.sub(from.balance, amount)</code></td>
+<td class="hits"></td>
+<td class="source"><code>    end</code></td>
 </tr>
 <tr>
 <td class="line" id="L60"><a href="#L60">60</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  end</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L61"><a href="#L61">61</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    if to != nil do</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L62"><a href="#L62">62</a></td>
 <td class="hits"></td>
-<td class="source"><code>      Multi.new()</code></td>
+<td class="source"><code>  defp transfer_operation(from, to_id, amount) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L63"><a href="#L63">63</a></td>
-<td class="hits"></td>
-<td class="source"><code>      |&gt; Multi.update(:to, perform_operation(to, amount, :sum))</code></td>
+<td class="hits">2</td>
+<td class="source"><code>    to = Accounts.get!(to_id)</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L64"><a href="#L64">64</a></td>
+<td class="hits">2</td>
+<td class="source"><code>    new_balance = Decimal.sub(from.balance, amount)</code></td>
 </tr>
 <tr>
-<td class="line" id="L64"><a href="#L64">64</a></td>
-<td class="hits"></td>
-<td class="source"><code>      |&gt; subtract_from_account(from, amount, to_id, @transfer)</code></td>
-</tr>
-<tr class="miss">
 <td class="line" id="L65"><a href="#L65">65</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>      |&gt; handle_feedback(</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L66"><a href="#L66">66</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>        "#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{</code></td>
+<td class="hits">2</td>
+<td class="source"><code>    if to != nil do</code></td>
 </tr>
 <tr>
 <td class="line" id="L67"><a href="#L67">67</a></td>
 <td class="hits"></td>
-<td class="source"><code>          @in_the_amount_of</code></td>
+<td class="source"><code>      Multi.new()</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L68"><a href="#L68">68</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>        } #{amount}. #{@your_account_balance_is} #{new_balance}"</code></td>
+<td class="hits"></td>
+<td class="source"><code>      |&gt; Multi.update(:to, perform_operation(to, amount, :sum))</code></td>
 </tr>
 <tr>
 <td class="line" id="L69"><a href="#L69">69</a></td>
 <td class="hits"></td>
-<td class="source"><code>      )</code></td>
+<td class="source"><code>      |&gt; subtract_from_account(from, amount, to_id, @transfer)</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L70"><a href="#L70">70</a></td>
-<td class="hits"></td>
-<td class="source"><code>    else</code></td>
+<td class="hits">1</td>
+<td class="source"><code>      |&gt; handle_feedback(</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L71"><a href="#L71">71</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>      handle_feedback(</code></td>
+<td class="hits">1</td>
+<td class="source"><code>        "#{@transfer_succeeded_from_account} #{from.id} #{@to_account} #{to.id} #{</code></td>
 </tr>
 <tr>
 <td class="line" id="L72"><a href="#L72">72</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error, reason: "the target account does not exist"},</code></td>
+<td class="source"><code>          @in_the_amount_of</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L73"><a href="#L73">73</a></td>
-<td class="hits"></td>
-<td class="source"><code>        "A conta que você tentou transferir não existe."</code></td>
+<td class="hits">1</td>
+<td class="source"><code>        } #{amount}. #{@your_account_balance_is} #{new_balance}"</code></td>
 </tr>
 <tr>
 <td class="line" id="L74"><a href="#L74">74</a></td>
@@ -479,72 +479,72 @@ td.source {
 <tr>
 <td class="line" id="L75"><a href="#L75">75</a></td>
 <td class="hits"></td>
-<td class="source"><code>    end</code></td>
+<td class="source"><code>    else</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L76"><a href="#L76">76</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="hits">1</td>
+<td class="source"><code>      handle_feedback(</code></td>
 </tr>
 <tr>
 <td class="line" id="L77"><a href="#L77">77</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>        {:error, reason: "the target account does not exist"},</code></td>
 </tr>
 <tr>
 <td class="line" id="L78"><a href="#L78">78</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>        "A conta que você tentou transferir não existe."</code></td>
 </tr>
 <tr>
 <td class="line" id="L79"><a href="#L79">79</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Inicia a operação de saque.</code></td>
+<td class="source"><code>      )</code></td>
 </tr>
 <tr>
 <td class="line" id="L80"><a href="#L80">80</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>    end</code></td>
 </tr>
 <tr>
 <td class="line" id="L81"><a href="#L81">81</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos desta função são:</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L82"><a href="#L82">82</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `from`: É a `account struct` de onde será feito saque.</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L83"><a href="#L83">83</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `amount`: Quantidade a ser transferida.</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L84"><a href="#L84">84</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  Inicia a operação de saque.</code></td>
 </tr>
 <tr>
 <td class="line" id="L85"><a href="#L85">85</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Há possíveis retornos para a função. Eles podem ser:</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L86"><a href="#L86">86</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `{:ok, message}`: Caso o saque tenha ocorrido com sucesso</code></td>
+<td class="source"><code>  Os argumentos desta função são:</code></td>
 </tr>
 <tr>
 <td class="line" id="L87"><a href="#L87">87</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `{:error, message}`: Caso o saldo da conta seja menor do que o valor de saque.</code></td>
+<td class="source"><code>    1. `from`: É a `account struct` de onde será feito saque.</code></td>
 </tr>
 <tr>
 <td class="line" id="L88"><a href="#L88">88</a></td>
 <td class="hits"></td>
-<td class="source"><code>    3. Qualquer retorno da função `handle_feedback/2`</code></td>
+<td class="source"><code>    2. `amount`: Quantidade a ser transferida.</code></td>
 </tr>
 <tr>
 <td class="line" id="L89"><a href="#L89">89</a></td>
@@ -554,107 +554,107 @@ td.source {
 <tr>
 <td class="line" id="L90"><a href="#L90">90</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.</code></td>
+<td class="source"><code>  Há possíveis retornos para a função. Eles podem ser:</code></td>
 </tr>
 <tr>
 <td class="line" id="L91"><a href="#L91">91</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>    1. `{:ok, message}`: Caso o saque tenha ocorrido com sucesso</code></td>
 </tr>
 <tr>
 <td class="line" id="L92"><a href="#L92">92</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def withdraw(from, amount) do</code></td>
+<td class="source"><code>    2. `{:error, message}`: Caso o saldo da conta seja menor do que o valor de saque.</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L93"><a href="#L93">93</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    case is_negative?(from.balance, amount) do</code></td>
+<td class="hits"></td>
+<td class="source"><code>    3. Qualquer retorno da função `handle_feedback/2`</code></td>
 </tr>
 <tr>
 <td class="line" id="L94"><a href="#L94">94</a></td>
 <td class="hits"></td>
-<td class="source"><code>      true -&gt;</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L95"><a href="#L95">95</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error,</code></td>
+<td class="source"><code>  Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L96"><a href="#L96">96</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L97"><a href="#L97">97</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
 <tr>
 <td class="line" id="L98"><a href="#L98">98</a></td>
 <td class="hits"></td>
-<td class="source"><code>      false -&gt;</code></td>
+<td class="source"><code>      iex&gt; from = %Account{balance: "1000.00", user_id: "1"}</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L99"><a href="#L99">99</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>        withdraw_operation(from, amount)</code></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; Operations.withdraw(from, "50.00")</code></td>
 </tr>
 <tr>
 <td class="line" id="L100"><a href="#L100">100</a></td>
 <td class="hits"></td>
-<td class="source"><code>    end</code></td>
+<td class="source"><code>      {:ok, "Saque realizado no valor de R$ 50.00 da conta 1. O saldo de sua conta bancária é R$ 950.00"}</code></td>
 </tr>
 <tr>
 <td class="line" id="L101"><a href="#L101">101</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L102"><a href="#L102">102</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  def withdraw(from, amount) do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L103"><a href="#L103">103</a></td>
+<td class="hits">2</td>
+<td class="source"><code>    case is_negative?(from.balance, amount) do</code></td>
 </tr>
 <tr>
-<td class="line" id="L103"><a href="#L103">103</a></td>
-<td class="hits"></td>
-<td class="source"><code>  defp withdraw_operation(from, amount) do</code></td>
-</tr>
-<tr class="miss">
 <td class="line" id="L104"><a href="#L104">104</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    new_balance = Decimal.sub(from.balance, amount)</code></td>
+<td class="hits"></td>
+<td class="source"><code>      true -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L105"><a href="#L105">105</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>        {:error,</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L106"><a href="#L106">106</a></td>
-<td class="hits"></td>
-<td class="source"><code>    Multi.new()</code></td>
+<td class="hits">1</td>
+<td class="source"><code>         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}</code></td>
 </tr>
 <tr>
 <td class="line" id="L107"><a href="#L107">107</a></td>
 <td class="hits"></td>
-<td class="source"><code>    |&gt; subtract_from_account(from, amount, "~", @withdraw)</code></td>
+<td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L108"><a href="#L108">108</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; handle_feedback(</code></td>
+<td class="hits"></td>
+<td class="source"><code>      false -&gt;</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L109"><a href="#L109">109</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}. #{@your_account_balance_is} #{new_balance}"</code></td>
+<td class="hits">1</td>
+<td class="source"><code>        withdraw_operation(from, amount)</code></td>
 </tr>
 <tr>
 <td class="line" id="L110"><a href="#L110">110</a></td>
 <td class="hits"></td>
-<td class="source"><code>    )</code></td>
+<td class="source"><code>    end</code></td>
 </tr>
 <tr>
 <td class="line" id="L111"><a href="#L111">111</a></td>
@@ -669,92 +669,92 @@ td.source {
 <tr>
 <td class="line" id="L113"><a href="#L113">113</a></td>
 <td class="hits"></td>
-<td class="source"><code>  defp subtract_from_account(multi, from, amount, to_id, operation_type) do</code></td>
+<td class="source"><code>  defp withdraw_operation(from, amount) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L114"><a href="#L114">114</a></td>
-<td class="hits"></td>
-<td class="source"><code>    Multi.update(multi, :from, perform_operation(from, amount, :sub))</code></td>
+<td class="hits">1</td>
+<td class="source"><code>    new_balance = Decimal.sub(from.balance, amount)</code></td>
 </tr>
 <tr>
 <td class="line" id="L115"><a href="#L115">115</a></td>
 <td class="hits"></td>
-<td class="source"><code>    |&gt; Multi.insert(</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L116"><a href="#L116">116</a></td>
 <td class="hits"></td>
-<td class="source"><code>      :transaction,</code></td>
-</tr>
-<tr class="miss">
-<td class="line" id="L117"><a href="#L117">117</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>      create_transaction_struct(amount, Integer.to_string(from.id), to_id, operation_type)</code></td>
+<td class="source"><code>    Multi.new()</code></td>
 </tr>
 <tr>
-<td class="line" id="L118"><a href="#L118">118</a></td>
+<td class="line" id="L117"><a href="#L117">117</a></td>
 <td class="hits"></td>
-<td class="source"><code>    )</code></td>
+<td class="source"><code>    |&gt; subtract_from_account(from, amount, "~", @withdraw)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
+<td class="line" id="L118"><a href="#L118">118</a></td>
+<td class="hits">1</td>
+<td class="source"><code>    |&gt; handle_feedback(</code></td>
+</tr>
+<tr class="hit">
 <td class="line" id="L119"><a href="#L119">119</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; Repo.transaction()</code></td>
+<td class="hits">1</td>
+<td class="source"><code>      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}. #{@your_account_balance_is} #{new_balance}"</code></td>
 </tr>
 <tr>
 <td class="line" id="L120"><a href="#L120">120</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>    )</code></td>
 </tr>
 <tr>
 <td class="line" id="L121"><a href="#L121">121</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L122"><a href="#L122">122</a></td>
 <td class="hits"></td>
-<td class="source"><code>  defp is_negative?(balance, amount) do</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L123"><a href="#L123">123</a></td>
 <td class="hits"></td>
-<td class="source"><code>    Decimal.sub(balance, amount)</code></td>
+<td class="source"><code>  defp subtract_from_account(multi, from, amount, to_id, operation_type) do</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L124"><a href="#L124">124</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; Decimal.negative?()</code></td>
+<td class="hits"></td>
+<td class="source"><code>    Multi.update(multi, :from, perform_operation(from, amount, :sub))</code></td>
 </tr>
 <tr>
 <td class="line" id="L125"><a href="#L125">125</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>    |&gt; Multi.insert(</code></td>
 </tr>
 <tr>
 <td class="line" id="L126"><a href="#L126">126</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>      :transaction,</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L127"><a href="#L127">127</a></td>
-<td class="hits"></td>
-<td class="source"><code>  defp handle_feedback(operations, message) do</code></td>
-</tr>
-<tr class="miss">
-<td class="line" id="L128"><a href="#L128">128</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    case operations do</code></td>
+<td class="hits">2</td>
+<td class="source"><code>      create_transaction_struct(amount, Integer.to_string(from.id), to_id, operation_type)</code></td>
 </tr>
 <tr>
-<td class="line" id="L129"><a href="#L129">129</a></td>
+<td class="line" id="L128"><a href="#L128">128</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:ok, _tail} -&gt;</code></td>
+<td class="source"><code>    )</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L129"><a href="#L129">129</a></td>
+<td class="hits">2</td>
+<td class="source"><code>    |&gt; Repo.transaction()</code></td>
 </tr>
 <tr>
 <td class="line" id="L130"><a href="#L130">130</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:ok, message}</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L131"><a href="#L131">131</a></td>
@@ -764,157 +764,157 @@ td.source {
 <tr>
 <td class="line" id="L132"><a href="#L132">132</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:error, :from, changeset, _tail} -&gt;</code></td>
+<td class="source"><code>  defp is_negative?(balance, amount) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L133"><a href="#L133">133</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error, changeset}</code></td>
+<td class="source"><code>    Decimal.sub(balance, amount)</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L134"><a href="#L134">134</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="hits">5</td>
+<td class="source"><code>    |&gt; Decimal.negative?()</code></td>
 </tr>
 <tr>
 <td class="line" id="L135"><a href="#L135">135</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:error, :to, changeset, _tail} -&gt;</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L136"><a href="#L136">136</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error, changeset}</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L137"><a href="#L137">137</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  defp handle_feedback(operations, message) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L138"><a href="#L138">138</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:error, :transaction, changeset, _tail} -&gt;</code></td>
+<td class="hits">3</td>
+<td class="source"><code>    case operations do</code></td>
 </tr>
 <tr>
 <td class="line" id="L139"><a href="#L139">139</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error, changeset}</code></td>
+<td class="source"><code>      {:ok, _tail} -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L140"><a href="#L140">140</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>        {:ok, message}</code></td>
 </tr>
 <tr>
 <td class="line" id="L141"><a href="#L141">141</a></td>
 <td class="hits"></td>
-<td class="source"><code>      {:error, _reason} -&gt;</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L142"><a href="#L142">142</a></td>
 <td class="hits"></td>
-<td class="source"><code>        {:error, message}</code></td>
+<td class="source"><code>      {:error, :from, changeset, _tail} -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L143"><a href="#L143">143</a></td>
 <td class="hits"></td>
-<td class="source"><code>    end</code></td>
+<td class="source"><code>        {:error, changeset}</code></td>
 </tr>
 <tr>
 <td class="line" id="L144"><a href="#L144">144</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L145"><a href="#L145">145</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>      {:error, :to, changeset, _tail} -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L146"><a href="#L146">146</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>        {:error, changeset}</code></td>
 </tr>
 <tr>
 <td class="line" id="L147"><a href="#L147">147</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Faz a subtração de `amount` na conta bancária.</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L148"><a href="#L148">148</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>      {:error, :transaction, changeset, _tail} -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L149"><a href="#L149">149</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos da função são:</code></td>
+<td class="source"><code>        {:error, changeset}</code></td>
 </tr>
 <tr>
 <td class="line" id="L150"><a href="#L150">150</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `account`: É uma `account struct`</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L151"><a href="#L151">151</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `amount`: É a quantidade a ser substraída</code></td>
+<td class="source"><code>      {:error, _reason} -&gt;</code></td>
 </tr>
 <tr>
 <td class="line" id="L152"><a href="#L152">152</a></td>
 <td class="hits"></td>
-<td class="source"><code>    3. O atom `:sub`.</code></td>
+<td class="source"><code>        {:error, message}</code></td>
 </tr>
 <tr>
 <td class="line" id="L153"><a href="#L153">153</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>    end</code></td>
 </tr>
 <tr>
 <td class="line" id="L154"><a href="#L154">154</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L155"><a href="#L155">155</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L156"><a href="#L156">156</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def perform_operation(account, amount, :sub) do</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L157"><a href="#L157">157</a></td>
 <td class="hits"></td>
-<td class="source"><code>    account</code></td>
+<td class="source"><code>  Faz a subtração de `amount` na conta bancária.</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L158"><a href="#L158">158</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; update_account(%{balance: Decimal.sub(account.balance, amount)})</code></td>
-</tr>
-<tr>
-<td class="line" id="L159"><a href="#L159">159</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L160"><a href="#L160">160</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr>
+<td class="line" id="L159"><a href="#L159">159</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Os argumentos da função são:</code></td>
+</tr>
+<tr>
+<td class="line" id="L160"><a href="#L160">160</a></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `account`: É uma `account struct`</code></td>
+</tr>
+<tr>
 <td class="line" id="L161"><a href="#L161">161</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>    2. `amount`: É a quantidade a ser substraída</code></td>
 </tr>
 <tr>
 <td class="line" id="L162"><a href="#L162">162</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Faz a soma de `amount` na conta bancária.</code></td>
+<td class="source"><code>    3. O atom `:sub`.</code></td>
 </tr>
 <tr>
 <td class="line" id="L163"><a href="#L163">163</a></td>
@@ -924,72 +924,72 @@ td.source {
 <tr>
 <td class="line" id="L164"><a href="#L164">164</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos da função são:</code></td>
+<td class="source"><code>  O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</code></td>
 </tr>
 <tr>
 <td class="line" id="L165"><a href="#L165">165</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `account`: É uma `account struct`</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L166"><a href="#L166">166</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `amount`: É a quantidade a ser somada</code></td>
+<td class="source"><code>  def perform_operation(account, amount, :sub) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L167"><a href="#L167">167</a></td>
 <td class="hits"></td>
-<td class="source"><code>    3. O atom `:sum`.</code></td>
+<td class="source"><code>    account</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L168"><a href="#L168">168</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="hits">2</td>
+<td class="source"><code>    |&gt; update_account(%{balance: Decimal.sub(account.balance, amount)})</code></td>
 </tr>
 <tr>
 <td class="line" id="L169"><a href="#L169">169</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L170"><a href="#L170">170</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L171"><a href="#L171">171</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def perform_operation(account, amount, :sum) do</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L172"><a href="#L172">172</a></td>
 <td class="hits"></td>
-<td class="source"><code>    account</code></td>
+<td class="source"><code>  Faz a soma de `amount` na conta bancária.</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L173"><a href="#L173">173</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    |&gt; update_account(%{balance: Decimal.add(account.balance, amount)})</code></td>
-</tr>
-<tr>
-<td class="line" id="L174"><a href="#L174">174</a></td>
-<td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L175"><a href="#L175">175</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr>
+<td class="line" id="L174"><a href="#L174">174</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Os argumentos da função são:</code></td>
+</tr>
+<tr>
+<td class="line" id="L175"><a href="#L175">175</a></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `account`: É uma `account struct`</code></td>
+</tr>
+<tr>
 <td class="line" id="L176"><a href="#L176">176</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>    2. `amount`: É a quantidade a ser somada</code></td>
 </tr>
 <tr>
 <td class="line" id="L177"><a href="#L177">177</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Valida os dados de `account` antes que eles sejam inseridos no banco de dados.</code></td>
+<td class="source"><code>    3. O atom `:sum`.</code></td>
 </tr>
 <tr>
 <td class="line" id="L178"><a href="#L178">178</a></td>
@@ -999,82 +999,82 @@ td.source {
 <tr>
 <td class="line" id="L179"><a href="#L179">179</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos da função são:</code></td>
+<td class="source"><code>  O retorno da função é uma tupla contendo o status da operação de update no banco de dados.</code></td>
 </tr>
 <tr>
 <td class="line" id="L180"><a href="#L180">180</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `account`: É uma struc de account, e representa a conta que será atualizada.</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L181"><a href="#L181">181</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `params`: É um map, e contém os valores a serem atualizados.</code></td>
+<td class="source"><code>  def perform_operation(account, amount, :sum) do</code></td>
 </tr>
 <tr>
 <td class="line" id="L182"><a href="#L182">182</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>    account</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L183"><a href="#L183">183</a></td>
-<td class="hits"></td>
-<td class="source"><code>  def update_account(%Account{} = account, params) do</code></td>
-</tr>
-<tr class="miss">
-<td class="line" id="L184"><a href="#L184">184</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    Account.changeset(account, params)</code></td>
+<td class="hits">1</td>
+<td class="source"><code>    |&gt; update_account(%{balance: Decimal.add(account.balance, amount)})</code></td>
 </tr>
 <tr>
-<td class="line" id="L185"><a href="#L185">185</a></td>
+<td class="line" id="L184"><a href="#L184">184</a></td>
 <td class="hits"></td>
 <td class="source"><code>  end</code></td>
 </tr>
 <tr>
-<td class="line" id="L186"><a href="#L186">186</a></td>
+<td class="line" id="L185"><a href="#L185">185</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr>
+<td class="line" id="L186"><a href="#L186">186</a></td>
+<td class="hits"></td>
+<td class="source"><code>  @doc """</code></td>
+</tr>
+<tr>
 <td class="line" id="L187"><a href="#L187">187</a></td>
 <td class="hits"></td>
-<td class="source"><code>  defp create_transaction_struct(amount, from, to, type) do</code></td>
+<td class="source"><code>  Valida os dados de `account` antes que eles sejam inseridos no banco de dados.</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L188"><a href="#L188">188</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    %Transaction{</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L189"><a href="#L189">189</a></td>
 <td class="hits"></td>
-<td class="source"><code>      value: amount,</code></td>
+<td class="source"><code>  Os argumentos da função são:</code></td>
 </tr>
 <tr>
 <td class="line" id="L190"><a href="#L190">190</a></td>
 <td class="hits"></td>
-<td class="source"><code>      account_from: from,</code></td>
+<td class="source"><code>    1. `account`: É uma struc de account, e representa a conta que será atualizada.</code></td>
 </tr>
 <tr>
 <td class="line" id="L191"><a href="#L191">191</a></td>
 <td class="hits"></td>
-<td class="source"><code>      account_to: to,</code></td>
+<td class="source"><code>    2. `params`: É um map, e contém os valores a serem atualizados.</code></td>
 </tr>
 <tr>
 <td class="line" id="L192"><a href="#L192">192</a></td>
 <td class="hits"></td>
-<td class="source"><code>      type: type,</code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L193"><a href="#L193">193</a></td>
 <td class="hits"></td>
-<td class="source"><code>      date: Date.utc_today()</code></td>
+<td class="source"><code>  def update_account(%Account{} = account, params) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L194"><a href="#L194">194</a></td>
-<td class="hits"></td>
-<td class="source"><code>    }</code></td>
+<td class="hits">3</td>
+<td class="source"><code>    Account.changeset(account, params)</code></td>
 </tr>
 <tr>
 <td class="line" id="L195"><a href="#L195">195</a></td>
@@ -1089,75 +1089,150 @@ td.source {
 <tr>
 <td class="line" id="L197"><a href="#L197">197</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>  defp create_transaction_struct(amount, from, to, type) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L198"><a href="#L198">198</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Verifica se está transferindo para a mesma conta.</code></td>
+<td class="hits">2</td>
+<td class="source"><code>    %Transaction{</code></td>
 </tr>
 <tr>
 <td class="line" id="L199"><a href="#L199">199</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>      value: amount,</code></td>
 </tr>
 <tr>
 <td class="line" id="L200"><a href="#L200">200</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos da função são:</code></td>
+<td class="source"><code>      account_from: from,</code></td>
 </tr>
 <tr>
 <td class="line" id="L201"><a href="#L201">201</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `from`: `account struct` da conta que realizará a transferência</code></td>
+<td class="source"><code>      account_to: to,</code></td>
 </tr>
 <tr>
 <td class="line" id="L202"><a href="#L202">202</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. `to_id`: id da conta que receberá a transferência</code></td>
+<td class="source"><code>      type: type,</code></td>
 </tr>
 <tr>
 <td class="line" id="L203"><a href="#L203">203</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code>      date: Date.utc_today()</code></td>
 </tr>
 <tr>
 <td class="line" id="L204"><a href="#L204">204</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def is_transfering_to_same_account?(from, to_id) do</code></td>
+<td class="source"><code>    }</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L205"><a href="#L205">205</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    if String.equivalent?(Integer.to_string(from.id), to_id) do</code></td>
-</tr>
-<tr>
-<td class="line" id="L206"><a href="#L206">206</a></td>
-<td class="hits"></td>
-<td class="source"><code>      {:error, "Você não pode transferir para a sua própria conta"}</code></td>
-</tr>
-<tr>
-<td class="line" id="L207"><a href="#L207">207</a></td>
-<td class="hits"></td>
-<td class="source"><code>    else</code></td>
-</tr>
-<tr>
-<td class="line" id="L208"><a href="#L208">208</a></td>
-<td class="hits"></td>
-<td class="source"><code>      false</code></td>
-</tr>
-<tr>
-<td class="line" id="L209"><a href="#L209">209</a></td>
-<td class="hits"></td>
-<td class="source"><code>    end</code></td>
-</tr>
-<tr>
-<td class="line" id="L210"><a href="#L210">210</a></td>
 <td class="hits"></td>
 <td class="source"><code>  end</code></td>
 </tr>
 <tr>
+<td class="line" id="L206"><a href="#L206">206</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L207"><a href="#L207">207</a></td>
+<td class="hits"></td>
+<td class="source"><code>  @doc """</code></td>
+</tr>
+<tr>
+<td class="line" id="L208"><a href="#L208">208</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Verifica se está transferindo para a mesma conta.</code></td>
+</tr>
+<tr>
+<td class="line" id="L209"><a href="#L209">209</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L210"><a href="#L210">210</a></td>
+<td class="hits"></td>
+<td class="source"><code>  Os argumentos da função são:</code></td>
+</tr>
+<tr>
 <td class="line" id="L211"><a href="#L211">211</a></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `from`: `account struct` da conta que realizará a transferência</code></td>
+</tr>
+<tr>
+<td class="line" id="L212"><a href="#L212">212</a></td>
+<td class="hits"></td>
+<td class="source"><code>    2. `to_id`: id da conta que receberá a transferência</code></td>
+</tr>
+<tr>
+<td class="line" id="L213"><a href="#L213">213</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L214"><a href="#L214">214</a></td>
+<td class="hits"></td>
+<td class="source"><code>  ## Examples</code></td>
+</tr>
+<tr>
+<td class="line" id="L215"><a href="#L215">215</a></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; from = %Account{balance: "1000.00", user_id: "1"}</code></td>
+</tr>
+<tr>
+<td class="line" id="L216"><a href="#L216">216</a></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; Operations.is_transfering_to_same_account?(from, "1")</code></td>
+</tr>
+<tr>
+<td class="line" id="L217"><a href="#L217">217</a></td>
+<td class="hits"></td>
+<td class="source"><code>      {:error, "Você não pode transferir para a sua própria conta"}</code></td>
+</tr>
+<tr>
+<td class="line" id="L218"><a href="#L218">218</a></td>
+<td class="hits"></td>
+<td class="source"><code>  """</code></td>
+</tr>
+<tr>
+<td class="line" id="L219"><a href="#L219">219</a></td>
+<td class="hits"></td>
+<td class="source"><code>  def is_transfering_to_same_account?(from, to_id) do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L220"><a href="#L220">220</a></td>
+<td class="hits">3</td>
+<td class="source"><code>    if String.equivalent?(Integer.to_string(from.id), to_id) do</code></td>
+</tr>
+<tr>
+<td class="line" id="L221"><a href="#L221">221</a></td>
+<td class="hits"></td>
+<td class="source"><code>      {:error, "Você não pode transferir para a sua própria conta"}</code></td>
+</tr>
+<tr>
+<td class="line" id="L222"><a href="#L222">222</a></td>
+<td class="hits"></td>
+<td class="source"><code>    else</code></td>
+</tr>
+<tr>
+<td class="line" id="L223"><a href="#L223">223</a></td>
+<td class="hits"></td>
+<td class="source"><code>      false</code></td>
+</tr>
+<tr>
+<td class="line" id="L224"><a href="#L224">224</a></td>
+<td class="hits"></td>
+<td class="source"><code>    end</code></td>
+</tr>
+<tr>
+<td class="line" id="L225"><a href="#L225">225</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
+</tr>
+<tr>
+<td class="line" id="L226"><a href="#L226">226</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>

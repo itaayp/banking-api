@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApi.Accounts.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/accounts.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 21:52:17</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/accounts.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 01:24:38</p></footer>
 <table>
 <tbody>
 <tr>
@@ -278,7 +278,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L35"><a href="#L35">35</a></td>
-<td class="hits">12</td>
+<td class="hits">19</td>
 <td class="source"><code>    transaction =</code></td>
 </tr>
 <tr>
@@ -318,7 +318,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L43"><a href="#L43">43</a></td>
-<td class="hits">9</td>
+<td class="hits">16</td>
 <td class="source"><code>        |&gt; Account.changeset()</code></td>
 </tr>
 <tr>
@@ -338,12 +338,12 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L47"><a href="#L47">47</a></td>
-<td class="hits">12</td>
+<td class="hits">19</td>
 <td class="source"><code>    case transaction do</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L48"><a href="#L48">48</a></td>
-<td class="hits">9</td>
+<td class="hits">16</td>
 <td class="source"><code>      {:ok, result} -&gt; {:ok, result.user, result.account}</code></td>
 </tr>
 <tr>
@@ -378,7 +378,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L55"><a href="#L55">55</a></td>
-<td class="hits">12</td>
+<td class="hits">19</td>
 <td class="source"><code>    |&gt; User.changeset(params)</code></td>
 </tr>
 <tr>
@@ -453,7 +453,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L70"><a href="#L70">70</a></td>
-<td class="hits">1</td>
+<td class="hits">16</td>
 <td class="source"><code>  def get_user!(id), do: Repo.get(User, id) |&gt; Repo.preload(:accounts)</code></td>
 </tr>
 <tr>
@@ -523,7 +523,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L84"><a href="#L84">84</a></td>
-<td class="hits">1</td>
+<td class="hits">3</td>
 <td class="source"><code>  def get!(id), do: Repo.get(Account, id)</code></td>
 </tr>
 <tr>
