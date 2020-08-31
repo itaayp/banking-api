@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApiWeb.UserView.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/views/user_view.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 02:22:48</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/views/user_view.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 11:54:42</p></footer>
 <table>
 <tbody>
 <tr class="miss">
@@ -193,7 +193,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L18"><a href="#L18">18</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>    %{</code></td>
 </tr>
 <tr>
@@ -203,22 +203,22 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L20"><a href="#L20">20</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>        "Nome completo": "#{user.first_name} #{user.last_name}",</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L21"><a href="#L21">21</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>        Email: user.email,</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L22"><a href="#L22">22</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>        "senha cadastrada": user.password,</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L23"><a href="#L23">23</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>        "Tipo de acesso": user.role</code></td>
 </tr>
 <tr>
@@ -233,12 +233,12 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L26"><a href="#L26">26</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>        "saldo em conta": "R$ #{user.accounts.balance}",</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L27"><a href="#L27">27</a></td>
-<td class="hits">5</td>
+<td class="hits">7</td>
 <td class="source"><code>        "número da conta": user.accounts.id</code></td>
 </tr>
 <tr>
@@ -311,9 +311,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def render("account.json", %{user: user, account: account}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L42"><a href="#L42">42</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    %{</code></td>
 </tr>
 <tr>
@@ -321,14 +321,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      "Informações da conta": %{</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L44"><a href="#L44">44</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>        "saldo em conta": "R$ #{account.balance}",</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L45"><a href="#L45">45</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>        "número da conta": account.id</code></td>
 </tr>
 <tr>
@@ -341,24 +341,24 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      "Informações do usuário": %{</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L48"><a href="#L48">48</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>        "Nome completo": "#{user.first_name} #{user.last_name}",</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L49"><a href="#L49">49</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>        Email: user.email,</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L50"><a href="#L50">50</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>        "senha cadastrada": user.password,</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L51"><a href="#L51">51</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>        "Tipo de acesso": user.role</code></td>
 </tr>
 <tr>
@@ -423,7 +423,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L64"><a href="#L64">64</a></td>
-<td class="hits">5</td>
+<td class="hits">6</td>
 <td class="source"><code>    render_one(user, BankingApiWeb.UserView, "user.json")</code></td>
 </tr>
 <tr>
@@ -486,14 +486,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def render("user_auth.json", %{user: user, token: token}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L77"><a href="#L77">77</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    user = Map.put(render_one(user, BankingApiWeb.UserView, "user.json"), :token, token)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L78"><a href="#L78">78</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>    %{data: user}</code></td>
 </tr>
 <tr>

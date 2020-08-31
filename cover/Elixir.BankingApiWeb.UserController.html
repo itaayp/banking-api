@@ -103,12 +103,12 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApiWeb.UserController.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/controllers/user_controller.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 02:22:48</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api_web/controllers/user_controller.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-31 at 11:54:42</p></footer>
 <table>
 <tbody>
 <tr class="hit">
 <td class="line" id="L1"><a href="#L1">1</a></td>
-<td class="hits">10</td>
+<td class="hits">20</td>
 <td class="source"><code>defmodule BankingApiWeb.UserController do</code></td>
 </tr>
 <tr>
@@ -143,7 +143,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L8"><a href="#L8">8</a></td>
-<td class="hits">15</td>
+<td class="hits">30</td>
 <td class="source"><code>  use BankingApiWeb, :controller</code></td>
 </tr>
 <tr>
@@ -216,9 +216,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def signup(conn, %{"user" =&gt; user}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L23"><a href="#L23">23</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    with {:ok, user, account} &lt;- Accounts.create_user(user) do</code></td>
 </tr>
 <tr>
@@ -236,14 +236,14 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      # Adiciona no `header` da response o atributo `location` com o path para `BankingApiWeb.UserController.show()`, da rout `GET /api/user`</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L27"><a href="#L27">27</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      |&gt; put_resp_header("location", Routes.user_path(conn, :show, id: user.id))</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L28"><a href="#L28">28</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      |&gt; render("account.json", %{user: user, account: account})</code></td>
 </tr>
 <tr>
@@ -311,9 +311,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def signin(conn, %{"email" =&gt; email, "password" =&gt; password}) do</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L42"><a href="#L42">42</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">2</td>
 <td class="source"><code>    with {:ok, user, token} &lt;- Guardian.authenticate(email, password) do</code></td>
 </tr>
 <tr>
@@ -326,9 +326,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      |&gt; put_status(:created)</code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L45"><a href="#L45">45</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">1</td>
 <td class="source"><code>      |&gt; render("user_auth.json", user: user, token: token)</code></td>
 </tr>
 <tr>
@@ -393,7 +393,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L58"><a href="#L58">58</a></td>
-<td class="hits">5</td>
+<td class="hits">6</td>
 <td class="source"><code>    user = Accounts.get_user!(id)</code></td>
 </tr>
 <tr>
@@ -408,7 +408,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L61"><a href="#L61">61</a></td>
-<td class="hits">5</td>
+<td class="hits">6</td>
 <td class="source"><code>    |&gt; render("show.json", user: user)</code></td>
 </tr>
 <tr>
