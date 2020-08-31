@@ -42,7 +42,6 @@ defmodule BankingApiWeb.OperationControllerTest do
       conn = put_req_header(conn, "authorization", "bearer: " <> token)
 
       amount_operated = "100"
-      expected_new_balance = Decimal.sub(user_from.accounts.balance, amount_operated)
 
       # Create user_to
       {:ok, user_to, _account} = Accounts.create_user(@user_to_params)
@@ -123,7 +122,6 @@ defmodule BankingApiWeb.OperationControllerTest do
       conn = put_req_header(conn, "authorization", "bearer: " <> token)
 
       amount_operated = "100"
-      expected_new_balance = Decimal.sub(user_from.accounts.balance, amount_operated)
 
       # Assert user_from.accounts.balance before the withdraw
       assert user_from.accounts.balance == Decimal.new("1000.00")
