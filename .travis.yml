@@ -5,3 +5,4 @@ otp_release:
     - 21
 script:
     - mix format --check-formatted --dry-run
+dist: trusty
