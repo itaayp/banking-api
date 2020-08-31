@@ -21,7 +21,8 @@ defmodule BankingApiWeb.TransactionControllerTest do
   end
 
   describe "test generate_entire_life_report/0" do
-    test "generate_entire_life_report/0 should return a report containing a list of transactions and the total amount operated", %{conn: conn} do
+    test "generate_entire_life_report/0 should return a report containing a list of transactions and the total amount operated",
+         %{conn: conn} do
       # Authenticate user
       {:ok, user, _account} = Accounts.create_user(@user_admin_params)
       {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
@@ -41,13 +42,14 @@ defmodule BankingApiWeb.TransactionControllerTest do
   end
 
   describe "test generate_anual_report" do
-    test "generate_anual_report/1 should return an anual report containing a list of transactions and the total amount operated", %{conn: conn} do
+    test "generate_anual_report/1 should return an anual report containing a list of transactions and the total amount operated",
+         %{conn: conn} do
       # Authenticate user
       {:ok, user, _account} = Accounts.create_user(@user_admin_params)
       {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
       conn = put_req_header(conn, "authorization", "bearer: " <> token)
 
-      #do
+      # do
       conn = get(conn, Routes.transaction_path(conn, :generate_anual_report, "2020"))
       result = json_response(conn, 200)
 
@@ -61,7 +63,8 @@ defmodule BankingApiWeb.TransactionControllerTest do
   end
 
   describe "test generate_monthly_report" do
-    test "generate_monthly_report should return a monthly report containing a list of transactions and the total amount operated", %{conn: conn} do
+    test "generate_monthly_report should return a monthly report containing a list of transactions and the total amount operated",
+         %{conn: conn} do
       # Authenticate user
       {:ok, user, _account} = Accounts.create_user(@user_admin_params)
       {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
@@ -81,7 +84,8 @@ defmodule BankingApiWeb.TransactionControllerTest do
   end
 
   describe "test generate_daily_report" do
-    test "generate_daily_report should return a daily report containing a list of transactions and the total amount operated", %{conn: conn} do
+    test "generate_daily_report should return a daily report containing a list of transactions and the total amount operated",
+         %{conn: conn} do
       # Authenticate user
       {:ok, user, _account} = Accounts.create_user(@user_admin_params)
       {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)

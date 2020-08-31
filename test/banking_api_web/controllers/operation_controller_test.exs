@@ -35,7 +35,8 @@ defmodule BankingApiWeb.OperationControllerTest do
   end
 
   describe "Test transfer operations" do
-    test "OperationController.transfer/2 should update user_from.accounts.balance and user_to.accounts.balance", %{conn: conn} do
+    test "OperationController.transfer/2 should update user_from.accounts.balance and user_to.accounts.balance",
+         %{conn: conn} do
       # Authenticate user_from
       user_from = create_user_and_account()
       {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
@@ -51,7 +52,11 @@ defmodule BankingApiWeb.OperationControllerTest do
       assert user_to.accounts.balance == Decimal.new("1000.00")
 
       # do
-      transfer_params = %{"to_account" => Integer.to_string(user_to.accounts.id), "amount" => amount_operated}
+      transfer_params = %{
+        "to_account" => Integer.to_string(user_to.accounts.id),
+        "amount" => amount_operated
+      }
+
       conn = put(conn, Routes.operation_path(conn, :transfer), transfer_params)
 
       # assert user_to.accounts.balance after the transfer
@@ -60,7 +65,8 @@ defmodule BankingApiWeb.OperationControllerTest do
       assert "R$ 900.00" == Map.get(result, "saldo em conta")
     end
 
-    test "OperationController.transfer/2 should return an error when the amount operated is greatter than the balance", %{conn: conn} do
+    test "OperationController.transfer/2 should return an error when the amount operated is greatter than the balance",
+         %{conn: conn} do
       # Authenticate user_from
       user_from = create_user_and_account()
       {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
@@ -76,12 +82,22 @@ defmodule BankingApiWeb.OperationControllerTest do
       assert user_to.accounts.balance == Decimal.new("1000.00")
 
       # do
-      transfer_params = %{"to_account" => Integer.to_string(user_to.accounts.id), "amount" => amount_operated}
+      transfer_params = %{
+        "to_account" => Integer.to_string(user_to.accounts.id),
+        "amount" => amount_operated
+      }
+
       conn = put(conn, Routes.operation_path(conn, :transfer), transfer_params)
       result = json_response(conn, 422)
 
       # assert error message
-      expected_message = %{"erro" => "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{user_from.accounts.balance}."}
+      expected_message = %{
+        "erro" =>
+          "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{
+            @your_account_balance_is
+          } #{user_from.accounts.balance}."
+      }
+
       assert result == expected_message
 
       # assert user_to.accounts.balance after the transfer
@@ -90,7 +106,8 @@ defmodule BankingApiWeb.OperationControllerTest do
       assert "R$ 1000.00" == Map.get(result, "saldo em conta")
     end
 
-    test "OperationController.transfer/2 should return an error when the target account does not exist", %{conn: conn} do
+    test "OperationController.transfer/2 should return an error when the target account does not exist",
+         %{conn: conn} do
       # Authenticate user_from
       user_from = create_user_and_account()
       {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
@@ -115,7 +132,9 @@ defmodule BankingApiWeb.OperationControllerTest do
   end
 
   describe "Test withdraw operations" do
-    test "OperationController.withdraw/2 should update the user_from.accounts.balance", %{conn: conn} do
+    test "OperationController.withdraw/2 should update the user_from.accounts.balance", %{
+      conn: conn
+    } do
       # Authenticate user_from
       user_from = create_user_and_account()
       {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
@@ -136,7 +155,8 @@ defmodule BankingApiWeb.OperationControllerTest do
       assert "R$ 900.00" == Map.get(result, "saldo em conta")
     end
 
-    test "OperationController.withdraw/2 should return an error when the amount operated is greatter than the balance", %{conn: conn} do
+    test "OperationController.withdraw/2 should return an error when the amount operated is greatter than the balance",
+         %{conn: conn} do
       # Authenticate user_from
       user_from = create_user_and_account()
       {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
@@ -153,12 +173,19 @@ defmodule BankingApiWeb.OperationControllerTest do
       result = json_response(conn, 422)
 
       # assert error message
-      expected = %{"erro" => "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{user_from.accounts.balance}."}
+      expected = %{
+        "erro" =>
+          "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{
+            @your_account_balance_is
+          } #{user_from.accounts.balance}."
+      }
+
       assert result == expected
 
       # assert user_to.accounts.balance after the withdraw
       conn = get(conn, Routes.user_path(conn, :show, id: user_from.id))
       result = json_response(conn, 200)["Informações da conta"]
-      assert "R$ 1000.00" == Map.get(result, "saldo em conta")    end
+      assert "R$ 1000.00" == Map.get(result, "saldo em conta")
+    end
   end
 end

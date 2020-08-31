@@ -18,7 +18,7 @@ defmodule BankingApiWeb.UserControllerTest do
   @missing_params %{
     last_name: "last name",
     password: nil,
-    password_confirmation: "pwd",
+    password_confirmation: "pwd"
   }
 
   setup %{conn: conn} do
@@ -26,7 +26,8 @@ defmodule BankingApiWeb.UserControllerTest do
   end
 
   describe "user signup" do
-    test "signup/2 should render the created user information when the passed arguments are valid", %{conn: conn} do
+    test "signup/2 should render the created user information when the passed arguments are valid",
+         %{conn: conn} do
       # do
       conn = post(conn, Routes.user_path(conn, :signup), user: @user_params)
 
@@ -56,7 +57,8 @@ defmodule BankingApiWeb.UserControllerTest do
       {:ok, user, _account} = Accounts.create_user(@user_params)
 
       # do
-      conn = post(conn, Routes.user_path(conn, :signin), email: user.email, password: user.password)
+      conn =
+        post(conn, Routes.user_path(conn, :signin), email: user.email, password: user.password)
 
       # assert
       result = json_response(conn, 201)["data"] |> Map.get(@user_info)
@@ -70,7 +72,11 @@ defmodule BankingApiWeb.UserControllerTest do
       {:ok, user, _account} = Accounts.create_user(@user_params)
 
       # do
-      conn = post(conn, Routes.user_path(conn, :signin), email: "invalid email", password: user.password)
+      conn =
+        post(conn, Routes.user_path(conn, :signin),
+          email: "invalid email",
+          password: user.password
+        )
 
       # assert
       result = json_response(conn, 422)
@@ -80,7 +86,9 @@ defmodule BankingApiWeb.UserControllerTest do
   end
 
   describe "show user" do
-    test "show/2 should show the user information when he is previously authenticated", %{conn: conn} do
+    test "show/2 should show the user information when he is previously authenticated", %{
+      conn: conn
+    } do
       # when
       {:ok, user, _account} = Accounts.create_user(@user_params)
       {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
@@ -95,7 +103,9 @@ defmodule BankingApiWeb.UserControllerTest do
       assert Map.get(result, "Nome completo") == "first name last name"
     end
 
-    test "show/2 should not show the user information when he is not previously authenticated", %{conn: conn} do
+    test "show/2 should not show the user information when he is not previously authenticated", %{
+      conn: conn
+    } do
       # when
       {:ok, user, _account} = Accounts.create_user(@user_params)
 

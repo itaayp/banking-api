@@ -33,9 +33,8 @@ defmodule BankingApi.AccountsTest do
   @missing_params %{
     email: "email@email.com",
     first_name: "first name",
-    password: "pwd",
+    password: "pwd"
   }
-
 
   describe "user-related tests" do
     test "get_user!/1 should return the user from the given id" do

@@ -52,7 +52,9 @@ defmodule BankingApi.Operations do
     case is_negative?(from.balance, amount) do
       true ->
         {:error,
-         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}
+         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{
+           @your_account_balance_is
+         } #{from.balance}."}
 
       false ->
         transfer_operation(from, to_id, amount)
@@ -103,7 +105,9 @@ defmodule BankingApi.Operations do
     case is_negative?(from.balance, amount) do
       true ->
         {:error,
-         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{@your_account_balance_is} #{from.balance}."}
+         "#{@denied_operation}. #{@you_tried_to_operate_an_amount_greater_than_your_balance}. #{
+           @your_account_balance_is
+         } #{from.balance}."}
 
       false ->
         withdraw_operation(from, amount)
@@ -116,7 +120,9 @@ defmodule BankingApi.Operations do
     Multi.new()
     |> subtract_from_account(from, amount, "~", @withdraw)
     |> handle_feedback(
-      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}. #{@your_account_balance_is} #{new_balance}"
+      "#{@withdraw_succeeded} #{@in_the_amount_of} #{amount} #{@from_account} #{from.id}. #{
+        @your_account_balance_is
+      } #{new_balance}"
     )
   end
 

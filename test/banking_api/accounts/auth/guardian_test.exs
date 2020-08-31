@@ -9,7 +9,7 @@ defmodule BankingApi.GuardianTest do
     first_name: "first name",
     last_name: "last name",
     password: "pwd",
-    password_confirmation: "pwd",
+    password_confirmation: "pwd"
   }
 
   describe "test authentication" do

@@ -10,7 +10,13 @@ defmodule BankingApiWeb.TransactionController do
 
   action_fallback BankingApiWeb.FallbackController
 
-  plug :is_admin? when action in [:generate_entire_life_report, :generate_anual_report, :generate_monthly_report, :generate_daily_report]
+  plug :is_admin?
+       when action in [
+              :generate_entire_life_report,
+              :generate_anual_report,
+              :generate_monthly_report,
+              :generate_daily_report
+            ]
 
   @year_fail_message "Você precisa inserir um ano válido"
   @month_fail_message "Você precisa inserir um mês válido"

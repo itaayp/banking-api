@@ -4,7 +4,7 @@ defmodule BankingApi.TransactionsTest do
   alias BankingApi.Transactions
 
   test "insert_transaction/1 should insert a transaction into the database" do
-    #when
+    # when
     transaction = %{
       value: "100",
       account_from: "1",
@@ -13,34 +13,34 @@ defmodule BankingApi.TransactionsTest do
       date: ~D[2018-11-17]
     }
 
-    #do
+    # do
     {atom, db_transaction} = Transactions.insert_transaction(transaction)
 
-    #assert
+    # assert
     assert :ok == atom
     assert "1" == db_transaction.account_from
   end
 
   describe "Date validation" do
     test "validate_date/2 should return {:ok} when the date is valid" do
-      #When
+      # When
       valid_date = "2020"
 
-      #Do
+      # Do
       {atom, _success_message} = Transactions.validate_date(valid_date, "fail message")
 
-      #Assert
+      # Assert
       assert atom == :ok
     end
 
     test "validate_date/2 should return {:error} when the date is invalid" do
-      #When
+      # When
       invalid_date = "-2020"
 
-      #Do
+      # Do
       {atom, fail_message} = Transactions.validate_date(invalid_date, "fail message")
 
-      #Assert
+      # Assert
       assert atom == :error
       assert fail_message == "fail message"
     end
@@ -48,46 +48,46 @@ defmodule BankingApi.TransactionsTest do
 
   describe "Test the creation of all report types" do
     test "all/0 should return all the existing transactions in the database" do
-      #When
+      # When
       transactions_repo()
 
-      #Do
+      # Do
       transactions = Transactions.all()
 
-      #Assert
+      # Assert
       assert Enum.count(transactions.transactions) == 6
     end
 
     test "year/1 should return all the existing transactions filtered by year" do
-      #When
+      # When
       transactions_repo()
 
-      #Do
+      # Do
       transactions = Transactions.year("2020")
 
-      #Assert
+      # Assert
       assert Enum.count(transactions.transactions) == 4
     end
 
     test "month/2 should return all the existing transactions filtered by month" do
-      #When
+      # When
       transactions_repo()
 
-      #Do
+      # Do
       transactions = Transactions.month("2019", "08")
 
-      #Assert
+      # Assert
       assert Enum.count(transactions.transactions) == 1
     end
 
     test "day/1 should return all the existing transactions filtered by day" do
-      #When
+      # When
       transactions_repo()
 
-      #Do
+      # Do
       transactions = Transactions.day("2020-08-30")
 
-      #Assert
+      # Assert
       assert Enum.count(transactions.transactions) == 2
     end
   end
