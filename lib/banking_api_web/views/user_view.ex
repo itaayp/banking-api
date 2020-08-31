@@ -23,7 +23,7 @@ defmodule BankingApiWeb.UserView do
         "Tipo de acesso": user.role
       },
       "Informações da conta": %{
-        "saldo em conta": "R$ #{user.accounts.balance},00",
+        "saldo em conta": "R$ #{user.accounts.balance}",
         "número da conta": user.accounts.id
       }
     }
@@ -41,7 +41,7 @@ defmodule BankingApiWeb.UserView do
   def render("account.json", %{user: user, account: account}) do
     %{
       "Informações da conta": %{
-        "saldo em conta": "R$ #{account.balance},00",
+        "saldo em conta": "R$ #{account.balance}",
         "número da conta": account.id
       },
       "Informações do usuário": %{

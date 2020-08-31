@@ -42,6 +42,11 @@ defmodule BankingApi.Operations do
     3. Qualquer retorno da função `handle_feedback/2`
 
   Um dos possíveis motivos da operação não ser realizada (e retornar `error`), é se o valor `amount` a ser transferido é maior do que `from.balance`.
+
+  ## Examples
+      iex> from = %Account{balance: "1000.00", user_id: "1"}
+      iex> Operations.transfer(from, "2", "50.00")
+      {:ok, "Transferência realizada da conta 1 para a conta 2 no valor de R$ 50.00. O saldo de sua conta bancária é R$ 950.00"}
   """
   def transfer(from, to_id, amount) do
     case is_negative?(from.balance, amount) do
@@ -88,6 +93,11 @@ defmodule BankingApi.Operations do
     3. Qualquer retorno da função `handle_feedback/2`
 
   Um dos possíveis motivos da operação não ser realizada, é se o valor `amount` é maior do que `from.balance`.
+
+  ## Examples
+      iex> from = %Account{balance: "1000.00", user_id: "1"}
+      iex> Operations.withdraw(from, "50.00")
+      {:ok, "Saque realizado no valor de R$ 50.00 da conta 1. O saldo de sua conta bancária é R$ 950.00"}
   """
   def withdraw(from, amount) do
     case is_negative?(from.balance, amount) do
@@ -200,6 +210,11 @@ defmodule BankingApi.Operations do
   Os argumentos da função são:
     1. `from`: `account struct` da conta que realizará a transferência
     2. `to_id`: id da conta que receberá a transferência
+
+  ## Examples
+      iex> from = %Account{balance: "1000.00", user_id: "1"}
+      iex> Operations.is_transfering_to_same_account?(from, "1")
+      {:error, "Você não pode transferir para a sua própria conta"}
   """
   def is_transfering_to_same_account?(from, to_id) do
     if String.equivalent?(Integer.to_string(from.id), to_id) do
