@@ -18,6 +18,17 @@ defmodule BankingApi.Accounts.Auth.Session do
     1. `{:error, :not_found}`: Caso o email não exista no banco de dados
     2. `{:ok, user}`: Onde, `user` é uma `user struct` já com as informações de `account`
     3. `{:error, :unauthorized}`
+
+
+  ## Examples
+      iex> Session.authenticate("correct@email.com", "correct_password")
+      %{:ok, %User{...}}
+
+      iex> Session.authenticate("correct@email.com", "wrong_password")
+      %{:error, :not_found}
+
+      iex> Session.authenticate("wrong@email.com", "correct_password")
+      %{:error, :unauthorized}
   """
   def authenticate(email, password) do
     query = from u in User, where: u.email == ^email

@@ -2,7 +2,6 @@ defmodule BankingApi.AccountsTest do
   use BankingApi.DataCase
 
   alias BankingApi.Accounts
-  alias BankingApi.Accounts.User
 
   @password_validation_error_message "A confirmacao de senha nao esta igual a senha digitada."
   @invalid_email_format_error_message "Email em formato invalido."
@@ -49,7 +48,7 @@ defmodule BankingApi.AccountsTest do
 
     test "create_user/1 should create a user when the valid params are used" do
       # when
-      {:ok, user, account} = Accounts.create_user(@valid_params)
+      {:ok, user, _account} = Accounts.create_user(@valid_params)
 
       # assert
       assert user.email == "valid_email@email.com"

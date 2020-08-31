@@ -23,6 +23,13 @@ defmodule BankingApi.Accounts.Auth.Guardian do
   Existem dois possíveis retornos da função:
     1. `{:error, :unauthorized}`: Caso falhe a autenticação
     2. `{:ok, user, token}`: Onde, `user` é uma `user struct` já com as informações de `account` e `token` é o token gerado pelo Guardian
+
+  ## Examples
+      iex> Guardian.authenticate("correct@email.com", "correct_password")
+      %{:ok, %User{...}, "token"}
+
+      iex> Guardian.authenticate("wrong@email.com", "wrong_password")
+      %{:error, :unauthorized}
   """
   def authenticate(email, password) do
     case Session.authenticate(email, password) do
