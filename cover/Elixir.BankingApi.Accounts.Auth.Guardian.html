@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.BankingApi.Accounts.Auth.Guardian.html</code></h1>
-<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/accounts/auth/guardian.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 19:34:21</p></footer>
+<footer><p>File generated from <code>c:/Users/Itay/Desktop/MyApps/elixir/banking_api/lib/banking_api/accounts/auth/guardian.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-08-30 at 21:52:17</p></footer>
 <table>
 <tbody>
 <tr>
@@ -161,9 +161,9 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr class="miss">
+<tr class="hit">
 <td class="line" id="L12"><a href="#L12">12</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="hits">21</td>
 <td class="source"><code>  use Guardian, otp_app: :banking_api</code></td>
 </tr>
 <tr>
@@ -234,157 +234,157 @@ td.source {
 <tr>
 <td class="line" id="L26"><a href="#L26">26</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L27"><a href="#L27">27</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def authenticate(email, password) do</code></td>
+<td class="source"><code>  ## Examples</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L28"><a href="#L28">28</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    case Session.authenticate(email, password) do</code></td>
+<td class="hits"></td>
+<td class="source"><code>      iex&gt; Guardian.authenticate("correct@email.com", "correct_password")</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L29"><a href="#L29">29</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>      {:ok, user} -&gt; create_token(user)</code></td>
+<td class="hits"></td>
+<td class="source"><code>      %{:ok, %User{...}, "token"}</code></td>
 </tr>
 <tr>
 <td class="line" id="L30"><a href="#L30">30</a></td>
 <td class="hits"></td>
-<td class="source"><code>      _any -&gt; {:error, :unauthorized}</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L31"><a href="#L31">31</a></td>
 <td class="hits"></td>
-<td class="source"><code>    end</code></td>
+<td class="source"><code>      iex&gt; Guardian.authenticate("wrong@email.com", "wrong_password")</code></td>
 </tr>
 <tr>
 <td class="line" id="L32"><a href="#L32">32</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>      %{:error, :unauthorized}</code></td>
 </tr>
 <tr>
 <td class="line" id="L33"><a href="#L33">33</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L34"><a href="#L34">34</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>  def authenticate(email, password) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L35"><a href="#L35">35</a></td>
-<td class="hits"></td>
-<td class="source"><code>  Busca o `subject` do `user` para o `token`.</code></td>
+<td class="hits">3</td>
+<td class="source"><code>    case Session.authenticate(email, password) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L36"><a href="#L36">36</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="hits">1</td>
+<td class="source"><code>      {:ok, user} -&gt; create_token(user)</code></td>
 </tr>
 <tr>
 <td class="line" id="L37"><a href="#L37">37</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Os argumentos dessa função são:</code></td>
+<td class="source"><code>      _any -&gt; {:error, :unauthorized}</code></td>
 </tr>
 <tr>
 <td class="line" id="L38"><a href="#L38">38</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `user`: Uma `user struct` que deve conter o valor `id` preenchido</code></td>
+<td class="source"><code>    end</code></td>
 </tr>
 <tr>
 <td class="line" id="L39"><a href="#L39">39</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L40"><a href="#L40">40</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma tupla com dois valores:</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L41"><a href="#L41">41</a></td>
 <td class="hits"></td>
-<td class="source"><code>    1. `:ok`</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L42"><a href="#L42">42</a></td>
 <td class="hits"></td>
-<td class="source"><code>    2. O `user.id` em formato string</code></td>
+<td class="source"><code>  Busca o `subject` do `user` para o `token`.</code></td>
 </tr>
 <tr>
 <td class="line" id="L43"><a href="#L43">43</a></td>
 <td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L44"><a href="#L44">44</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def subject_for_token(user, _claims) do</code></td>
+<td class="source"><code>  Os argumentos dessa função são:</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L45"><a href="#L45">45</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    {:ok, to_string(user.id)}</code></td>
+<td class="hits"></td>
+<td class="source"><code>    1. `user`: Uma `user struct` que deve conter o valor `id` preenchido</code></td>
 </tr>
 <tr>
 <td class="line" id="L46"><a href="#L46">46</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L47"><a href="#L47">47</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  O retorno da função é uma tupla com dois valores:</code></td>
 </tr>
 <tr>
 <td class="line" id="L48"><a href="#L48">48</a></td>
 <td class="hits"></td>
-<td class="source"><code>  @doc """</code></td>
+<td class="source"><code>    1. `:ok`</code></td>
 </tr>
 <tr>
 <td class="line" id="L49"><a href="#L49">49</a></td>
 <td class="hits"></td>
-<td class="source"><code>  Busca o usuário no banco de dados a partir do `subject`.</code></td>
+<td class="source"><code>    2. O `user.id` em formato string</code></td>
 </tr>
 <tr>
 <td class="line" id="L50"><a href="#L50">50</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>  """</code></td>
 </tr>
 <tr>
 <td class="line" id="L51"><a href="#L51">51</a></td>
 <td class="hits"></td>
-<td class="source"><code>  O retorno da função é uma tupla, que contém o atom `:ok` e a `user struct`</code></td>
+<td class="source"><code>  def subject_for_token(user, _claims) do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L52"><a href="#L52">52</a></td>
-<td class="hits"></td>
-<td class="source"><code>  """</code></td>
+<td class="hits">1</td>
+<td class="source"><code>    {:ok, to_string(user.id)}</code></td>
 </tr>
 <tr>
 <td class="line" id="L53"><a href="#L53">53</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def resource_from_claims(claims) do</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
-<tr class="miss">
+<tr>
 <td class="line" id="L54"><a href="#L54">54</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    id = claims["sub"]</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L55"><a href="#L55">55</a></td>
 <td class="hits"></td>
-<td class="source"><code>    {:ok, Accounts.get_user!(id)}</code></td>
+<td class="source"><code>  @doc """</code></td>
 </tr>
 <tr>
 <td class="line" id="L56"><a href="#L56">56</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
+<td class="source"><code>  Busca o usuário no banco de dados a partir do `subject`.</code></td>
 </tr>
 <tr>
 <td class="line" id="L57"><a href="#L57">57</a></td>
@@ -394,25 +394,60 @@ td.source {
 <tr>
 <td class="line" id="L58"><a href="#L58">58</a></td>
 <td class="hits"></td>
-<td class="source"><code>  defp create_token(user) do</code></td>
-</tr>
-<tr class="miss">
-<td class="line" id="L59"><a href="#L59">59</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    {:ok, token, _claims} = encode_and_sign(user)</code></td>
-</tr>
-<tr class="miss">
-<td class="line" id="L60"><a href="#L60">60</a></td>
-<td class="hits"><pre style="display: inline;">:-(</pre></td>
-<td class="source"><code>    {:ok, user, token}</code></td>
+<td class="source"><code>  O retorno da função é uma tupla, que contém o atom `:ok` e a `user struct`</code></td>
 </tr>
 <tr>
+<td class="line" id="L59"><a href="#L59">59</a></td>
+<td class="hits"></td>
+<td class="source"><code>  """</code></td>
+</tr>
+<tr>
+<td class="line" id="L60"><a href="#L60">60</a></td>
+<td class="hits"></td>
+<td class="source"><code>  def resource_from_claims(claims) do</code></td>
+</tr>
+<tr class="miss">
 <td class="line" id="L61"><a href="#L61">61</a></td>
+<td class="hits"><pre style="display: inline;">:-(</pre></td>
+<td class="source"><code>    id = claims["sub"]</code></td>
+</tr>
+<tr>
+<td class="line" id="L62"><a href="#L62">62</a></td>
+<td class="hits"></td>
+<td class="source"><code>    {:ok, Accounts.get_user!(id)}</code></td>
+</tr>
+<tr>
+<td class="line" id="L63"><a href="#L63">63</a></td>
 <td class="hits"></td>
 <td class="source"><code>  end</code></td>
 </tr>
 <tr>
-<td class="line" id="L62"><a href="#L62">62</a></td>
+<td class="line" id="L64"><a href="#L64">64</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L65"><a href="#L65">65</a></td>
+<td class="hits"></td>
+<td class="source"><code>  defp create_token(user) do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L66"><a href="#L66">66</a></td>
+<td class="hits">1</td>
+<td class="source"><code>    {:ok, token, _claims} = encode_and_sign(user)</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L67"><a href="#L67">67</a></td>
+<td class="hits">1</td>
+<td class="source"><code>    {:ok, user, token}</code></td>
+</tr>
+<tr>
+<td class="line" id="L68"><a href="#L68">68</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
+</tr>
+<tr>
+<td class="line" id="L69"><a href="#L69">69</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>
