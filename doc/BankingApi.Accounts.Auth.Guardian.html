@@ -265,7 +265,15 @@ Functions          </h1>
 
   <section class="docstring">
 
-<p>Faz a autenticação do usuário no sistema e cria o token de autenticação</p><p>Argumentos para a função:</p><ol><li><code class="inline">email</code>: email do usuário</li><li><code class="inline">senha</code>: senha do usuário</li></ol><p>Existem dois possíveis retornos da função:</p><ol><li><code class="inline">{:error, :unauthorized}</code>: Caso falhe a autenticação</li><li><code class="inline">{:ok, user, token}</code>: Onde, <code class="inline">user</code> é uma <code class="inline">user struct</code> já com as informações de <code class="inline">account</code> e <code class="inline">token</code> é o token gerado pelo Guardian</li></ol>  </section>
+<p>Faz a autenticação do usuário no sistema e cria o token de autenticação</p><p>Argumentos para a função:</p><ol><li><code class="inline">email</code>: email do usuário</li><li><code class="inline">senha</code>: senha do usuário</li></ol><p>Existem dois possíveis retornos da função:</p><ol><li><code class="inline">{:error, :unauthorized}</code>: Caso falhe a autenticação</li><li><code class="inline">{:ok, user, token}</code>: Onde, <code class="inline">user</code> é uma <code class="inline">user struct</code> já com as informações de <code class="inline">account</code> e <code class="inline">token</code> é o token gerado pelo Guardian</li></ol><h2 id="authenticate/2-examples" class="section-heading">
+  <a href="#authenticate/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Guardian</span><span class="o">.</span><span class="n">authenticate</span><span class="p" data-group-id="4672615920-1">(</span><span class="s">&quot;correct@email.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;correct_password&quot;</span><span class="p" data-group-id="4672615920-1">)</span><span class="w">
+</span><span class="p" data-group-id="4672615920-2">%{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4672615920-3">%</span><span class="nc" data-group-id="4672615920-3">User</span><span class="p" data-group-id="4672615920-3">{</span><span class="n">...</span><span class="p" data-group-id="4672615920-3">}</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;token&quot;</span><span class="p" data-group-id="4672615920-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Guardian</span><span class="o">.</span><span class="n">authenticate</span><span class="p" data-group-id="4672615920-4">(</span><span class="s">&quot;wrong@email.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wrong_password&quot;</span><span class="p" data-group-id="4672615920-4">)</span><span class="w">
+</span><span class="p" data-group-id="4672615920-5">%{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:unauthorized</span><span class="p" data-group-id="4672615920-5">}</span></code></pre>  </section>
 </section>
 <section class="detail" id="before_sign_out/3">
   <div class="detail-header">
