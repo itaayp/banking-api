@@ -26,8 +26,11 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
  1. Instale **python3**
  2. Instale **pip3**. [Leia a documentação](https://packaging.python.org/tutorials/installing-packages/) para mais informações
  3. Instale **git**. [Leia a documentação](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) para mais informações
- 4. Crie uma conta no [`Gigalixir`](https://www.gigalixir.com/)
- 5. Instale **Gigalixir cli**. Para isso, abra o seu terminal e rode o comando `pip3 install gigalixir --user`. (Obs: mantenha o terminal aberto para as próximas etapas) 
+ 4. Crie uma conta no [Gigalixir](https://www.gigalixir.com/)
+ 5. Instale **Gigalixir cli**. 
+   
+    5.1. Para isso, abra o seu terminal e rode o comando `pip3 install gigalixir --user`. (Obs: mantenha o terminal aberto para as próximas etapas) 
+ 
  6. Faça um clone do projeto [`stone-banking-api`](https://github.com/itaayp/stone-banking-api) em sua máquina.
  7. Acesse a pasta através do comando `cd <APPLICATION_PATH>` e inicie um projeto git na pasta: `git init`
  
