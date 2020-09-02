@@ -29,7 +29,7 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
  4. Crie uma conta no [Gigalixir](https://www.gigalixir.com/)
  5. Instale **Gigalixir cli**.
    
-    5.1. Para isso, abra o seu terminal e rode o comando abaixo. (Obs: mantenha o terminal aberto para as próximas etapas)
+    5.1. Para isso, abra o seu terminal e rode o comando abaixo. (Obs: Após rodar o comando, mantenha o seu terminal aberto. Vamos precisar dele para as próximas etapas)
     ```
     pip3 install gigalixir --user
     ``` 
@@ -49,22 +49,22 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
 
 ### Passo-a-passo para deploy:
  1. Acesse o diretório onde está a aplicação 
-```
-cd <APPLICATION_PATH>
-```
+ ```
+ cd <APPLICATION_PATH>
+ ```
  2. Faça login no Gigalixir
-  ```
-   gigalixir login
-  ```
+ ```
+ gigalixir login
+ ```
  3. Adicione a track do repositório remoto:
-  ```
-  git remote add gigalixir https://itay.profissional%40gmail.com:31ce1eb2-b95e-47e6-9063-805c9b86cc89@git.gigalixir.com/stone-banking-api-itay.git
-  ```
-4. Faça as alterações no código.
-5. Faça o deploy!
+ ```
+ git remote add gigalixir https://itay.profissional%40gmail.com:31ce1eb2-b95e-47e6-9063-805c9b86cc89@git.gigalixir.com/stone-banking-api-itay.git
+ ```
+ 4. Faça as alterações no código.
+ 5. Faça o deploy!
  ```
  git push gigalixir master
-```
+ ```
 
 
 # Frameworks e conceitos do ecossistema Elixir utilizados durante o desenvolvimento
