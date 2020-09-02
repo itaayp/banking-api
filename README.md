@@ -33,34 +33,36 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
     ```
     pip3 install gigalixir --user
     ``` 
- 
  6. Faça um clone do projeto [`stone-banking-api`](https://github.com/itaayp/stone-banking-api) em sua máquina.
- ```
- git clone https://github.com/itaayp/stone-banking-api.git
- ```
- 
- 7. Pelo terminal, acesse o diretório do projeto e inicie o git na pasta: 
- ```
- cd stone-banking-api
- git init
- ```
- 
+  ```
+  git clone https://github.com/itaayp/stone-banking-api.git
+  ```
+ 7. Pelo terminal, acesse o diretório do projeto e inicie o git: 
+  ```
+  cd stone-banking-api
+  git init
+  ```
+ 8. Adicione a track do repositório remoto:
+  ```
+  git remote add gigalixir https://itay.profissional%40gmail.com:31ce1eb2-b95e-47e6-9063-805c9b86cc89@git.gigalixir.com/stone-banking-api-itay.git
+  ```
  
 
-### Passo-a-passo para deploy:
- 1. Acesse o diretório onde está a aplicação 
+### Passo-a-passo para o deploy:
+ 1. Faça as alterações no código.
+ 2. Acesse o diretório onde está a aplicação 
  ```
  cd <APPLICATION_PATH>
  ```
- 2. Faça login no Gigalixir
+ 3. Faça o commit das alterações:
+ ```
+ git add .
+ git commit -m "I'm learning how to deploy"
+ ```
+ 4. Faça login no Gigalixir
  ```
  gigalixir login
  ```
- 3. Adicione a track do repositório remoto:
- ```
- git remote add gigalixir https://itay.profissional%40gmail.com:31ce1eb2-b95e-47e6-9063-805c9b86cc89@git.gigalixir.com/stone-banking-api-itay.git
- ```
- 4. Faça as alterações no código.
  5. Faça o deploy!
  ```
  git push gigalixir master
