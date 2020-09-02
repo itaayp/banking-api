@@ -30,21 +30,27 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
  5. Instale **Gigalixir cli**.
    
     5.1. Para isso, abra o seu terminal e rode o comando abaixo. (Obs: mantenha o terminal aberto para as próximas etapas)
-```
-pip3 install gigalixir --user
-``` 
+    ```
+    pip3 install gigalixir --user
+    ``` 
  
  6. Faça um clone do projeto [`stone-banking-api`](https://github.com/itaayp/stone-banking-api) em sua máquina.
- 7. Acesse a pasta através do comando `cd <APPLICATION_PATH>` e inicie um projeto git na pasta: `git init`
- 
  ```
  git clone https://github.com/itaayp/stone-banking-api.git
  ```
+ 
+ 7. Pelo terminal, acesse o diretório do projeto e inicie o git na pasta: 
+ ```
+ cd stone-banking-api
+ git init
+ ```
+ 
+ 
 
 ### Passo-a-passo para deploy:
- 1. Acesse a pasta onde está a aplicação 
+ 1. Acesse o diretório onde está a aplicação 
 ```
-cd application_path
+cd <APPLICATION_PATH>
 ```
  2. Faça login no Gigalixir
   ```
