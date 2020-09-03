@@ -13,6 +13,7 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
 
 # Documentação
 ## Documentação de uso da aplicação (Documentação da API)
+[`Clique aqui`](https://documenter.getpostman.com/view/3587450/TVCfW8eJ) para encontrar a documentação da API
 
 ## Documentação do código (Documentação de módulo)
 
