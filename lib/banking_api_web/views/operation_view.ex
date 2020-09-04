@@ -13,7 +13,7 @@ defmodule BankingApiWeb.OperationView do
   Os argumentos da função são:
     1. A string `"operation_succeeded.json"`
     2. `%{message: message}`: um map que contenha:
-      2.1. `message`: a mensagem que será exibida ao usuário
+      * `message`: a mensagem que será exibida ao usuário
   """
   def render("operation_succeeded.json", %{message: message}) do
     %{

@@ -36,7 +36,7 @@ defmodule BankingApi.Operations do
     2. `to_id`: O número da conta recebedora (id da conta).
     3. `amount`: Quantidade a ser transferida.
 
-  Há possíveis retornos para a função. Eles podem ser:
+  Há três possíveis retornos para a função. Eles podem ser:
     1. `{:ok, message}`: Caso a transferência tenha ocorrido com sucesso
     2. `{:error, message}`: Caso o saldo da conta seja menor do que o valor a ser transferido.
     3. Qualquer retorno da função `handle_feedback/2`
@@ -89,7 +89,7 @@ defmodule BankingApi.Operations do
     1. `from`: É a `account struct` de onde será feito saque.
     2. `amount`: Quantidade a ser transferida.
 
-  Há possíveis retornos para a função. Eles podem ser:
+  Há três possíveis retornos para a função. Eles podem ser:
     1. `{:ok, message}`: Caso o saque tenha ocorrido com sucesso
     2. `{:error, message}`: Caso o saldo da conta seja menor do que o valor de saque.
     3. Qualquer retorno da função `handle_feedback/2`

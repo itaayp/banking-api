@@ -17,7 +17,7 @@ defmodule BankingApiWeb.UserController do
   Os argumentos da função são:
     1. `conn`: as informações de conexão
     2. `%{"user" => user}`: Um map que contenha:
-      2.1. `user`: A `user struct` a ser criada no sistema
+      * `user`: A `user struct` a ser criada no sistema
   """
   def signup(conn, %{"user" => user}) do
     with {:ok, user, account} <- Accounts.create_user(user) do
@@ -35,8 +35,8 @@ defmodule BankingApiWeb.UserController do
   Os argumentos da função são:
     1. `conn`: as informações de conexão
     2. `%{"email" => email, "password" => password}`: Um map que contenha:
-      2.1. `email`: O email do usuário
-      2.2. `password`: A senha do usuário
+      * `email`: O email do usuário
+      * `password`: A senha do usuário
   """
   def signin(conn, %{"email" => email, "password" => password}) do
     with {:ok, user, token} <- Guardian.authenticate(email, password) do
@@ -47,12 +47,12 @@ defmodule BankingApiWeb.UserController do
   end
 
   @doc """
-  Buscar um usuário pelo `id` e renderizar as informações deste usuário obtido.
+  Busca um usuário pelo `id` e renderizar as informações deste usuário obtido.
 
   Os argumentos da função são:
     1. `conn`: as informações de conexão
     2. `%{"id" => id}`: Um map que contenha:
-      2.1. `id`: O email do usuário
+      * `id`: O email do usuário
   """
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)

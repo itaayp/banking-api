@@ -58,8 +58,8 @@ defmodule BankingApiWeb.TransactionController do
   Os argumentos da função são:
     1. `conn`: as informações da conexão
     2. `map`: Um map que contém:
-      2.1. `"year" => year`: o ano das transações
-      2.2. `"month" => month`:  mês das transações
+      * `"year" => year`: o ano das transações
+      * `"month" => month`:  mês das transações
 
 
   Observação:

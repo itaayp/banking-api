@@ -6,7 +6,7 @@ defmodule BankingApiWeb.ChangesetView do
   use BankingApiWeb, :view
 
   @doc """
-  Tratar mensagens de erro passadas através do argumento `changeset`.
+  Trata as mensagens de erro passadas através do argumento `changeset`.
   """
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)

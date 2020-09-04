@@ -13,7 +13,7 @@ defmodule BankingApiWeb.TransactionView do
   Os argumentos da função são:
     1. A string `show.json`.
     2. `%{transaction: transaction}`: Um map que contenha
-      2.1. `transaction`: Uma lista com `transaction structs` e o valor total operado
+      * `transaction`: Uma lista com `transaction structs` e o valor total operado
   """
   def render("show.json", %{transaction: transaction}) do
     render_one(transaction, BankingApiWeb.TransactionView, "report.json")

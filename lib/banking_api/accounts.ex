@@ -20,7 +20,7 @@ defmodule BankingApi.Accounts do
     1. Uma tupla do tipo: `{:ok, user, account}`, onde `user` e `account` são structs
     2. Uma tupla do tipo: `{:error, changeset}`
 
-    ## Examples
+  ## Examples
       iex> user = %{
         email: "email@email.com",
         first_name: "first_name",

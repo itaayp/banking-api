@@ -15,8 +15,8 @@ defmodule BankingApiWeb.OperationController do
   Os argumentos da função são:
     1. `conn`: as informações da conexão
     2. `%{"to_account" => to, "amount" => amount}`: Um map que contenha:
-      2.1. `to_account`: O número da conta recebedora (id da conta)
-      2.2. `amount`: Valor a ser transferido
+      * `to_account`: O número da conta recebedora (id da conta)
+      * `amount`: Valor a ser transferido
   """
   def transfer(conn, %{"to_account" => to, "amount" => amount}) do
     # Busca a `user struct` do usuário que está realizando a transferência
@@ -36,7 +36,7 @@ defmodule BankingApiWeb.OperationController do
   Os argumentos da função são:
     1. `conn`: as informações da conexão
     2. `%{"amount" => amount}`: Um map que contenha:
-      2.1. `amount`: Valor a ser transferido
+      * `amount`: Valor a ser transferido
   """
   def withdraw(conn, %{"amount" => amount}) do
     # Busca a `user struct` do usuário que está realizando a transferência

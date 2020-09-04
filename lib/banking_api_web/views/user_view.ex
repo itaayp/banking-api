@@ -35,8 +35,8 @@ defmodule BankingApiWeb.UserView do
   Os argumentos da função são:
     1. A string "account.json"
     2. `%{user: user, account: account`: map que contenha:
-      2.1. `user`: Uma `user struct`
-      2.2. `account`: Uma `account struct`
+      * `user`: Uma `user struct`
+      * `account`: Uma `account struct`
   """
   def render("account.json", %{user: user, account: account}) do
     %{
@@ -70,8 +70,8 @@ defmodule BankingApiWeb.UserView do
   Os argumentos da função são:
     1. A string `"user_auth.json"`
     2. Um map que contenha as propriedades:
-      2.1. `user`: Uma `user struct`
-      2.2. `token`: Uma string com o valor `token` gerado pelo framework de autenticação, Guardian
+      * `user`: Uma `user struct`
+      * `token`: Uma string com o valor `token` gerado pelo framework de autenticação, Guardian
   """
   def render("user_auth.json", %{user: user, token: token}) do
     user = Map.put(render_one(user, BankingApiWeb.UserView, "user.json"), :token, token)
