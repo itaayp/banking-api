@@ -32,3 +32,6 @@ npm-debug.log
 
 #.env file
 .env
+
+# unit tests coverage folder
+/cover/
