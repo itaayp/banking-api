@@ -8,7 +8,7 @@ defmodule BankingApiWeb.TransactionView do
   use BankingApiWeb, :view
 
   @doc """
-  Renderiza o report de transações.
+  Renderiza o relatório de transações.
 
   Os argumentos da função são:
     1. A string `show.json`.
@@ -20,7 +20,7 @@ defmodule BankingApiWeb.TransactionView do
   end
 
   @doc """
-  Prepara a lista de transações para ser exibida ao usuário final.
+  Monta o relatório de transações e renderiza o relatório ao usuário final.
 
   Os argumentos da função são:
     1. A string `report.json`.
