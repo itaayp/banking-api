@@ -3,22 +3,24 @@ defmodule BankingApi.TransactionsTest do
 
   alias BankingApi.Transactions
 
-  test "insert_transaction/1 should insert a transaction into the database" do
-    # when
-    transaction = %{
-      value: "100",
-      account_from: "1",
-      type: "transfer",
-      account_to: "2",
-      date: ~D[2018-11-17]
-    }
+  describe "test insert_transaction/1" do
+    test "insert_transaction/1 should insert a transaction into the database" do
+      # when
+      transaction = %{
+        value: "100",
+        account_from: "1",
+        type: "transfer",
+        account_to: "2",
+        date: ~D[2018-11-17]
+      }
 
-    # do
-    {atom, db_transaction} = Transactions.insert_transaction(transaction)
+      # do
+      {atom, db_transaction} = Transactions.insert_transaction(transaction)
 
-    # assert
-    assert :ok == atom
-    assert "1" == db_transaction.account_from
+      # assert
+      assert :ok == atom
+      assert "1" == db_transaction.account_from
+    end
   end
 
   describe "Date validation" do
