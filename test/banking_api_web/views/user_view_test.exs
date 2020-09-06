@@ -1,8 +1,6 @@
 defmodule BankingApiWeb.UserViewTest do
   use BankingApiWeb.ConnCase, async: true
-  alias BankingApi.Accounts.User
   alias BankingApi.Accounts
-  alias BankingApi.Accounts.Account
   alias BankingApi.Repo
 
   # Bring render/3 and render_to_string/3 for testing custom views
@@ -49,7 +47,6 @@ defmodule BankingApiWeb.UserViewTest do
         render_to_string(BankingApiWeb.UserView, "account.json", %{user: @user, account: @account})
 
       # assert
-      IO.inspect(result)
       assert String.contains?(result, "\"saldo em conta\":\"R$ 1000.00\"") == true
       assert String.contains?(result, "\"Email\":\"email@email.com\"") == true
       assert String.contains?(result, "\"Nome completo\":\"first name last name\"") == true
@@ -66,7 +63,6 @@ defmodule BankingApiWeb.UserViewTest do
         render_to_string(BankingApiWeb.UserView, "user_auth.json", %{user: user, token: token})
 
       # assert
-      IO.inspect(result)
       assert String.contains?(result, "\"saldo em conta\":\"R$ 1000.00\"") == true
       assert String.contains?(result, "\"Email\":\"email@email.com\"") == true
       assert String.contains?(result, "\"Nome completo\":\"first name last name\"") == true
