@@ -1,9 +1,9 @@
 # BankingApi
-* Este projeto faz parte do processo seletivo de recrutamento da Stone. [`Especificações do projeto`](https://gist.github.com/Isabelarrodrigues/15e62f07eebf4e076b93897a64d9c674)
+* Este projeto faz parte do processo seletivo de recrutamento da Stone. [`Veja as especificações`](https://gist.github.com/Isabelarrodrigues/15e62f07eebf4e076b93897a64d9c674)
 
 ## Breve descrição do projeto
 
-Desenvolver em Elixir uma API para bancos onde fosse possível:
+Desenvolver, em Elixir, uma API para bancos onde fosse possível:
  1. Criar novos usuários e novas contas bancárias
  2. Realizar transferência
  3. Realizar saque
@@ -20,9 +20,15 @@ Desenvolver em Elixir uma API para bancos onde fosse possível:
 [`Clique aqui`](https://banking-api-documentation.herokuapp.com/) para encontrar a documentação do código
 
 ## Documentação de setup
+Para rodar a aplicação localmente você precisa:
+ 1. Instale a versão `1.10.3` do Elixir e a versão `21.0` do Erlang. `Leia a documentação`(https://elixir-lang.org/install.html)
+ 2. Abra o seu terminal preferido. Nós vamos precisar para os próximos passos.
+ 3. Execute o comando `mix local.hex` para instalar o `hex`
+ 4. Execute o comando `mix archive.install hex phx_new 1.5.4` para instalar a versão `1.5.4` do Phoenix
+ 5. Instale a versão `v10.16.3` do Node. `Leia a documentação`(https://nodejs.org/en/download/)
+ 6. Instale o Postgres. `Leia a documentação`(https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 
 ## Documentação de deploy
-
 ### Pré-requisitos:
  1. Instale **python3**
  2. Instale **pip3**. [Leia a documentação](https://packaging.python.org/tutorials/installing-packages/) para mais informações
