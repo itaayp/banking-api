@@ -84,6 +84,8 @@ Siga os passos a seguir para executar a aplicação localmente:
  2. Credo - Para a análise, refatoração e legibilidade de código
  3. Guardian - Para a autenticação de usuários na API
  4. Exdoc - Para criar a [`documentação de código`](https://banking-api-documentation.herokuapp.com/)
+ 5. Test Watch - para auxiliar na visualização de *unit tests*
+ 6. Conceito de Fallback Controller
 
 
 # Links extras
