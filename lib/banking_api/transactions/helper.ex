@@ -8,6 +8,8 @@ defmodule BankingApi.Transactions.Helper do
   alias BankingApi.Repo
   alias BankingApi.Transactions.Transaction
 
+  @valid_date "A data é válida"
+
   @doc """
   A função busca todos os registros da tabela `transactions`.
 
@@ -144,26 +146,57 @@ defmodule BankingApi.Transactions.Helper do
   end
 
   @doc """
-  Valida se o ano, mês ou dia são uma string vazia ou contém o caractére `"-"`.
+  Valida se o ano ou mês são valores de data válidos.
 
   Os argumentos da função são:
-    1. `date`: Pode ser o ano, o mês ou o dia, em formato string, a ser validado
+    1. `year`: O ano, em formato string, que será validado
+    2. `month`: O mês, em formato string, que será validado
+    3. `fail_message`: A mensagem a ser exibida caso a data passada esteja inválida
+
+  Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida
+
+  ## Examples
+      iex> Transactions.validate_date("2020", "01", "fail message")
+      {:ok, "A data é válida"}
+
+      iex> Transactions.validate_date("-2020", "01", "this is an invalid date")
+      {:error, "this is an invalid date"}
+
+      iex> Transactions.validate_date("2020", "14", "this is an invalid date")
+      {:error, "this is an invalid date"}
+  """
+  def validate_date(year, month, fail_message) do
+    if !String.match?(year, ~r/^[0-9]+$/) || !String.match?(month, ~r/^(0?[1-9]|1[012])$/) do
+      {:error, fail_message}
+    else
+      {:ok, @valid_date}
+    end
+  end
+
+  @doc """
+  Valida se a data está em um formato válido.
+
+  Os argumentos da função são:
+    1. `day`: A data, em formato string, que será validada
     2. `fail_message`: A mensagem a ser exibida ao usuário caso a data passada esteja inválida
 
   Os dois possíveis retornos da função são uma túpla contendo o atom `:ok`, caso a data seja válida, ou uma tupla contendo o atom `:error` e a mensagem `fail_message`, caso a data seja inválida
 
   ## Examples
-      iex> Helper.validate_date("2020", "this is an invalid year")
+      iex> Transactions.validate_day("2020-12-23", "fail message")
       {:ok, "A data é válida"}
 
-      iex> Helper.validate_date("-2020", "this is an invalid year")
-      {:error, "this is an invalid year"}
+      iex> Transactions.validate_day("2020-01-44", "this is an invalid date")
+      {:error, "this is an invalid date"}
+
+      iex> Transactions.validate_day("2020-14-01", "this is an invalid date")
+      {:error, "this is an invalid date"}
   """
-  def validate_date(date, fail_message) do
-    if String.equivalent?(date, "") || String.contains?(date, "-") do
-      {:error, fail_message}
+  def validate_day(day, fail_message) do
+    if String.match?(day, ~r/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/) do
+      {:ok, @valid_date}
     else
-      {:ok, "A data é válida"}
+      {:error, fail_message}
     end
   end
 end

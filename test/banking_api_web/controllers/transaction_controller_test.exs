@@ -20,6 +20,50 @@ defmodule BankingApiWeb.TransactionControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
+  describe "validate date" do
+    test "generate_anual_report/1 should return an error when the year is invalid",
+         %{conn: conn} do
+      # Authenticate user
+      {:ok, user, _account} = Accounts.create_user(@user_admin_params)
+      {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
+      conn = put_req_header(conn, "authorization", "bearer: " <> token)
+
+      # do
+      conn = get(conn, Routes.transaction_path(conn, :generate_anual_report, "20abc20"))
+
+      # assert
+      assert conn.status == 422
+    end
+
+    test "generate_monthly_report/2 should return an error when the month is invalid",
+         %{conn: conn} do
+      # Authenticate user
+      {:ok, user, _account} = Accounts.create_user(@user_admin_params)
+      {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
+      conn = put_req_header(conn, "authorization", "bearer: " <> token)
+
+      # do
+      conn = get(conn, Routes.transaction_path(conn, :generate_monthly_report, "2020", "15"))
+
+      # assert
+      assert conn.status == 422
+    end
+
+    test "generate_daily_report/1 should return an error when the date is invalid",
+         %{conn: conn} do
+      # Authenticate user
+      {:ok, user, _account} = Accounts.create_user(@user_admin_params)
+      {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
+      conn = put_req_header(conn, "authorization", "bearer: " <> token)
+
+      # do
+      conn = get(conn, Routes.transaction_path(conn, :generate_daily_report, "2020-18-51"))
+
+      # assert
+      assert conn.status == 422
+    end
+  end
+
   describe "test generate_entire_life_report/0" do
     test "generate_entire_life_report/0 should return a report containing a list of transactions and the total amount operated",
          %{conn: conn} do

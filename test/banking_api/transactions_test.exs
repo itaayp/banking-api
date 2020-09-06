@@ -26,21 +26,37 @@ defmodule BankingApi.TransactionsTest do
   describe "Date validation" do
     test "validate_date/2 should return {:ok} when the date is valid" do
       # When
-      valid_date = "2020"
+      valid_year = "2020"
+      valid_month = "01"
 
       # Do
-      {atom, _success_message} = Transactions.validate_date(valid_date, "fail message")
+      {atom, _success_message} =
+        Transactions.validate_date(valid_year, valid_month, "fail message")
 
       # Assert
       assert atom == :ok
     end
 
-    test "validate_date/2 should return {:error} when the date is invalid" do
+    test "validate_date/2 should return {:error} when the year is invalid" do
       # When
-      invalid_date = "-2020"
+      invalid_year = "20abc20"
+      valid_month = "01"
 
       # Do
-      {atom, fail_message} = Transactions.validate_date(invalid_date, "fail message")
+      {atom, fail_message} = Transactions.validate_date(invalid_year, valid_month, "fail message")
+
+      # Assert
+      assert atom == :error
+      assert fail_message == "fail message"
+    end
+
+    test "validate_date/2 should return {:error} when the month is invalid" do
+      # When
+      valid_year = "2020"
+      invalid_month = "18"
+
+      # Do
+      {atom, fail_message} = Transactions.validate_date(valid_year, invalid_month, "fail message")
 
       # Assert
       assert atom == :error
