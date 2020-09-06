@@ -31,7 +31,7 @@ Siga os passos a seguir para executar a aplicação localmente:
  8. Abra o arquivo `dev.exs` e altere as configurações de `username` e `password` para as configurações do seu banco de dados Postegresql
  9. Em seu terminal, acesse o diretório do projeto e execute o comando `mix ecto.create` e depois `mix ecto.migrate`
  10. Use o comando `mix phx.server` para executar a aplicação.
- 11. Neste momento, a aplicação está sendo executada na porta 4000. Para acessar os endpoints da API localmente, [`leia a documentação da API`](https://documenter.getpostman.com/view/3587450/TVCfW8eJ) e em cada endpoint substitua `https://stone-banking-api-itay.gigalixirapp.com` por `localhost:4000`
+ 11. Neste momento, a aplicação está sendo executada na porta 4000. Para acessar os endpoints da API localmente, [`leia a documentação da API`](https://documenter.getpostman.com/view/3587450/TVCfW8eJ) e para cada endpoint substitua `https://stone-banking-api-itay.gigalixirapp.com` por `localhost:4000`
  12. Divirta-se! :)
 
 ## Documentação de deploy
@@ -46,11 +46,8 @@ Siga os passos a seguir para executar a aplicação localmente:
     ```
     pip3 install gigalixir --user
     ``` 
- 6. Faça um clone do projeto [`stone-banking-api`](https://github.com/itaayp/stone-banking-api) em sua máquina.
-  ```
-  git clone https://github.com/itaayp/stone-banking-api.git
-  ```
- 7. Pelo terminal, acesse o diretório do projeto e inicie o git: 
+ 6. Execute o comando `git clone https://github.com/itaayp/stone-banking-api.git` para fazer um clone do projeto em sua maquina pessoal
+ 7. Pela linha de comando, acesse o diretório do projeto e inicie o git: 
   ```
   cd stone-banking-api
   git init
@@ -92,21 +89,3 @@ Siga os passos a seguir para executar a aplicação localmente:
 # Links extras
 
 
-To start your Phoenix server:
-
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
