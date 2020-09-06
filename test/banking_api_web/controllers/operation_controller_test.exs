@@ -34,6 +34,53 @@ defmodule BankingApiWeb.OperationControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
+  describe "test invalid operations" do
+    test "OperationController.transfer/2 should return an error when the amount has comma",
+         %{conn: conn} do
+      # Authenticate user_from
+      user_from = create_user_and_account()
+      {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
+      conn = put_req_header(conn, "authorization", "bearer: " <> token)
+
+      # Create user_to
+      {:ok, user_to, _account} = Accounts.create_user(@user_to_params)
+      user_to = Repo.preload(user_to, :accounts)
+
+      # do
+      transfer_params = %{
+        "to_account" => Integer.to_string(user_to.accounts.id),
+        "amount" => "100,00"
+      }
+
+      conn = put(conn, Routes.operation_path(conn, :transfer), transfer_params)
+
+      # assert
+      assert conn.status == 422
+    end
+
+    test "OperationController.transfer/2 should return an error when the amount is not a number",
+         %{conn: conn} do
+      # Authenticate user_from
+      user_from = create_user_and_account()
+      {:ok, token, _} = encode_and_sign(user_from, %{}, token_type: :access)
+      conn = put_req_header(conn, "authorization", "bearer: " <> token)
+
+      # Create user_to
+      {:ok, user_to, _account} = Accounts.create_user(@user_to_params)
+      user_to = Repo.preload(user_to, :accounts)
+
+      # do
+      transfer_params = %{
+        "to_account" => Integer.to_string(user_to.accounts.id),
+        "amount" => "Hey there"
+      }
+
+      conn = put(conn, Routes.operation_path(conn, :transfer), transfer_params)
+
+      assert conn.status == 422
+    end
+  end
+
   describe "Test transfer operations" do
     test "OperationController.transfer/2 should update user_from.accounts.balance and user_to.accounts.balance",
          %{conn: conn} do

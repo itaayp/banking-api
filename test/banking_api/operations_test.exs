@@ -132,4 +132,30 @@ defmodule BankingApi.OperationsTest do
       assert changeset.changes == %{balance: Decimal.new("1100.00")}
     end
   end
+
+  describe "validate amount operated" do
+    test "Operations.validate_amount/1 should return the amount in Decimal type" do
+      # do
+      {:ok, amount} = Operations.validate_amount("100.00")
+
+      # assert
+      assert Decimal.decimal?(amount)
+    end
+
+    test "Operations.validate_amount/1 should return an error when the amount has comma" do
+      # do
+      {atom, _message} = Operations.validate_amount("100,00")
+
+      # assert
+      assert atom == :error
+    end
+
+    test "Operations.validate_amount/1 should return an error when the amount is not a number" do
+      # do
+      {atom, _message} = Operations.validate_amount("hey there")
+
+      # assert
+      assert atom == :error
+    end
+  end
 end

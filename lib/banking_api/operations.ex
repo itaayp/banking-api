@@ -12,7 +12,6 @@ defmodule BankingApi.Operations do
   alias BankingApi.Transactions.Transaction
   alias Ecto.Multi
 
-  # variáveis de módulo
   @withdraw "withdraw"
   @transfer "transfer"
 
@@ -27,6 +26,9 @@ defmodule BankingApi.Operations do
 
   @denied_operation "Operação negada"
   @you_tried_to_operate_an_amount_greater_than_your_balance "Você tentou operar um valor maior do que o permitido para a sua conta"
+
+  @transfer_denied_to_your_own_account "Você não pode transferir para a sua própria conta"
+  @amount_invalid_message "Você digitou um formato inválido de 'amount'. Leia a documentação para mais informações (https://documenter.getpostman.com/view/3587450/TVCfW8eJ#eed0a685-1f28-4e7a-8f36-e549f763e920)"
 
   @doc """
   Inicia a operação de transferência bancária.
@@ -217,6 +219,10 @@ defmodule BankingApi.Operations do
     1. `from`: `account struct` da conta que realizará a transferência
     2. `to_id`: id da conta que receberá a transferência
 
+  Os possíveis retornos da função são:
+    1. A túpla `{:error, "Você não pode transferir para a sua própria conta"}`
+    2. O boolean `false`
+
   ## Examples
       iex> from = %Account{balance: "1000.00", user_id: "1"}
       iex> Operations.is_transfering_to_same_account?(from, "1")
@@ -224,9 +230,33 @@ defmodule BankingApi.Operations do
   """
   def is_transfering_to_same_account?(from, to_id) do
     if String.equivalent?(Integer.to_string(from.id), to_id) do
-      {:error, "Você não pode transferir para a sua própria conta"}
+      {:error, @transfer_denied_to_your_own_account}
     else
       false
+    end
+  end
+
+  @doc """
+  Valida se a quantidade a ser operada é um valor válido, e se for, converte este valor para Decimal
+
+  O argumentos da função é:
+    1. `amount`: É a quantidade a ser operada em formato String
+
+  Os possíveis retornos para a função são:
+    1. A túpla `{:error, "Você digitou um formato inválido de 'amount'. Leia a documentação para mais informações (https://documenter.getpostman.com/view/3587450/TVCfW8eJ#eed0a685-1f28-4e7a-8f36-e549f763e920)"}`
+    2. A túpla `{:ok, Decimal.new(amount)}`
+
+  ## Examples
+      iex> Operations.validate_amount("10.99")
+      {:ok, #Decimal<10.99>}
+      iex> Operations.validate_amount("10,99")
+      {:error, "Você digitou um formato inválido de 'amount'. Leia a documentação para mais informações (https://documenter.getpostman.com/view/3587450/TVCfW8eJ#eed0a685-1f28-4e7a-8f36-e549f763e920)"}
+  """
+  def validate_amount(amount) do
+    if !String.match?(amount, ~r/^[0-9]+(\.[0-9]{1,2})?$/) do
+      {:error, @amount_invalid_message}
+    else
+      {:ok, Decimal.new(amount)}
     end
   end
 end

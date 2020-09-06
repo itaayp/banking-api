@@ -21,9 +21,9 @@ defmodule BankingApiWeb.OperationController do
   def transfer(conn, %{"to_account" => to, "amount" => amount}) do
     # Busca a `user struct` do usuário que está realizando a transferência
     user = Guardian.Plug.current_resource(conn)
-    amount = Decimal.new(amount)
 
     with false <- Operations.is_transfering_to_same_account?(user.accounts, to),
+         {:ok, amount} <- Operations.validate_amount(amount),
          {:ok, message} <- Operations.transfer(user.accounts, to, amount) do
       conn
       |> render("operation_succeeded.json", message: message)
@@ -41,9 +41,9 @@ defmodule BankingApiWeb.OperationController do
   def withdraw(conn, %{"amount" => amount}) do
     # Busca a `user struct` do usuário que está realizando a transferência
     user = Guardian.Plug.current_resource(conn)
-    amount = Decimal.new(amount)
 
-    with {:ok, message} <- Operations.withdraw(user.accounts, amount) do
+    with {:ok, amount} <- Operations.validate_amount(amount),
+         {:ok, message} <- Operations.withdraw(user.accounts, amount) do
       IO.puts("Placeholder: Enviando email para o usuario")
       IO.puts("Mensagem do email: Voce acabou de realizar um saque")
 
