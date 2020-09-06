@@ -20,13 +20,13 @@ Desenvolver, em Elixir, uma API para bancos onde fosse possível:
 [`Clique aqui`](https://banking-api-documentation.herokuapp.com/) para encontrar a documentação do código
 
 ## Documentação de setup
-Para rodar a aplicação localmente você precisa:
- 1. Instale a versão `1.10.3` do Elixir e a versão `21.0` do Erlang. `Leia a documentação`(https://elixir-lang.org/install.html)
+Siga os passos a seguir para rodar a aplicação localmente:
+ 1. Instale a versão `1.10.3` do Elixir e a versão `21.0` do Erlang. [`Leia a documentação`](https://elixir-lang.org/install.html)
  2. Abra o seu terminal preferido. Nós vamos precisar para os próximos passos.
  3. Execute o comando `mix local.hex` para instalar o `hex`
  4. Execute o comando `mix archive.install hex phx_new 1.5.4` para instalar a versão `1.5.4` do Phoenix
- 5. Instale a versão `v10.16.3` do Node. `Leia a documentação`(https://nodejs.org/en/download/)
- 6. Instale o Postgres. `Leia a documentação`(https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+ 5. Instale a versão `v10.16.3` do Node. [`Leia a documentação`](https://nodejs.org/en/download/)
+ 6. Instale o Postgres. [`Leia a documentação`](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 
 ## Documentação de deploy
 ### Pré-requisitos:
