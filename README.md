@@ -86,8 +86,3 @@ Siga os passos a seguir para executar a aplicação localmente:
  4. Exdoc - Para criar a [`documentação de código`](https://banking-api-documentation.herokuapp.com/)
  5. Test Watch - para auxiliar na visualização de *unit tests*
  6. Conceito de Fallback Controller
-
-
-# Links extras
-
-
