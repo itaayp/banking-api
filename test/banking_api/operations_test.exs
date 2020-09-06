@@ -91,7 +91,7 @@ defmodule BankingApi.OperationsTest do
       user_from = create_user_and_account(@user_from_params)
 
       # do
-      {atom, message} = Operations.withdraw(user_from.accounts, 99999)
+      {atom, message} = Operations.withdraw(user_from.accounts, 99_999)
 
       # assert
       assert message ==
