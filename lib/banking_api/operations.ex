@@ -253,10 +253,10 @@ defmodule BankingApi.Operations do
       {:error, "Você digitou um formato inválido de 'amount'. Leia a documentação para mais informações (https://documenter.getpostman.com/view/3587450/TVCfW8eJ#eed0a685-1f28-4e7a-8f36-e549f763e920)"}
   """
   def validate_amount(amount) do
-    if !String.match?(amount, ~r/^[0-9]+(\.[0-9]{1,2})?$/) do
-      {:error, @amount_invalid_message}
-    else
+    if String.match?(amount, ~r/^[0-9]+(\.[0-9]{1,2})?$/) do
       {:ok, Decimal.new(amount)}
+    else
+      {:error, @amount_invalid_message}
     end
   end
 end
