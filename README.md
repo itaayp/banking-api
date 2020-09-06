@@ -20,13 +20,19 @@ Desenvolver, em Elixir, uma API para bancos onde fosse possível:
 [`Clique aqui`](https://banking-api-documentation.herokuapp.com/) para encontrar a documentação do código
 
 ## Documentação de setup
-Siga os passos a seguir para rodar a aplicação localmente:
+Siga os passos a seguir para executar a aplicação localmente:
  1. Instale a versão `1.10.3` do Elixir e a versão `21.0` do Erlang. [`Leia a documentação`](https://elixir-lang.org/install.html)
  2. Abra o seu terminal preferido. Nós vamos precisar para os próximos passos.
  3. Execute o comando `mix local.hex` para instalar o `hex`
  4. Execute o comando `mix archive.install hex phx_new 1.5.4` para instalar a versão `1.5.4` do Phoenix
  5. Instale a versão `v10.16.3` do Node. [`Leia a documentação`](https://nodejs.org/en/download/)
  6. Instale o Postgres. [`Leia a documentação`](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+ 7. Execute o comando `git clone https://github.com/itaayp/stone-banking-api.git` para fazer um clone do projeto em sua maquina pessoal
+ 8. Abra o arquivo `dev.exs` e altere as configurações de `username` e `password` para as configurações do seu banco de dados Postegresql
+ 9. Em seu terminal, acesse o diretório do projeto e execute o comando `mix ecto.create` e depois `mix ecto.migrate`
+ 10. Use o comando `mix phx.server` para executar a aplicação.
+ 11. Neste momento, a aplicação está sendo executada na porta 4000. Para acessar os endpoints da API localmente, [`leia a documentação da API`](https://documenter.getpostman.com/view/3587450/TVCfW8eJ) e em cada endpoint substitua `https://stone-banking-api-itay.gigalixirapp.com` por `localhost:4000`
+ 12. Divirta-se! :)
 
 ## Documentação de deploy
 ### Pré-requisitos:
