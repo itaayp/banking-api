@@ -3,7 +3,7 @@
 
 ## Breve descrição do projeto
 
-Desenvolver, em Elixir, uma API para bancos onde fosse possível:
+Uma API para bancos, desenvolvida em Elixir, onde é possível:
  1. Criar novos usuários e novas contas bancárias
  2. Realizar transferência
  3. Realizar saque
@@ -12,7 +12,7 @@ Desenvolver, em Elixir, uma API para bancos onde fosse possível:
  6. Garantir acesso aos relatórios somente para usuários administradores
 
 # Documentação
-## Documentação de uso da aplicação (Documentação da API)
+## Documentação da API
 [`Clique aqui`](https://documenter.getpostman.com/view/3587450/TVCfW8eJ) para encontrar a documentação da API
 
 ## Documentação do código (Documentação de módulo)
@@ -56,7 +56,6 @@ Siga os passos a seguir para executar a aplicação localmente:
   ```
   git remote add gigalixir https://itay.profissional%40gmail.com:31ce1eb2-b95e-47e6-9063-805c9b86cc89@git.gigalixir.com/stone-banking-api-itay.git
   ```
- 
 
 ### Passo-a-passo para o deploy:
  1. Faça as alterações no código.
